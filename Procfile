@@ -1,1 +1,1 @@
-web: gunicorn percent_app.app:server --chdir percent_app --log-file=-
+web: gunicorn --chdir percent_app app:server --log-file=-
