@@ -1,1 +1,1 @@
-web: gunicorn main:server --log-file=-
+web: gunicorn percent_app.app:server --log-file=-
