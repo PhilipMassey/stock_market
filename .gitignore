@@ -1,0 +1,58 @@
+# Python related files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Virtual environment folders (e.g., created by virtualenv, pipenv, or poetry)
+venv/
+env/
+.pipenv/
+.poetry/
+.pyenv/
+
+# Development and editor-related files
+.vscode/
+.idea/
+*.code-workspace
+*.iml
+*.swp
+*.swo
+
+# Logs and local data
+*.log
+*.sqlite3
+*.db
+
+# Compiled and build files
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dll
+*.exe
+*.out
+build/
+dist/
+
+# Environment files
+.env
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*.tmp.*
+*.swp
