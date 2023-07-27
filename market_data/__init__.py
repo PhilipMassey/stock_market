@@ -1,14 +1,7 @@
 from os.path import join
-import configparser
-config = configparser.RawConfigParser()
+import os
+seeking_alpha_key = os.environ.get('SEEKING_ALPHA_KEY')
 
-base_dir = '/Users/philipmassey/PycharmProjects/stock_market/'
-data_dir = '/Users/philipmassey/PycharmProjects/stock_market/market_data/data'
-config_file_path = '/Users/philipmassey/.tokens/'
-pycharm_path = join(config_file_path, 'pycharm.cfg')
-
-config.read(pycharm_path)
-seeking_alpha_key = config.get('rapid_api', 'seeking_alpha_key')
 
 
 #FOLDERS
