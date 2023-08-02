@@ -1,7 +1,3 @@
-import sys
-sys.path.extend(['/Users/philipmassey/stock_market'])
-#sys.path.extend(['/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages'])
-
 import market_data as md
 
 incl = md.all
