@@ -10,7 +10,7 @@ import market_data as md
 import pandas as pd
 
 
-Holding = md.get_port_and_symbols('holding')
+Holding = md.get_port_and_symbols('Holding')
 holding_portfolios = Holding['portfolio'].unique()
 
 layout = html.Div(
