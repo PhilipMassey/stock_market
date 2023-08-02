@@ -1,5 +1,3 @@
-import sys; sys.path.extend(['/Users/philipmassey/PycharmProjects/stock_market'])
-sys.path.extend(['/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages'])
 import performance as pf
 import plots as pl
 import market_data as md

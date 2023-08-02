@@ -5,10 +5,11 @@ import pandas as pd
 import yfinance as yf
 import plotly.express as px
 
+import market_data as md
 
 def getSymbolsSecInd(symbols):
-    market_data_dir = '/Users/philipmassey/PycharmProjects/stock_market/market_data'
-    df_secind = pd.read_pickle(market_data_dir+'/name_sector_industry.pkl')
+    data_dir = md.data_dir
+    df_secind = pd.read_pickle(data_dir+'/name_sector_industry.pkl')
     df_secind = df_secind.set_index('name')
     df_secind = df_secind.sort_index()
     secinds = set(df_secind.index.values)

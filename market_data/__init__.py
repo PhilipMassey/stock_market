@@ -1,7 +1,7 @@
 from os.path import join
 import os
 seeking_alpha_key = os.environ.get('SEEKING_ALPHA_KEY')
-
+data_dir = os.environ.get('SM_DATA_DIR')
 
 
 #FOLDERS

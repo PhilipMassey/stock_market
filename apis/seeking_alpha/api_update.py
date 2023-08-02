@@ -13,10 +13,9 @@ def change_value_to_list(dictionary):
 
 
 def get_china_symbols():
-    base = '/Users/philipmassey/PycharmProjects/stock_market'
-    subdir = 'logs'
+    base = md.data_dir
     fname= 'china.csv'
-    path = join(base, subdir, fname)
+    path = join(base, fname)
     df = pd.read_csv(path)
     df.rename(columns={'Ticker':'symbol'},inplace=True)
     return list(set(df.symbol.values))

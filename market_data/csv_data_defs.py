@@ -93,19 +93,19 @@ def symbols_from_file(fname):
 
 
 def getHighVolatilityStocks():
-    path = '/Users/philipmassey/PycharmProjects/stock_market/market_data/data/volatile_stock.csv'
+    path = md.data_dir + '/high_volatile_stock.csv'
     df = pd.read_csv(path).set_index('symbol')
     symbols = list(df.index.values)
     return symbols
 
 def getLowVolatilityStocks():
-    path = '/Users/philipmassey/PycharmProjects/stock_market/market_data/data/low_vol_stocks.csv'
+    path = md.data_dir + '/low_volatile_stock.csv'
     df = pd.read_csv(path).set_index('symbol')
     symbols = list(df.index.values)
     return symbols
 
 def getFidelitySymbols():
-    path = '/Users/philipmassey/PycharmProjects/stock_market/market_data/data/fidelity.csv'
+    path = md.data_dir + '/data/fidelity.csv'
     df_fidelity = pd.read_csv(path).set_index('symbol')
     symbols = list(df_fidelity.index.values)
     return symbols

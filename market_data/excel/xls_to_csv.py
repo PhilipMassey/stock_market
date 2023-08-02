@@ -1,5 +1,3 @@
-import sys; sys.path.extend(['/Users/philipmassey/PycharmProjects/stock_market'])
-sys.path.extend(['/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages'])
 
 import market_data as md
 import os
@@ -7,10 +5,6 @@ from os.path import isfile, join
 from os import listdir
 import pylightxl as xl
 import re
-
-rpath = '/Users/philipmassey/Downloads/Investing/Firefox/'
-budir = join(rpath,'bu')
-wpath = join(md.data_dir, 'Seeking_Alpha')
 
 def conform_to_spec(tkrs):
     tkrs = tkrs[:12]
