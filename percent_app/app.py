@@ -1,6 +1,7 @@
 import dash
 import dash_labs as dl
 import dash_bootstrap_components as dbc
+from flask import Flask, jsonify
 
 app = dash.Dash(
     __name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.BOOTSTRAP]
@@ -32,7 +33,8 @@ app.layout = dbc.Container(
 
 @app.server.route("/health")
 def health():
-  return "OK",200
+    state = {"status": "UP"}
+    return jsonify(state)
 
 
 if __name__ == "__main__":
