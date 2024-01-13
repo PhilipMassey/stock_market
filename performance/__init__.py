@@ -10,6 +10,7 @@ from .perc_for_sector_industry import *
 mean_option = 'mean'
 perc_option = 'perc'
 symbols_option = 'symbols'
+count_total_mean_option = 'count_total_mean'
 calc_percent_year = '1_year'
 calc_percent_2monthly = '2_monthly'
 calc_percent_monthly = '1_monthly'

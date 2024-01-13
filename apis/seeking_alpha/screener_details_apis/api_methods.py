@@ -23,8 +23,8 @@ def get_sa_screener_details_list():
     alist = []
     for data in datas:
         name = data['attributes']['name']
-        flter = data['attributes']['filters']
-        alist.append((name, str(flter).replace("'", '"')))
+        filter = data['attributes']['filters']
+        alist.append((name, str(filter).replace("'", '"')))
     return alist
 
 def adict_screener_details(screeners, perpage):
@@ -40,8 +40,8 @@ def adict_screener_details(screeners, perpage):
     error_count = 0
     for screener in screeners:
         try:
-            print(screener[0],end=', ')
             fname = screener[0]
+            print(fname,end=', ')
             payload = screener[1].replace(', "disabled": False','').replace('"authors_rating_pro"','"authors_rating"')
             response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
             data = response.text

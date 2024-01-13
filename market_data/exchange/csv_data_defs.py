@@ -2,8 +2,18 @@ import pandas as pd
 import os
 from os.path import isfile, join, isdir
 from os import listdir
-
 import market_data as md
+import numpy as np
+
+def df_strip_character_from_colvals(df, column_name):
+    for index, value in enumerate(df[column_name]):
+     # Check if the value is pd.NA
+        if pd.isna(value):
+            df.loc[index, column_name] = np.nan
+        else:
+           # Remove the dollar sign and convert the value to float
+            df.loc[index, column_name] = float(value.replace('$', ''))
+
 
 def portfolio_from_file(subdir,file):
     path = join(md.data_dir, subdir, file)

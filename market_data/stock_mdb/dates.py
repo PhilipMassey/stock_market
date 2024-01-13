@@ -68,3 +68,7 @@ def df_add_date_index(ndays,df):
     df.set_index('Date',inplace=True)
     return df
 
+def check_mdb_on_date(ndays,db_coll_name):
+    adate = md.get_date_for_mdb(ndays)
+    db_coll = db[db_coll_name]
+    return db_coll.find_one({'Date': adate})

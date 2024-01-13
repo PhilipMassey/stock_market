@@ -1,10 +1,25 @@
-
 import market_data as md
 import os
 from os.path import isfile, join
 from os import listdir
+import glob
 import pylightxl as xl
 import re
+
+def get_files_by_extension(directory, extension):
+    files = []
+    for file in os.listdir(directory):
+        if file.endswith(extension):
+            files.append(file)
+    return files
+
+
+def extract_symbols(file_path, sheet_name, column_index):
+    workbook = xl.readxl(file_path)
+    sheet = workbook.ws(sheet_name)
+    symbols = sheet.col(column_index)
+    return symbols
+
 
 def conform_to_spec(tkrs):
     tkrs = tkrs[:12]
@@ -34,8 +49,10 @@ def write_to_csv(tkrs,wpath,cvs_filen):
 def move_to_backup(rpath,fname,budir):
     os.rename(join(rpath,fname),join(budir,fname))
 
-xlsx_filesn = [f for f in listdir(rpath) if isfile(join(rpath, f))]
-for xlsx_filen in xlsx_filesn:
-    if xlsx_filen.endswith(".xlsx"):
-        xlsx_to_csv(rpath,xlsx_filen,wpath)
-        move_to_backup(rpath,xlsx_filen,budir)
+def move_xls_to_csv_and_backup(rpath,wpath,budir):
+    xlsx_filesn = [f for f in listdir(rpath) if isfile(join(rpath, f))]
+    for xlsx_filen in xlsx_filesn:
+        if xlsx_filen.endswith(".xlsx"):
+            xlsx_to_csv(rpath, xlsx_filen, wpath)
+            move_to_backup(rpath, xlsx_filen, budir)
+

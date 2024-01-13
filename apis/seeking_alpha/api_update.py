@@ -5,7 +5,7 @@ import os
 from os.path import join
 import market_data as md
 import apis as apis
-perpage = 60
+perpage = 30
 
 def change_value_to_list(dictionary):
     for key in dictionary:
@@ -64,5 +64,12 @@ def filter_to_sector_screeners(screeners):
     nscreeners = []
     for screener in screeners:
         if screener[0] in md.sa_sectors:
+            nscreeners.append(screener)
+    return nscreeners
+
+def filter_to_top_screeners(screeners):
+    nscreeners = []
+    for screener in screeners:
+        if screener[0] in md.sa_top_screeners:
             nscreeners.append(screener)
     return nscreeners

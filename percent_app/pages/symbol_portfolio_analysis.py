@@ -18,27 +18,26 @@ label_size = '10px'
 results_date = html.Div('Current date',id='results-date-3',
                         style={'width': '100%', 'text-align': 'center','font-size':label_size})
 
-label_symbols_or_mean = html.Label('Symbols or Mean',style={'font-size':label_size})
-radio_symbols_or_mean = html.Div([
+label_symbols_or_perc = html.Label('Symbols or Mean', style={'font-size':label_size})
+radio_symbols_or_perc = html.Div([
     dcc.RadioItems(
-        id='radio-symbols-or-mean',
+        id='radio-symbols-or-perc',
         options=[
-            {'label': 'Portfolio Mean', 'value': pf.mean_option},
-            {'label': 'Symbols', 'value': pf.symbols_option}
+            {'label': 'Symbols', 'value': pf.symbols_option},
+            {'label': 'Percentages', 'value': pf.perc_option}
             ],
        labelStyle={'display': 'block'},
-       value=pf.mean_option, ),
+       value=pf.symbols_option, ),
 ])
-symbols_or_mean_block = html.Div([label_symbols_or_mean, radio_symbols_or_mean],
-                         style={'width': '33%', 'display': 'in-block', 'float': 'left'})
+symbols_or_perc_block = html.Div([label_symbols_or_perc, radio_symbols_or_perc],
+                                 style={'width': '33%', 'display': 'in-block', 'float': 'left'})
 
 
-label_industry_sector = html.Label('SA, Industry, Sector', style={'font-size':label_size})
+label_industry_sector = html.Label('Industry, Sector', style={'font-size':label_size})
 radio_industry_sector = html.Div([
     dcc.RadioItems(
         id='radio-industry-sector',
         options=[
-            {'label': 'Seeking Alpha', 'value': analysis.sa_opt},
             {'label': 'Sector', 'value': analysis.sector_opt},
             {'label': 'Sector,Industry', 'value': analysis.sector_ind_opt},
             {'label': 'Symbols by Portfolio', 'value': 'symbols-by-portfolio'}
@@ -86,9 +85,9 @@ dropdowns = html.Div([
 
 results_table = html.Div(id="results-table-2")
 
-#layout = html.Div([results_date, radio_symbols_or_mean, radio_selection, dropdowns, results_table])
-layout = html.Div([results_date, symbols_or_mean_block, industry_sector_block,
-                   ndays_range_block,dropdowns,
+#layout = html.Div([results_date, radio_symbols_or_perc, radio_selection, dropdowns, results_table])
+layout = html.Div([results_date, symbols_or_perc_block, industry_sector_block,
+                   ndays_range_block, dropdowns,
                    results_table,
                    html.Div(id="event")
                    ])
@@ -109,7 +108,7 @@ def update_dropdown_ports(value):
 @callback(
     Output('results-date-3', 'children'),
     Output('results-table-2', 'children'),
-    Input('radio-symbols-or-mean', 'value'),
+    Input('radio-symbols-or-perc', 'value'),
     Input('radio-industry-sector', 'value'),
     Input('radio-ndays-range', 'value'),
     Input('dropdown-dirs-1', 'value'),
@@ -121,19 +120,17 @@ def update_table(radio_sym_mean, radio_ind_sec, opt_ndays_range,directory, port)
         df = pd.DataFrame({'Status': ['depends']})
     else:
         symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
-        if radio_ind_sec == analysis.sa_opt:
-            df = analysis.df_symbols_by_sa_ports(symbols,directory, port)
-        elif radio_ind_sec == analysis.sector_opt:
-            if radio_sym_mean == pf.mean_option:
-                df = analysis.df_sector_means_for_range(ndays_range, symbols)
-            elif radio_sym_mean == pf.symbols_option:
-                df = analysis.df_symbols_by_sector(symbols)
+        if radio_ind_sec == analysis.sector_opt:
+            df = analysis.df_symbols_by_sector(symbols)
+            if radio_sym_mean == pf.perc_option:
+                analysis.assign_count_sum_mean(df, ndays_range)
+                #df = df[['Sector', 'Count', 'Total %', 'Mean %']]
         elif radio_ind_sec == analysis.sector_ind_opt:
-            if radio_sym_mean == pf.mean_option:
-                df = analysis.df_sector_industry_means_for_range(ndays_range, symbols)
-            elif radio_sym_mean == pf.symbols_option:
-                df = analysis.df_symbols_by_sector_industry(symbols)
-        #df = analysis.df_symbols_by_portfolio(symbols, directory)
+            df = analysis.df_symbols_by_sector_industry(symbols)
+            if radio_sym_mean == pf.perc_option:
+                analysis.assign_count_sum_mean(df, ndays_range)
+                #df = df[['Sector', 'Industry', 'Count', 'Total %', 'Mean %']]
+
     return (md.get_date_for_ndays(0),
              dt.DataTable(
                 id='table',

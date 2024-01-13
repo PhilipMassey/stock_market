@@ -15,9 +15,9 @@ if __name__ == "__main__":
     t1 = threading.Thread(target=mdb_holding_history)
     t2 = threading.Thread(target=mdb_sa_history)
     t3 = threading.Thread(target=update_symbol_profile)
-    t4 = threading.Thread(target=update_symbol_info)
+#    t4 = threading.Thread(target=update_symbol_info)
 
     t1.start()
     t2.start()
     t3.start()
-    t4.start()
+#    t4.start()

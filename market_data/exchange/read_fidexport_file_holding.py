@@ -4,13 +4,9 @@ import market_data as md
 import math
 
 
-def is_nan(value):
-    return math.isnan(float(value))
-
-
-def file_df_tickers(df, acount_names, path):
+def file_df_tickers(df, account_names, path):
     suffix = '.csv'
-    for account in acount_names:
+    for account in account_names:
         if isinstance(account, str):
             tickers = list(df[df['Account Name'] == account].Symbol.values)
             if 'FDRXX**' in tickers:
@@ -40,4 +36,7 @@ def run_file_df_tickers(filename):
 
 if __name__ == '__main__':
     filename = 'Portfolio_Positions.csv'
+    underscore_index = filename.index('_')
+    parsed_string = filename[:underscore_index]
+
     run_file_df_tickers(filename)

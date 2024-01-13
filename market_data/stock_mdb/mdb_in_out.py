@@ -19,17 +19,12 @@ def mdb_add_df(df,db_coll_name):
 
 
 def add_df_to_db(df, db_coll_name, dropidx=False):
-    db_coll = db[db_coll_name]
     df = df.copy(deep=True)
     df.drop_duplicates(inplace=True)
     df.reset_index(inplace=True)
     if dropidx == True:
         df.drop(columns={'index'},inplace=True)
-    data_dict = df.to_dict("records")
-    #print(data_dict)
-    result = db_coll.insert_many(data_dict)
-    #print('Inserted {:d} into {}' .format(len(result.inserted_ids),db_coll_name))   #,len(df.index)))
-    return result
+    return mdb_add_df(df, db_coll_name)
 
 
 
@@ -84,7 +79,7 @@ def get_mdb_rows_close_vol(strdate, incl=md.all):
     return dfClose,dfVol
 
 
-def mdb_to_df(mongo_data, dateidx=False):
+def mdb_to_df_old(mongo_data, dateidx=False):
     sanitized = json.loads(json_util.dumps(mongo_data))
     normalized = json_normalize(sanitized)
     df = pd.DataFrame(normalized)
@@ -92,12 +87,18 @@ def mdb_to_df(mongo_data, dateidx=False):
         replace_date_date(df)
     return df
 
+def mdb_to_df(cursor, dateidx=False):
+    df = pd.DataFrame.from_records(cursor)
+    if dateidx == True:
+        replace_date_date(df)
+    return df
+
 
 def replace_date_date(df):
     #df['Date'] = datetime.utcfromtimestamp(float(df['Date.$date'] / 1e3))
-    df['Date'] = df['Date.$date'].apply(lambda x: datetime.utcfromtimestamp(float(x / 1e3)))
+    #df['Date'] = df['Date.$date'].apply(lambda x: datetime.utcfromtimestamp(float(x / 1e3)))
     df.set_index('Date', inplace=True)
-    df.drop(['Date.$date', '_id.$oid'], axis=1, inplace=True)
+    df.drop(['_id'], axis=1, inplace=True)
 
 
 def display_index(db_coll_name):

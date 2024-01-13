@@ -100,9 +100,9 @@ listen_table = html.Div(
 
 dct_profile = apis.dct_mdb_symbol_names()
 def get_tooltip(symbol):
-    if symbol in dct_profile:
+    try:
         return dct_profile[symbol]
-    else:
+    except:
         return 'No worries,mate!'
 
 
@@ -156,12 +156,12 @@ def update_table(calc_percent, opt_ndays_range, perc_or_mean, directory, port):
         dt.DataTable(
         id='table',
         columns=[{"name": i, "id": i} for i in df.columns],
-        tooltip_data=[
-            {
-                    'symbol': {'value': get_tooltip(value), 'type': 'markdown'}
-                    for column, value in row.items()
-                } for row in df[['symbol']].to_dict('records')
-            ],
+        # tooltip_data=[
+        #     {
+        #             'symbol': {'value': get_tooltip(value), 'type': 'markdown'}
+        #             for column, value in row.items()
+        #         } for row in df[['symbol']].to_dict('records')
+        #     ],
         data=df.to_dict('records'),
         export_format="csv",
         style_cell={

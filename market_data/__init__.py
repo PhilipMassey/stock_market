@@ -1,14 +1,15 @@
-from os.path import join
 import os
 seeking_alpha_key = os.environ.get('SEEKING_ALPHA_KEY')
 data_dir = os.environ.get('SM_DATA_DIR')
-
+download_dir = os.environ.get('DOWNLOAD_DIR')
 
 #FOLDERS
 all = 'ALL'
 ark = 'ARK'
 etf = 'ETF'
-holding = 'holding'
+holding = 'Holding'
+proforma = 'Proforma'
+fidelity_postions = 'Fidelity Positions'
 logs = 'logs'
 sa = 'Seeking_Alpha'
 sa_history = 'sa_history'
@@ -23,12 +24,13 @@ db_symbol_profile = 'symbol_profile'
 db_symbol_info = 'symbol_info'
 db_seeking_alpha_history = 'seeking_alpha_history'
 db_holding_history = 'holding history'
+db_fidelity_download = 'fidelity_download'
 
-from .csv_data_defs import *
-from .portfolio_defs import *
+from market_data.exchange.csv_data_defs import *
+from market_data.exchange.portfolio_defs import *
 from .stock_mdb import *
 from .exchange_api import *
-
+from .exchange import *
 
 test_symbols = 'test_symbols'
 top_growth_stocks = 'Top Growth Stocks'
@@ -45,22 +47,17 @@ water_etf = 'Water ETF'
 
 sa_sectors = ['Top Communication Stocks',
             'Top Consumer Discretionary Stocks',
-            'Top Consumer Staples Stocks',
             'Top Energy Stocks',
             'Top Financial Stocks',
             'Top Healthcare Stocks',
             'Top Industrial Stocks',
             'Top Materials Stocks',
-            'Top REITs',
-            'Top Real Estate Stocks',
-            'Top Technology Stocks',
-            'Top Utility Stocks',
-            'Top Yield Monsters'
+            'Top Technology Stocks'
             ]
 
-sa_others = ['Top ETFs by Quant',
-             'Top Rated Stocks',
-             'Top Stocks by Quant',
-             'Top Value Stocks']
+sa_top_screeners = ['Stocks by Quant',
+             'Top Rated Stocks']
+
+
 
 symbols_not_in_yahoo = []

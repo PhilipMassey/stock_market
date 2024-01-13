@@ -9,6 +9,10 @@ db = client['stock_market']
 # results = db[db_coll_name].delete_many({})
 # results.deleted_count
 
+def drop_column(db_coll_name, col_name):
+    db_coll = db[db_coll_name]
+    result = collection.update_many( { }, { '$unset': { col_name: '' } } )
+    print(result.matched_count, result.modified_count)
 
 
 def delete_row_for_day(ndays, db_coll_name):
@@ -34,9 +38,9 @@ def delete_records_between_dates(ndays,perdiod, db_coll_name):
     result = db_coll.delete_many({'Date': {'$lte': end_date, '$gte': start_date}})
     return result.deleted_count
 
-def delete_records_for_symbol(symbols, db_coll_name):
+def delete_records_for_row(symbols, db_coll_name):
     db_coll = db[db_coll_name]
-    result = db_coll.delete_many({"symbol": {"$in": symbols}})
+    result = db_coll.delete_many({"row_name": {"$in": symbols}})
     return result.deleted_count
 
 def delete_all_records(symbols, db_coll_name):
