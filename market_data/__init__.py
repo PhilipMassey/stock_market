@@ -28,9 +28,11 @@ db_fidelity_download = 'fidelity_download'
 
 from market_data.exchange.csv_data_defs import *
 from market_data.exchange.portfolio_defs import *
+from market_data.exchange.FidelityPositions import *
 from .stock_mdb import *
 from .exchange_api import *
 from .exchange import *
+from .xlsx_data import *
 
 test_symbols = 'test_symbols'
 top_growth_stocks = 'Top Growth Stocks'

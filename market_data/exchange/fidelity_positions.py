@@ -19,7 +19,7 @@ def df_fidelity_positions():
 
 def money_market(df):
     filter_values = ['FDRXX', 'SPAXX', 'Pending Activity']
-    df = md.df_filter_to_symbols(df, filter_values)
+    df = df[df['Symbol'].str.contains('|'.join(filter_values))]
     df = df.groupby('Symbol').agg({'Current Value':sum})
     #df.reindex()
     df.reset_index(inplace=True)
@@ -28,11 +28,13 @@ def money_market(df):
     md.write_df_to_file(df, filep)
 
 
+
+
+
 def df_calculate_percent_of_total(df, col_name, col_perc_name):
     cv_sum = df[col_name].sum()
-    df[col_perc_name] = (df[col_name] / cv_sum) * 100
-    df[col_perc_name] = df[col_perc_name].apply(lambda x: round(x, 2))
-
+    df[col_perc_name] = (df[col_name] / cv_sum)
+    df[col_perc_name] = (df[col_perc_name] * 100).map('{:.2f}'.format)
 
 def fidelity_positions_filep():
     download_dir = md.download_dir
@@ -40,12 +42,6 @@ def fidelity_positions_filep():
     if len(files) != 1:
         raise Exception("File size is not 1")
     return files[0]
-
-
-def df_filter_to_symbols(df, filter_values):
-    # Filter the DataFrame based on the values in the 'Symbol' column
-    filtered_df = df[df['Symbol'].str.contains('|'.join(filter_values))]
-    return filtered_df
 
 
 def df_fidelity_positions():
@@ -64,7 +60,7 @@ def df_fidelity_positions():
 def df_filter_to_portfolio(df, directory, portfolio):
     symbols = md.get_symbols_dir_and_port(directory, portfolio)
     df = df[df.Symbol.isin(symbols)].sort_values('Symbol')
-    md.df_calculate_percent_of_total(df, 'Current Value', 'Current Value%')
+    md.df_calculate_percent_of_total(df, 'Current Value', 'Current Value %')
     symbols = md.get_symbols_dir_and_port(md.sa, portfolio)
     df_p = pd.DataFrame(symbols,columns=['Symbol'])
     df = pd.merge(df, df_p, on='Symbol', how='outer').sort_values(by=['Symbol'])
@@ -79,10 +75,12 @@ def df_aggregate_columns(df):
 
 def df_calculate_current_return(sum_df):
     difference_list = sum_df['Current Value'] - sum_df['Cost Basis Total']
-    percent_difference = ((difference_list / sum_df['Current Value']) * 100).apply(lambda x: round(x, 2))
+    percent_difference = (difference_list / sum_df['Current Value'])  # * 100).apply(lambda x: round(x, 2))
     sum_df['Current Return%'] = percent_difference
-    new_order = ['Symbol','Current Return%','Current Value%','Current Value','Cost Basis Total','Quantity','Average Cost Basis' ]
-    sum_df = sum_df.reindex(columns = new_order)
+    sum_df['Current Return%'] = (sum_df['Current Return%']).map('{:.2f}%'.format)
+    new_order = ['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Current Value %', 'Buy/Sell %',
+                 'Cost Basis Total', 'Quantity', 'Average Cost Basis']
+    sum_df = sum_df.reindex(columns=new_order)
     return sum_df
 
 def filter_to_portfolio_and_file(sum_df, directory, portfolio):
