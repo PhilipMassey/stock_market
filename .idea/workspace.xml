@@ -4,7 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="FidelityPositions" />
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="FidelityPositions">
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/api_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/api_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/top rated stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/top rated stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/api_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/api_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/energy_stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/energy_stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Bonds.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Bonds/Bonds.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Corporate Bonds.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Bonds/Corporate Bonds.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Municipal Bonds.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Bonds/Municipal Bonds.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Sector XL.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/ETF/Sector XL.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Short ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/ETF/Short ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Thematic ETF.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/ETF/Thematic ETF.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Ten Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Ten Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/read_fidexport_file_holding.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/read_fidexport_file_holding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/xlsx_data/df_and_xlsx.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/xlsx_data/df_and_xlsx.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,10 +101,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/market_data/data/Proforma" />
+      <recent name="$PROJECT_DIR$/logs" />
       <recent name="$PROJECT_DIR$/market_data/exchange" />
       <recent name="$PROJECT_DIR$/market_data/data" />
       <recent name="$PROJECT_DIR$/market_data/Proforma" />
-      <recent name="$PROJECT_DIR$/market_data/data/Seeking_Alpha" />
     </key>
   </component>
   <component name="RunManager" selected="Python.FidelityPositionsRunner">
@@ -214,9 +252,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.FidelityPositionsRunner" />
+        <item itemvalue="Python.read_fidexport_file_holding" />
         <item itemvalue="Python.FidelityPositions" />
         <item itemvalue="Python.update_symbol_profile" />
-        <item itemvalue="Python.read_fidexport_file_holding" />
         <item itemvalue="Python.fidelity_positions" />
       </list>
     </recent_temporary>
@@ -240,11 +278,33 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="remove absolute paths" />
     <MESSAGE value="fidelity positions" />
     <MESSAGE value="FidelityPositions" />
     <option name="LAST_COMMIT_MESSAGE" value="FidelityPositions" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

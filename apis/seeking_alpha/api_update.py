@@ -17,7 +17,7 @@ def get_china_symbols():
     fname= 'china.csv'
     path = join(base, fname)
     df = pd.read_csv(path)
-    df.rename(columns={'Ticker':'symbol'},inplace=True)
+    df.rename(columns={'Symbol':'symbol'},inplace=True)
     return list(set(df.symbol.values))
 
 
@@ -43,20 +43,20 @@ def trim_to_count(resultsdict, dict_count):
 
 def replacedot(resultsdict):
     for port in resultsdict:
-        listtickers = resultsdict[port]
-        newtickers = []
-        for ticker in listtickers:
-            newtickers.append(ticker.replace(".",'-'))
-        resultsdict[port] = newtickers
+        listsymbols = resultsdict[port]
+        newsymbols = []
+        for symbol in listsymbols:
+            newsymbols.append(symbol.replace(".",'-'))
+        resultsdict[port] = newsymbols
 
 
 def file_api_symbols(resultsdict, path):
     suffix = '.csv'
     for key in resultsdict.keys():
-        tickers = resultsdict[key]
+        symbols = resultsdict[key]
         fpath = os.path.join(path, key + suffix)
         with open(fpath, 'w') as f:
-            f.write('Ticker\n' + '\n'.join(tickers))
+            f.write('Symbol\n' + '\n'.join(symbols))
             f.close()
     print('completed: updating ', path)
 

@@ -24,12 +24,12 @@ response = requests.request("POST", url, data=payload, headers=headers, params=q
 data = response.text
 print(data)
 df = pd.json_normalize(json.loads(data)['data'])
-tickers = df['attributes.name'].head(12).values
-print(tickers)
+symbols = df['attributes.name'].head(12).values
+print(symbols)
 subdir = 'Seeking_Alpha'
 suffix = '.csv'
 path = os.path.join(md.data_dir, subdir,fname+suffix)
 with open(path, 'w') as f:
-    f.write('Ticker\n'+'\n'.join(tickers))
+    f.write('Symbol\n' +'\n'.join(symbols))
     f.close()
 

@@ -20,7 +20,7 @@ def portfolio_from_file(subdir,file):
     df = pd.read_csv(path)
     fname = file[0:-4]
     df['portfolio'] = fname
-    df.rename(columns={'Ticker':'symbol'},inplace=True)
+    df.rename(columns={'Symbol':'symbol'},inplace=True)
     return df
 
 def get_dir_port_symbols(subdir):
@@ -120,5 +120,15 @@ def getFidelitySymbols():
     symbols = list(df_fidelity.index.values)
     return symbols
 
+def read_file(file_path):
+    lines = []
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    lines = [item.strip() for item in lines]
+    return lines
 
 
+
+def df_copy_columns_values(df1,df2, columns):
+    for name in columns:
+        df1[name] = df2[name]

@@ -12,14 +12,13 @@ def xlswriter_xlsxfile_from_df(df, directory, xlsxfilename):
 def df_from_xlsxfile(directory, xlsxfilename):
     filep = join(directory,  xlsxfilename)
     df = pd.read_excel(filep)
-    for i,column in enumerate(df.columns):
-        print(column,i,end=',')
-    print('/n')
+    # for i,column in enumerate(df.columns):
+    #     print(column,i,end=',')
+    # print('/n')
     return df
 
 def close_writer(writer):
     writer.close()
-    print('writer closed')
 
 def dfs_compare_symbols(df1, df2):
     symbols1 = set(df1.Symbol.values)

@@ -50,8 +50,8 @@ def adict_screener_details(screeners, perpage):
                 print(screener[0], screener[1])
             else:
                 df = pd.json_normalize(json.loads(data)['data'])
-                tickers = df['attributes.name'].values
-                adict[fname] = list(tickers)
+                symbols = df['attributes.name'].values
+                adict[fname] = list(symbols)
         except (JSONDecodeError,KeyError) as e:
             print('\n',e, fname)
             error_count += 1

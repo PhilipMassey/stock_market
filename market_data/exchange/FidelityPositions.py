@@ -7,15 +7,14 @@ import glob
 
 class FidelityPositions:
     def __init__(self):
-        self.filepath = md.fidelity_positions_filep()
+        self.fidelity_positions_filep = md.fidelity_positions_filep()
         self.df = None
         self.sum_df = None
-        self.column_order = ['Symbol','Buy/Sell$','Current Value','Current Return%','Rating','Current Value %','Holding %','Buy/Sell %','Cost Basis Total','Quantity','Average Cost Basis']
+        self.column_order = ['Symbol','Buy/Sell $','Current Value','Current Return %','Rating','Current Value %','Holding %','Buy/Sell %','Cost Basis Total','Quantity','Average Cost Basis']
 
-    def execute(self):
-        self.df_fidelity_positions()
+    def fidlelity_postions_xlsx_update(self):
+        self.df_fidelity_positions_load()
         self.df_aggregate_columns()
-        #self.df_calculate_current_return()
         self.order_columns()
         portfolio = 'Alpha Picks'
         directory = md.proforma
@@ -29,9 +28,10 @@ class FidelityPositions:
         portfolio = 'Stocks'
         directory = md.proforma
         self.filter_to_portfolio_and_file(directory, portfolio)
+        print('Completed Fidelity Positions xlsx')
 
-    def df_fidelity_positions(self):
-        self.df = md.df_from_cvs(self.filepath, column_names=['Account Name', 'Symbol', 'Current Value', 'Cost Basis Total', 'Quantity', 'Average Cost Basis'])
+    def df_fidelity_positions_load(self):
+        self.df = md.df_from_cvs(self.fidelity_positions_filep, column_names=['Account Name', 'Symbol', 'Current Value', 'Cost Basis Total', 'Quantity', 'Average Cost Basis'])
         md.df_strip_character_from_colvals(self.df ,'Current Value')
         md.df_strip_character_from_colvals(self.df, 'Cost Basis Total')
         md.df_strip_character_from_colvals(self.df, 'Average Cost Basis')
@@ -60,28 +60,14 @@ class FidelityPositions:
         filtered_df = self.df[self.df['Symbol'].str.contains('|'.join(filter_values))]
         return filtered_df
 
-    def df_calculate_current_return(self):
-        difference_list = self.sum_df['Current Value'] - self.sum_df['Cost Basis Total']
-        percent_difference = (difference_list / self.sum_df['Current Value']) # * 100).apply(lambda x: round(x, 2))
-        self.sum_df['Current Return %'] = percent_difference
-        self.sum_df['Current Return %'] = (self.sum_df['Current Return %'] *100).map('{:.2f}'.format)
-
     def filter_to_portfolio_and_file(self, directory, portfolio):
         df_filtered = self.df_filter_to_portfolio(directory, portfolio)
         filep = join(md.download_dir, md.fidelity_postions, portfolio + '.xlsx')
         df_filtered.to_excel(filep)
 
-    def df_calculate_percent_of_total(self,col_name, col_perc_name):
-        cv_sum = self.df[col_name].sum()
-        self.df[col_perc_name] = (self.df[col_name] / cv_sum) #* 100
-        #self.df[col_perc_name] = self.df[col_perc_name].apply(lambda x: round(x, 2))
-        df[col_perc_name] = (df[col_perc_name] * 100).map('{:.2f}%'.format)
-
-
     def df_filter_to_portfolio(self, directory, portfolio):
         symbols = md.get_symbols_dir_and_port(directory, portfolio)
         df_filtered = self.sum_df[self.sum_df.Symbol.isin(symbols)].sort_values('Symbol')
-        md.df_calculate_percent_of_total(df_filtered, 'Current Value', 'Current Value %')
         symbols = md.get_symbols_dir_and_port(directory, portfolio)
         df_p = pd.DataFrame(symbols,columns=['Symbol'])
         df_filtered = pd.merge(df_filtered, df_p, on='Symbol', how='outer').sort_values(by=['Symbol'])
@@ -93,7 +79,39 @@ class FidelityPositions:
     def print_differences(self):
         symbols = set(md.get_symbols(md.proforma))
         sumd_df_symbols = set(self.sum_df.Symbol.values)
-        print('more in fidelity \n', sumd_df_symbols.difference(symbols))
-        print('more in proforma \n', symbols.difference(sumd_df_symbols))
-        filep = join(md.download_dir, md.fidelity_postions, 'Missing Fidelity Porsitions.txt')
+        print('ExtraFidelity Positions\n', sumd_df_symbols.difference(symbols))
+        print('Extra Proforma Symbols\n', symbols.difference(sumd_df_symbols))
+        filep = join(md.download_dir, md.fidelity_postions, 'Proforma not in Fidelity.txt')
         md.write_list_to_file(filep, sorted(symbols.difference(sumd_df_symbols)))
+
+    def file_df_account_symbols(self, df, account_names, shorts, path):
+        suffix = '.csv'
+        for account in account_names:
+            if isinstance(account, str):
+                symbols = (set(df[df['Account Name'] == account].Symbol.values))
+                symbols = symbols.difference(shorts)
+                symbols = sorted(list(symbols))
+                fpath = join(path, account + suffix)
+                with open(fpath, 'w') as f:
+                    f.write('Symbol\n' + '\n'.join(symbols))
+                    f.close()
+
+    def holding_portfolios_update(self):
+        df = pd.read_csv(self.fidelity_positions_filep)
+        df = df.dropna()
+        df = df[['Account Name', 'Symbol']]
+        path = join(md.data_dir, 'holding')
+        account_names = list(set(df['Account Name'].values))
+        shorts = set(md.get_symbols_dir_and_port(directory='ETF', port='Short ETFs'))
+        self.file_df_account_symbols(df, account_names, shorts, path)
+        print('Completed Filing Holding Symbols ', path)
+
+
+def fidelity_positions_filep():
+    download_dir = md.download_dir
+    files = glob.glob(download_dir + '/Portfolio_Positions*.csv')
+    if len(files) != 1:
+        raise Exception("File size is not 1")
+    return files[0]
+
+
