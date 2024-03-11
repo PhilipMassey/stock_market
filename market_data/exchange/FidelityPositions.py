@@ -10,23 +10,25 @@ class FidelityPositions:
         self.fidelity_positions_filep = md.fidelity_positions_filep()
         self.df = None
         self.sum_df = None
+        self.base_columns = ['Symbol','Current Value','Cost Basis Total','Quantity','Average Cost Basis']
         self.column_order = ['Symbol','Buy/Sell $','Current Value','Current Return %','Rating','Current Value %','Holding %','Buy/Sell %','Cost Basis Total','Quantity','Average Cost Basis']
 
     def fidlelity_postions_xlsx_update(self):
-        self.df_fidelity_positions_load()
-        self.df_aggregate_columns()
-        self.order_columns()
-        portfolio = 'Alpha Picks'
         directory = md.proforma
+        #save all
+        filep = join(md.download_dir, md.fidelity_positions, 'Fidelity Positions.xlsx')
+        self.sum_df.to_excel(filep)
+        portfolio = 'Alpha Picks'
         self.filter_to_portfolio_and_file(directory, portfolio)
         portfolio = 'Dividends'
-        directory = md.proforma
         self.filter_to_portfolio_and_file(directory, portfolio)
         portfolio = 'ETFs'
-        directory = md.proforma
         self.filter_to_portfolio_and_file(directory, portfolio)
         portfolio = 'Stocks'
-        directory = md.proforma
+        self.filter_to_portfolio_and_file(directory, portfolio)
+        portfolio = 'International'
+        self.filter_to_portfolio_and_file(directory, portfolio)
+        portfolio = 'Treasuries'
         self.filter_to_portfolio_and_file(directory, portfolio)
         print('Completed Fidelity Positions xlsx')
 
@@ -53,7 +55,7 @@ class FidelityPositions:
         mmdf = mmdf.groupby('Symbol').agg({'Current Value': 'sum'})
         mmdf.reset_index(inplace=True)
         mmdf.rename(columns={'index':'Symbol'}, inplace=True)
-        filep = join(md.download_dir, md.fidelity_postions, ' Money Market.txt')
+        filep = join(md.download_dir, md.fidelity_positions, ' Money Market.txt')
         md.write_df_to_file(mmdf, filep)
 
     def df_filter_to_symbols(self, filter_values):
@@ -62,7 +64,7 @@ class FidelityPositions:
 
     def filter_to_portfolio_and_file(self, directory, portfolio):
         df_filtered = self.df_filter_to_portfolio(directory, portfolio)
-        filep = join(md.download_dir, md.fidelity_postions, portfolio + '.xlsx')
+        filep = join(md.download_dir, md.fidelity_positions, portfolio + '.xlsx')
         df_filtered.to_excel(filep)
 
     def df_filter_to_portfolio(self, directory, portfolio):
@@ -76,12 +78,19 @@ class FidelityPositions:
     def order_columns(self):
         self.sum_df = self.sum_df.reindex(columns=self.column_order)
 
+    def add_to_mdb(self):
+        df = self.sum_df[['Symbol', 'Current Value', 'Cost Basis Total', 'Quantity', 'Average Cost Basis']]
+        md.df_add_date_column(0, df)
+        db_coll_name = md.db_fidel_pos
+        md.add_df_to_db(df, db_coll_name)
+        print('Positions added to:', db_coll_name)
+
     def print_differences(self):
         symbols = set(md.get_symbols(md.proforma))
         sumd_df_symbols = set(self.sum_df.Symbol.values)
-        print('ExtraFidelity Positions\n', sumd_df_symbols.difference(symbols))
+        print('Extra Fidelity Positions\n', sumd_df_symbols.difference(symbols))
         print('Extra Proforma Symbols\n', symbols.difference(sumd_df_symbols))
-        filep = join(md.download_dir, md.fidelity_postions, 'Proforma not in Fidelity.txt')
+        filep = join(md.download_dir, md.fidelity_positions, 'Proforma not in Fidelity.txt')
         md.write_list_to_file(filep, sorted(symbols.difference(sumd_df_symbols)))
 
     def file_df_account_symbols(self, df, account_names, shorts, path):

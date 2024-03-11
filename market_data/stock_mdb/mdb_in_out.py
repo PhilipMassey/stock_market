@@ -79,14 +79,6 @@ def get_mdb_rows_close_vol(strdate, incl=md.all):
     return dfClose,dfVol
 
 
-def mdb_to_df_old(mongo_data, dateidx=False):
-    sanitized = json.loads(json_util.dumps(mongo_data))
-    normalized = json_normalize(sanitized)
-    df = pd.DataFrame(normalized)
-    if dateidx == True:
-        replace_date_date(df)
-    return df
-
 def mdb_to_df(cursor, dateidx=False):
     df = pd.DataFrame.from_records(cursor)
     if dateidx == True:
