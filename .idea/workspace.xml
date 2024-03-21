@@ -5,20 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="FidelityPositions">
+      <change afterPath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/mdb_holding_history.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/run_post_api_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/run_post_api_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/dates.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/dates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/df_from_mdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/df_from_mdb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/mdb_in_out.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/mdb_in_out.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +85,7 @@
       <recent name="$PROJECT_DIR$/market_data/Proforma" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.FidelityAdjustmentRunner">
+  <component name="RunManager" selected="Python.FidelityPositionsRunner">
     <configuration name="FidelityAdjustmentRunner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
@@ -230,8 +229,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.FidelityAdjustmentRunner" />
         <item itemvalue="Python.FidelityPositionsRunner" />
+        <item itemvalue="Python.FidelityAdjustmentRunner" />
         <item itemvalue="Python.update_symbol_profile" />
         <item itemvalue="Python.read_fidexport_file_holding" />
         <item itemvalue="Python.FidelityPositions" />

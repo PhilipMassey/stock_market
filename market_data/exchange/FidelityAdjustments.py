@@ -6,9 +6,10 @@ import market_data as md
 
 class CombineHoldingsStandards:
     def __init__(self,standards_xlsxfilen, postition_xlsxfilen):
-        standards_directory = join(md.download_dir, 'Fidelity','Portfolio Standards')
-        positions_directory = join(md.download_dir, 'Fidelity','Fidelity Positions')
+        #standards_directory = join(md.download_dir, 'Fidelity','Portfolio Standards')
         self.df_standard = md.df_from_xlsxfile(standards_directory, standards_xlsxfilen)
+        self.df_standard = md.df_google_alpha_picks_standard()
+        positions_directory = join(md.download_dir, 'Fidelity','Fidelity Positions')
         self.df_fidelity = md.df_from_xlsxfile(positions_directory, postition_xlsxfilen)
 
     def prepare_df_fidelity(self):

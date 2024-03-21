@@ -104,16 +104,6 @@ def count_mdb_on_date(ndays,symbol,db_coll_name):
     return db_coll.count_documents({'Date': adate, 'symbol':symbol})
 
 
-def df_from_mdb_all_data(db_coll_name, columns=[]):
-    db_coll = db[db_coll_name]
-    if len(columns) != 0:
-        columns.append('Date')
-        mdb_data= db_coll.find({}, columns)
-    else:
-        mdb_data= db_coll.find({})
-    return md.mdb_to_df(mdb_data, dateidx=True)
-
-
 def df_from_mdb_filter(db_coll_name, afilter, columns=[]):
     db_coll = db[db_coll_name]
     if len(columns) != 0:

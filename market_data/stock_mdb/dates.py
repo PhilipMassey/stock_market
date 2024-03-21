@@ -8,11 +8,13 @@ client = MongoClient()
 db = client['stock_market']
 
 
-def df_add_date_column(ndays, df):
+def df_add_ndays_date_column(ndays, df):
     strdt = md.get_mdb_strdate_for_ndays(ndays)
     dt = md.get_mdbdate_from_strdate(strdt)
     df['Date'] = dt
 
+def df_add_adate_column(adate, df):
+    df['Date'] = adate
 
 def df_idxdate_tostr(df):
     d = df.index.values[0]

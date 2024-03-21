@@ -47,7 +47,7 @@ def mdb_add_symbols_profiles_for_directory(ndays,directory, db_coll_name):
             if len(dct_api) != 0:
                 df = pd.DataFrame.from_dict(dct_api)
                 df = df.T.reset_index().rename(columns={'index':'symbol'})
-                md.df_add_date_column(ndays,df)
+                md.df_add_ndays_date_column(ndays, df)
                 inserted = md.mdb_add_df(df,db_coll_name)
                 #print(inserted)
                 mdb_symbols.extend(not_added_symbols)

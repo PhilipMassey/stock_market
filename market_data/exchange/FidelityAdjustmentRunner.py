@@ -6,8 +6,8 @@ from os.path import join
 if __name__ == '__main__':
     portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks','International', 'Treasuries']
     for portfolio in portfolios:
-        xlsxfilenane = portfolio + '.xlsx'
-        CombHoldStand = md.CombineHoldingsStandards(portfolio + ' Standards.xlsx' ,xlsxfilenane)
+        postition_xlsxfilen = portfolio + '.xlsx'
+        CombHoldStand = md.CombineHoldingsStandards(portfolio + ' Standards.xlsx' ,postition_xlsxfilen)
         CombHoldStand.prepare_df_fidelity()
 
         xldf_proc = md.AdjustmentFromHoldingsStandards(CombHoldStand.df_fidelity)

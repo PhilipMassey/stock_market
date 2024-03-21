@@ -28,14 +28,23 @@ def get_df_from_mdb_for_nday(ndays, coll_name, symbols='', incl='', dateidx=True
     return df
 
 
-# def get_df_from_mdb(db_coll_name,columns=''):
-#     db_coll = db[db_coll_name]
-#     if len(columns) == 0:
-#         mdb_data = db_coll.find()
-#     else:
-#         mdb_data = db_coll.find(columns)
-#     df = md.mdb_to_df(mdb_data)
-#     return df
+def df_from_mdb_all_data(db_coll_name, columns=[], dateidx=False):
+    db_coll = db[db_coll_name]
+    if len(columns) != 0:
+        columns.append('Date')
+        mdb_data= db_coll.find({}, columns)
+    else:
+        mdb_data= db_coll.find({})
+    return md.mdb_to_df(mdb_data, dateidx=dateidx)
+
+def df_from_mdb(db_coll_name,columns=[]):
+    db_coll = db[db_coll_name]
+    if len(columns) == 0:
+        mdb_data = db_coll.find()
+    else:
+        mdb_data = db_coll.find(columns)
+    df = md.mdb_to_df(mdb_data)
+    return df
 
 
 def df_mdb_clossins_for_ndays_range(ndays_range, symbols):
