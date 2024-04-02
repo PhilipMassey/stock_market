@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
         xldf_proc = md.AdjustmentFromHoldingsStandards(CombHoldStand.df_fidelity)
         directory = join(md.download_dir, 'Fidelity Adjustments')
-        xldf_proc.create_excel_writer(directory, xlsxfilenane)
+        xldf_proc.create_excel_writer(directory, postition_xlsxfilen)
         xldf_proc.write_totals_row()
         xldf_proc.write_col_formula(op='-', cols = ['Buy/Sell %' ,'Holding %' ,'Current Value %'])
         xldf_proc.write_sum_formulas()

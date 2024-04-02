@@ -1,20 +1,30 @@
+import market_data as md
 import gspread
 from gspread_dataframe import get_as_dataframe# Authenticate with your Google account
 gc = gspread.service_account(filename='/Users/philipmassey/.config/gspread/service_account.json')
 
 
-def df_from_google_spreadsheet(spreadsheet_url, sheet_id):
-    spreadsheet = gc.open_by_url (spreadsheet_url)
-    #print(spreadsheet.worksheets())
-    sheet = spreadsheet.get_worksheet_by_id(2113142462)
-    df = get_as_dataframe(sheet)
+def df_from_google_spreadsheet(spreadsheet, sheet_id, evaluate_formulas=True):
+    workbook = gc.open_by_url(md.dct_sheet_url[spreadsheet])
+    worksheet = workbook.get_worksheet_by_id(sheet_id)
+    df = get_as_dataframe(worksheet, evaluate_formulas=evaluate_formulas)
+    df = df.drop(columns=df.columns[df.columns.str.contains('Unnamed')])
+    df = df.dropna()
     return df
 
-def worksheet_update_with_df(spreadsheet_url, sheet_id, df):
-    spreadsheet = gc.open_by_url(spreadsheet_url)
-    worksheet = spreadsheet.get_worksheet_by_id(sheet_id)
+def get_worksheet_symbols(spreadsheet,sheet_id):
+    df = df_from_google_spreadsheet(spreadsheet,sheet_id)
+    return df.Symbol.values
+
+
+def worksheet_update_with_df(workbook_name, worksheet_id, df):
+    workbook_url = md.dct_sheet_url[workbook_name]
+    workbook = gc.open_by_url(workbook_url)
+    worksheet = workbook.get_worksheet_by_id(worksheet_id)
     worksheet.clear()
     data = df.values.tolist()
+    headers = df.columns.tolist()
+    data.insert(0, headers)
     worksheet.update('A1', data)
     print('updated worksheet', worksheet)
 
