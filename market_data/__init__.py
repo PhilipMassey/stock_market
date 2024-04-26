@@ -1,4 +1,7 @@
 import os
+
+import market_data
+
 seeking_alpha_key = os.environ.get('SEEKING_ALPHA_KEY')
 data_dir = os.environ.get('SM_DATA_DIR')
 download_dir = os.environ.get('DOWNLOAD_DIR')
@@ -24,14 +27,21 @@ db_symbol_profile = 'symbol_profile'
 db_symbol_info = 'symbol_info'
 db_fidel_pos = 'FidelityPositions'
 portfolio_proforma = 'Portfolio Proforma'
-dct_sheet_url = {
+portfolio_adjustments = 'Portfolio Adjustments'
+dct_workbook_url = {
     'Portfolio Proforma': 'https://docs.google.com/spreadsheets/d/15FDENGNSt6n-iKfWwX9nqqrXVFwN5Cp0GWQXxlaw_x4/edit#gid=0',
     'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0'}
 dct_proforma_id = {'Alpha Picks': 1375800256, 'Dividends': 0, 'ETFs': 1884178483, 'International': 874195600,
-                        'Stocks': 462380812, 'Treasuries': 335039254}
-dct_adjustment_id = {'Alpha Picks': 0, 'Dividends': 1022929694, 'ETFs': 84489004, 'International': 1766130281,
+                        'Stocks': 462380812, 'Treasuries': 335039254, 'Fidelity Positions': 1747116313}
+dct_adjustment_id = {'Alpha Picks': 0, 'AP Values': 608820938, 'Dividends': 1022929694, 'ETFs': 84489004, 'International': 1766130281,
                           'Stocks': 569122364, 'Treasuries': 1853636016, 'Fidelity Positions': 1064903312}
 
+dct_sum_col_names = {portfolio_adjustments:['Buy/Sell $','Current Value', 'Current Value %', 'Holding %', 'Cost Basis Total'],portfolio_proforma:['Current Value','Cost Basis Total','Current Value %']}
+dct_currency_col_names = {portfolio_adjustments:['Buy/Sell $', 'Current Value', 'Cost Basis Total'],portfolio_proforma:['Current Value','Cost Basis Total']}
+dct_percent_col_names = {portfolio_adjustments:['Current Return %', 'Current Value %', 'Holding %','Buy/Sell %'],portfolio_proforma:['Current Value %','Current Value %']}
+
+dct_portfolio_dicts = {portfolio_adjustments: dct_adjustment_id, portfolio_proforma: dct_proforma_id}
+['Current Value', 'Cost Basis Total',  'Buy/Sell $']
 from market_data.exchange.csv_data_defs import *
 from market_data.exchange.portfolio_defs import *
 from market_data.exchange.FidelityPositions import *
@@ -39,6 +49,7 @@ from .stock_mdb import *
 from .exchange_api import *
 from .exchange import *
 from .xlsx_data import *
+from .portfolio import *
 
 test_symbols = 'test_symbols'
 top_growth_stocks = 'Top Growth Stocks'

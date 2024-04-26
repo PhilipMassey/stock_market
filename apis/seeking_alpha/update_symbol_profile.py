@@ -61,6 +61,21 @@ def update_symbol_profile():
         print('Directory: ',directory)
         mdb_add_symbols_profiles_for_directory(ndays, directory, db_coll_name)
 
+def check_no_profile():
+    df = md.df_symbols_no_profile()
+    print('No profile: ',df.size / 3)
+    input1 = 'Sector Equity'
+    input2 = 'Blend'
+    for val in df[df.sectorname.isna()]['symbol'].values:
+        result = [input1, input2, val]
+        print(result)
+
+def fill_in_profile():
+    rows = [['Sector Equity', 'Industrials', 'VIS'],
+        ['Bonds', 'Long Government 2X', 'TMF']]
+    md.update_rows_sectprim(rows)
 
 if __name__ == '__main__':
     update_symbol_profile()
+    check_no_profile()
+    #fill_in_profile()
