@@ -4,21 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="FidelityPositions">
-      <change afterPath="$PROJECT_DIR$/market_data/exchange/fidelity_positions_update.py" afterDir="false" />
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="PortfolioAdjustments">
+      <change afterPath="$PROJECT_DIR$/market_data/data/Holding/Individual.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/data/Holding/Traditional IRA.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/exchange/google_auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/portfolio/Portfolio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioAdjustments.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioUpdate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/portfolio/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Short ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/ETF/Short ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustments.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Ten Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Ten Stocks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityPositionsRunner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/fidelity_positions_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,13 +75,14 @@
     &quot;Python.fidelity positions.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity_positions.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity_positions_update.executor&quot;: &quot;Run&quot;,
+    &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
     &quot;Python.read_fidexport_file_holding.executor&quot;: &quot;Run&quot;,
     &quot;Python.update_symbol_profile.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market/market_data/Proforma&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   }
 }</component>
   <component name="PyConsoleOptionsProvider">
@@ -82,14 +99,14 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/market_data/portfolio" />
       <recent name="$PROJECT_DIR$/market_data/data/Proforma" />
       <recent name="$PROJECT_DIR$/logs" />
       <recent name="$PROJECT_DIR$/market_data/exchange" />
       <recent name="$PROJECT_DIR$/market_data/data" />
-      <recent name="$PROJECT_DIR$/market_data/Proforma" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.fidelity_positions_update">
+  <component name="RunManager" selected="Python.update_symbol_profile">
     <configuration name="FidelityAdjustmentRunner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
@@ -147,7 +164,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/exchange/fidelity_positions_update.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="google_auth" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="stock_market" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/exchange" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/exchange/google_auth.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,28 +210,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="read_fidexport_file_holding" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="stock_market" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/exchange" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/exchange/read_fidexport_file_holding.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -225,19 +242,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.fidelity_positions_update" />
+      <item itemvalue="Python.google_auth" />
       <item itemvalue="Python.FidelityAdjustmentRunner" />
       <item itemvalue="Python.FidelityPositionsRunner" />
-      <item itemvalue="Python.read_fidexport_file_holding" />
+      <item itemvalue="Python.fidelity_positions_update" />
       <item itemvalue="Python.update_symbol_profile" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.update_symbol_profile" />
         <item itemvalue="Python.fidelity_positions_update" />
+        <item itemvalue="Python.google_auth" />
         <item itemvalue="Python.FidelityAdjustmentRunner" />
         <item itemvalue="Python.FidelityPositionsRunner" />
-        <item itemvalue="Python.update_symbol_profile" />
-        <item itemvalue="Python.read_fidexport_file_holding" />
       </list>
     </recent_temporary>
   </component>
@@ -276,17 +293,7 @@
     <MESSAGE value="remove absolute paths" />
     <MESSAGE value="fidelity positions" />
     <MESSAGE value="FidelityPositions" />
-    <option name="LAST_COMMIT_MESSAGE" value="FidelityPositions" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py</url>
-          <line>25</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="PortfolioAdjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="PortfolioAdjustments" />
   </component>
 </project>

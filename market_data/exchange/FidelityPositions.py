@@ -25,13 +25,6 @@ class FidelityPositions:
         self.column_order = ['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Rating', 'Current Value %',
                              'Holding %', 'Buy/Sell %', 'Cost Basis Total', 'Quantity', 'Average Cost Basis']
         self.dollar_cols =  ['Current Value', 'Cost Basis Total',  'Average Cost Basis']
-        self.dct_sheet_url = {
-            'Portfolio Proforma': 'https://docs.google.com/spreadsheets/d/15FDENGNSt6n-iKfWwX9nqqrXVFwN5Cp0GWQXxlaw_x4/edit#gid=0',
-            'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0'}
-        self.dct_proforma_id = {'Alpha Picks': 1375800256, 'Dividends': 0, 'ETFs': 1884178483, 'International': 874195600,
-                                'Stocks': 462380812, 'Treasuries': 335039254}
-        self.dct_adjustment_id = {'Alpha Picks': 0, 'Dividends': 1022929694, 'ETFs': 84489004, 'International': 1766130281,
-                                  'Stocks': 569122364, 'Treasuries': 1853636016, 'Fidelity Positions': 1064903312}
 
     def df_fidelity_positions_load(self):
         df = pd.read_csv(self.fidelity_positions_filep)
@@ -61,12 +54,5 @@ class FidelityPositions:
 
 
 
-    def print_differences(self):
-        symbols = set(md.get_symbols(md.proforma))
-        sumd_df_symbols = set(self.sum_df.Symbol.values)
-        print('Extra Fidelity Positions\n', sumd_df_symbols.difference(symbols))
-        print('Extra Proforma Symbols\n', symbols.difference(sumd_df_symbols))
-        filep = join(md.download_dir, md.fidelity_positions, 'Proforma not in Fidelity.txt')
-        md.write_list_to_file(filep, sorted(symbols.difference(sumd_df_symbols)))
 
 
