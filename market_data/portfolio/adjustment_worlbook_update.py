@@ -48,7 +48,7 @@ def update_adjustments_from_fidlelity_and_proformas():
         result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
 
 if __name__ == '__main__':
-    df_resolve_alpha_picks_proforma
+    df_resolve_alpha_picks_proforma()
     file_proforma_folders()
     update_adjustments_from_fidlelity_and_proformas()
 

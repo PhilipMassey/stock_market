@@ -106,10 +106,28 @@ def print_fidelity_differences():
     filep = join(md.download_dir, 'Proforma not in Fidelity.txt')
     md.write_list_to_file(filep, sorted(fset|pset))
 
+def write_fidelity_positions_portfolio(portfolio_name):
+    filep, adate = md.fidelity_positions_filep()
+    positions_df = pd.read_csv(filep)
+    positions_df = positions_df.dropna(how='all', subset=['Symbol'])
+    dollar_cols =  ['Current Value','Cost Basis Total','Average Cost Basis']
+    for col in dollar_cols:
+        positions_df[col] = positions_df[col].str.replace('$', '').astype(float)
+    positions_df = positions_df.groupby('Symbol').agg(
+        {'Current Value':'sum','Cost Basis Total': 'sum', 'Quantity':'sum', 'Average Cost Basis':'mean'}).reset_index()
+    proforma_df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id[portfolio_name])
+    filtered_df = positions_df[positions_df['Symbol'].isin(proforma_df.Symbol)]
+    filep = join(md.download_dir, portfolio_name+'.txt')
+    md.write_df_to_file(filtered_df, filep)
+    print('Completed Filing ',portfolio_name, ': ', filep)
 
 if __name__ == '__main__':
-    #add_to_mdb()
+    add_to_mdb()
     holding_portfolios_update()
     fidelity_positions_proforma_worksheet_update()
     money_market()
     print_fidelity_differences()
+    portfolio_name = 'Didendends'
+    write_fidelity_positions_portfolio(portfolio_name)
+    portfolio_name = 'Treasuries'
+    write_fidelity_positions_portfolio(portfolio_name)

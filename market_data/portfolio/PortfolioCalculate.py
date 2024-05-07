@@ -1,10 +1,21 @@
 import market_data as md
-import market_data as md
 import pandas as pd
 import gspread
-from gspread_dataframe import get_as_dataframe
+from gspread_dataframe import get_as_dataframe# Authenticate with your Google account
 gc = gspread.service_account(filename='/Users/philipmassey/.config/gspread/service_account.json')
-from gspread_formatting import NumberFormat, batch_updater, cellFormat,format_cell_range,set_row_height,batch
+from gspread_formatting import NumberFormat,batch_updater,CellFormat,TextFormat,format_cell_range,set_row_height,batch
+
+currency_format =   CellFormat(
+    numberFormat=NumberFormat(
+        type='CURRENCY',
+        pattern='$#,##0.00'),
+    horizontalAlignment='RIGHT')
+
+percent_format =   CellFormat(
+    numberFormat=NumberFormat(
+        type='PERCENT',
+        pattern='0.00%'),
+    horizontalAlignment='RIGHT')
 
 dct_sum_cols_names = {md.portfolio_adjustments:['Buy/Sell $', 'Buy/Sell %','Current Value', 'Current Value %', 'Holding %', 'Cost Basis Total'],
                       md.portfolio_proforma:['Current Value','Cost Basis Total','Current Value %']}
@@ -26,20 +37,7 @@ dct_percent_format_names = {md.portfolio_adjustments:['Current Return %', 'Curre
                             md.portfolio_proforma:['Current Value %','Current Value %']}
 
 
-currency_format =   cellFormat(
-    numberFormat=NumberFormat(
-        type='CURRENCY',
-        pattern='$#,##0.00'),
-    horizontalAlignment='RIGHT')
-
-percent_format =   cellFormat(
-    numberFormat=NumberFormat(
-        type='PERCENT',
-        pattern='0.00%'),
-    horizontalAlignment='RIGHT')
-
-
-class PortfolioCalculate:
+class PortfolioUpdate:
     positions_df = None
 
     def __init__(self, workbook_name, portfolio_name):
@@ -77,11 +75,11 @@ class PortfolioCalculate:
         self.percent_total_names = dct_percent_total_names[self.workbook_name]
         self.percent_total_formula = dct_percent_total_formula[self.workbook_name]
 
-        # self.currency_format_names = dct_currency_format_names[self.workbook_name]
-        # self.currency_col_chars = [self.col_char_dict[col_name] for col_name in self.currency_format_names]
+        self.currency_format_names = dct_currency_format_names[self.workbook_name]
+        self.currency_col_chars = [self.col_char_dict[col_name] for col_name in self.currency_format_names]
 
-        # self.percent_format_names = dct_currency_format_names[self.workbook_name]
-        # self.percent_col_chars = [self.col_char_dict[col_name] for col_name in self.percent_format_names]
+        self.percent_format_names = dct_percent_format_names[self.workbook_name]
+        self.percent_col_chars = [self.col_char_dict[col_name] for col_name in self.percent_format_names]
 
     def worksheet_update_with_values(self):
         self.worksheet.clear()
@@ -124,26 +122,77 @@ class PortfolioCalculate:
                 # print(row_idx, f'={col_source}{r}{opdiv}{col_source}{row_sum}')
                 row[row_idx] = f'={col_source}{r}{self.opdiv}{col_source}{self.row_sum}'
 
-    def assign_buysell_percent(colname_dest, colname_proforma, colname_current):
+    def assign_buysell_percent(self):
+        colname_dest = 'Buy/Sell %'
+        colname_holdingp = 'Holding %'
+        colname_currentp = 'Current Value %'
         row_idx = self.col_int_dict[colname_dest]
-        col_pro = self.col_char_dict[colname_proforma]
-        col_curr = self.col_char_dict[colname_current]
-        opsub = '-'
+        col_hold = self.col_char_dict[colname_holdingp]
+        col_curr = self.col_char_dict[colname_currentp]
         # 'H2','G2'-'F2')
-        for i, row in enumerate(self.values):
+        for i, row in enumerate(pu.values):
             r = i + 2
             # print(row_idx, f'={col_pro}{r}{opsub}{col_curr}{r}')
-            row[row_idx] = f'={col_pro}{r}{opsub}{col_curr}{r}'
+            row[row_idx] = f'={col_hold}{r}{self.opsub}{col_curr}{r}'
 
-    def assign_buysell_dollars(colname_dest, colname_perc, colname_current):
+    def assign_buysell_dollars(self):
+        colname_dest = 'Buy/Sell $'
+        colname_perc = 'Buy/Sell %'
+        colname_currentv = 'Current Value'
         row_idx = self.col_int_dict[colname_dest]
         col_per = self.col_char_dict[colname_perc]
-        col_curr = self.col_char_dict[colname_current]
+        col_curr = self.col_char_dict[colname_currentv]
         opx = '*'
         # 'B2',=H2*C6
         for i, row in enumerate(self.values):
             r = i + 2
             # print(row_idx, f'={col_per}{r}{opx}{col_curr}{row_sum}')
-            row[row_idx] = f'={col_per}{r}{opx}{col_curr}{row_sum}'
+            row[row_idx] = f'={col_per}{r}{self.opmul}{col_curr}{self.row_sum}'
 
+    def format_currency_cols(self, batch):
+        currency_col_names = dct_currency_format_names[self.workbook_name]
+        currency_col_chars = [self.col_char_dict[col_name] for col_name in currency_col_names]
+        for col in currency_col_chars:
+            batch.format_cell_range(self.worksheet, f'{col}:{col}', currency_format)
 
+    def format_percent_cols(self, batch):
+        percent_col_names = dct_percent_format_names[self.workbook_name]
+        percent_col_names = [self.col_char_dict[col_name] for col_name in percent_col_names]
+        for col in percent_col_names:
+            batch.format_cell_range(pu.worksheet, f'{col}:{col}', percent_format)
+
+    def format_spreadsheet(self, batch):
+        fmt = CellFormat(
+            textFormat=TextFormat(fontFamily='Arial', fontSize=11)
+        )
+        batch.format_cell_range(self.worksheet, 'A:Z', fmt)
+
+if __name__ == '__main__':
+    portfolio_name = 'Fidelity Positions'
+    pu = PortfolioUpdate(md.portfolio_proforma, portfolio_name)
+    pu.append_row_sum_formulas()
+    pu.assign_columns_percent()
+    pu.assign_percent_of_total()
+    pu.worksheet_update_with_values()
+    md.replace_worksheet_with_values(pu.worksheet)
+    batch = batch_updater(pu.workbook)
+    pu.format_currency_cols(batch)
+    pu.format_percent_cols(batch)
+    pu.format_spreadsheet(batch)
+
+portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks', 'International', 'Treasuries']
+for portfolio_name in portfolios:
+    print(portfolio_name)
+    pu = PortfolioUpdate(md.portfolio_adjustments, portfolio_name)
+    pu.append_row_sum_formulas()
+    pu.assign_columns_percent()
+    pu.assign_percent_of_total()
+    pu.assign_buysell_percent()
+    pu.assign_buysell_dollars()
+    pu.worksheet_update_with_values()
+    md.replace_worksheet_with_values(pu.worksheet)
+    batch = batch_updater(pu.workbook)
+    pu.format_currency_cols(batch)
+    pu.format_percent_cols(batch)
+    pu.format_spreadsheet(batch)
+    batch.execute()
