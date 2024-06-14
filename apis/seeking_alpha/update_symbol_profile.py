@@ -71,23 +71,10 @@ def check_no_profile():
         print(result)
 
 def fill_in_profile():
-    rows = [['U.S. Equity', 'Mid-Cap Blend', 'XMMO'],
-['Sector Equity', 'Natural Resource', 'URNJ'],
-['International Equity', 'Turkey Equity', 'TUR'],
-['Sector Equity', 'Infrastructure', 'PAVE'],
-['U.S. Equity', 'Large Blend', 'NETZ'],
-['Sector Equity', 'Miscellaneous Sector', 'MJUS'],
-['Sector Equity', 'Technology', 'MAGS'],
-['International Equity', 'India Equity', 'INCO'],
-['Sector Equity', 'Miscellaneous Sector', 'GRID'],
-['International Equity', 'India Equity', 'GLIN'],
-['Alternative', 'Digital Assets', 'GBTC'],
-['International Equity', 'Peru Equity', 'EPU'],
-['International Equity', 'Blend', 'DBJP'],
-['Commodities', 'Copper', 'CPER'],
-['Sector Equity', 'Copper', 'COPX'],
-['Sector Equity', 'Industrials', 'AIRR'],
-]
+    rows = [
+        ['Sector Equity', 'Financial', 'OXLC'],
+        ['Sector Equity', 'Financial', 'BIZD']
+    ]
     md.update_rows_sectprim(rows)
 
 if __name__ == '__main__':

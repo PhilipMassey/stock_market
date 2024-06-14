@@ -91,7 +91,7 @@ class PortfolioUpdate:
 
     def append_row_sum_formulas(self):
         # ['Total','=SUM(B2:B731)', '=SUM(C2:C73)')
-        row = ['Total']
+        row = ['ZTotal']
         for col_name in self.column_names[1:]:
             col = self.col_char_dict[col_name]
             if col in self.sum_col_chars:
@@ -180,19 +180,25 @@ if __name__ == '__main__':
     pu.format_percent_cols(batch)
     pu.format_spreadsheet(batch)
 
-portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks', 'International', 'Treasuries']
-for portfolio_name in portfolios:
-    print(portfolio_name)
-    pu = PortfolioUpdate(md.portfolio_adjustments, portfolio_name)
-    pu.append_row_sum_formulas()
-    pu.assign_columns_percent()
-    pu.assign_percent_of_total()
-    pu.assign_buysell_percent()
-    pu.assign_buysell_dollars()
-    pu.worksheet_update_with_values()
-    md.replace_worksheet_with_values(pu.worksheet)
-    batch = batch_updater(pu.workbook)
-    pu.format_currency_cols(batch)
-    pu.format_percent_cols(batch)
-    pu.format_spreadsheet(batch)
-    batch.execute()
+    # the portfolio adjustments
+    portfolios = ['Dividends', 'ETFs', 'Stocks', 'International', 'Treasuries','Alpha Picks']
+    portfolios = ['ETFs','Stocks', 'International', 'Treasuries','Alpha Picks']
+    portfolios = md.portfolios
+    # the_workbook = gc.open_by_url(md.dct_workbook_url[md.portfolio_adjustments])
+    # batch = batch_updater(the_workbook)
+
+    for portfolio_name in portfolios:
+        print(portfolio_name)
+        pu = PortfolioUpdate(md.portfolio_adjustments, portfolio_name)
+        batch = batch_updater(pu.workbook)
+        pu.append_row_sum_formulas()
+        pu.assign_columns_percent()
+        pu.assign_percent_of_total()
+        pu.assign_buysell_percent()
+        pu.assign_buysell_dollars()
+        pu.worksheet_update_with_values()
+        md.replace_worksheet_with_values(pu.worksheet)
+        pu.format_currency_cols(batch)
+        pu.format_percent_cols(batch)
+        pu.format_spreadsheet(batch)
+        batch.execute()

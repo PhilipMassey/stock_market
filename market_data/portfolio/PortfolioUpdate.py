@@ -56,7 +56,7 @@ class PortfolioUpdate:
 
     def append_row_sum_formulas(self):
         # ['Total','=SUM(B2:B731)', '=SUM(C2:C73)')
-        row = ['Total']
+        row = ['ZTotal']
         for col_name in self.column_names[1:]:
             col = self.col_char_dict[col_name]
             if col in self.sum_col_chars:

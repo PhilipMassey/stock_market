@@ -4,18 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="PortfolioCalculate">
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="PortfolioCalculate2">
+      <change afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Construction &amp; Engineering.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/ElectricaL Components &amp; Equipment.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Sector Stocks.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Traditional IRA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Traditional IRA.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Ten Stocks.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/FidelityAdjustmentRunner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/Portfolio.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/Portfolio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioAdjustments.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioAdjustments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioUpdate.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioUpdate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +49,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PhilipMassey&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PhilipMassey/stock_market&quot;,
+    &quot;accountId&quot;: &quot;d6ede0c0-6cef-404a-954b-9047e1e8b3a6&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -54,6 +82,7 @@
     &quot;Python.FidelityPositions.executor&quot;: &quot;Run&quot;,
     &quot;Python.FidelityPositionsRunner.executor&quot;: &quot;Run&quot;,
     &quot;Python.PortfolioAssignments.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PortfolioCalculate.executor&quot;: &quot;Run&quot;,
     &quot;Python.PortfolioUpdate.executor&quot;: &quot;Run&quot;,
     &quot;Python.adjustment_worlbook_update.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity positions.executor&quot;: &quot;Run&quot;,
@@ -66,7 +95,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market/market_data/Proforma&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="PyConsoleOptionsProvider">
@@ -90,7 +121,7 @@
       <recent name="$PROJECT_DIR$/market_data/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.update_symbol_profile">
+  <component name="RunManager" selected="Python.PortfolioCalculate">
     <configuration name="PortfolioCalculate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
@@ -104,6 +135,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -126,6 +158,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -148,6 +181,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -170,6 +204,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/exchange/google_auth.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -193,6 +228,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -215,6 +251,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -234,10 +271,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.update_symbol_profile" />
-        <item itemvalue="Python.fidelity_positions_update" />
-        <item itemvalue="Python.adjustment_worlbook_update" />
         <item itemvalue="Python.PortfolioCalculate" />
+        <item itemvalue="Python.adjustment_worlbook_update" />
+        <item itemvalue="Python.fidelity_positions_update" />
+        <item itemvalue="Python.update_symbol_profile" />
         <item itemvalue="Python.google_auth" />
       </list>
     </recent_temporary>
@@ -245,7 +282,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
       </set>
     </attachedChunks>
   </component>
@@ -279,6 +316,7 @@
     <MESSAGE value="FidelityPositions" />
     <MESSAGE value="PortfolioAdjustments" />
     <MESSAGE value="PortfolioCalculate" />
-    <option name="LAST_COMMIT_MESSAGE" value="PortfolioCalculate" />
+    <MESSAGE value="PortfolioCalculate2" />
+    <option name="LAST_COMMIT_MESSAGE" value="PortfolioCalculate2" />
   </component>
 </project>

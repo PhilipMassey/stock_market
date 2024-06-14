@@ -4,7 +4,7 @@ from os.path import join
 
 
 if __name__ == '__main__':
-    portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks','International', 'Treasuries']
+    portfolios = md.portfolios
     for portfolio in portfolios:
         postition_xlsxfilen = portfolio + '.xlsx'
         CombHoldStand = md.CombineHoldingsStandards(portfolio + ' Standards.xlsx' ,postition_xlsxfilen)

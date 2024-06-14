@@ -65,7 +65,7 @@
 def append_row_sum_formulas():
     # ['Total','=SUM(B2:B731)', '=SUM(C2:C73)')
     row_top = 2
-    row = ['Total']
+    row = ['ZTotal']
     for col_name in headers[1:]:
         col = col_char_dict[col_name]
         if col in sum_cols_chars:

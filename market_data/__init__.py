@@ -7,6 +7,7 @@ data_dir = os.environ.get('SM_DATA_DIR')
 download_dir = os.environ.get('DOWNLOAD_DIR')
 
 #FOLDERS
+portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks','International', 'Treasuries']
 all = 'ALL'
 ark = 'ARK'
 etf = 'ETF'
