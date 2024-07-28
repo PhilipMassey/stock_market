@@ -29,6 +29,7 @@ env/
 *.log
 *.sqlite3
 *.db
+*.csv
 
 # Compiled and build files
 *.pyc
