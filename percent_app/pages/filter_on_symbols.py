@@ -1,5 +1,6 @@
 import dash
 dash.register_page(__name__)
+#dash.register_page(__name__, path="/"+__name__)
 from dash import callback
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output

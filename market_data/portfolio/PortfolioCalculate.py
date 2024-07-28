@@ -167,7 +167,9 @@ class PortfolioUpdate:
         )
         batch.format_cell_range(self.worksheet, 'A:Z', fmt)
 
-if __name__ == '__main__':
+
+def fidelity_positions_calculate_and_format():
+    global portfolio_name, pu, batch
     portfolio_name = 'Fidelity Positions'
     pu = PortfolioUpdate(md.portfolio_proforma, portfolio_name)
     pu.append_row_sum_formulas()
@@ -179,14 +181,14 @@ if __name__ == '__main__':
     pu.format_currency_cols(batch)
     pu.format_percent_cols(batch)
     pu.format_spreadsheet(batch)
+    batch.execute()
 
-    # the portfolio adjustments
-    portfolios = ['Dividends', 'ETFs', 'Stocks', 'International', 'Treasuries','Alpha Picks']
-    portfolios = ['ETFs','Stocks', 'International', 'Treasuries','Alpha Picks']
-    portfolios = md.portfolios
+
+def portfolios_calculate_and_format(portfolios):
+    global pu, batch
+    # portfolios = md.portfolios
     # the_workbook = gc.open_by_url(md.dct_workbook_url[md.portfolio_adjustments])
     # batch = batch_updater(the_workbook)
-
     for portfolio_name in portfolios:
         print(portfolio_name)
         pu = PortfolioUpdate(md.portfolio_adjustments, portfolio_name)
@@ -202,3 +204,10 @@ if __name__ == '__main__':
         pu.format_percent_cols(batch)
         pu.format_spreadsheet(batch)
         batch.execute()
+
+
+if __name__ == '__main__':
+    fidelity_positions_calculate_and_format()
+    #portfolios = ['Shorts']
+    portfolios = md.portfolios
+    portfolios_calculate_and_format(portfolios)

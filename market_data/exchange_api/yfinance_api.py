@@ -15,7 +15,7 @@ def get_yahoo_ndays_ago(ndays, symbols):
         df = yf.download(tickers=symbols, period="1d", interval="1d", group_by='column', auto_adjust=True,
                          prepost=True, threads=True)
     elif ndays == 1:
-        df = yf.download(tickers=symbols, period="2d", interval="1d", group_by='column', auto_adjust=False,
+        df = yf.download(tickers=symbols, period="5d", interval="1d", group_by='column', auto_adjust=False,
                          prepost=True, threads=True)
     else:
         #start, end = md.get_dates_ndays_and_today(ndays)

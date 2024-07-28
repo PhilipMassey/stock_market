@@ -43,18 +43,15 @@ def holding_portfolios_update():
     df = df[['Account Name', 'Symbol']]
     path = join(md.data_dir, 'holding')
     account_names = list(set(df['Account Name'].values))
-    shorts = set(md.get_symbols_dir_and_port(directory='ETF', port='Short ETFs'))
-    file_df_account_symbols(df, account_names, shorts, path)
+    file_df_account_symbols(df, account_names, path)
     print('Completed Filing Holding Symbols ', path)
 
 
-def file_df_account_symbols(df, account_names, shorts, path):
+def file_df_account_symbols(df, account_names, path):
     suffix = '.csv'
     for account in account_names:
         if isinstance(account, str):
-            symbols = (set(df[df['Account Name'] == account].Symbol.values))
-            symbols = symbols.difference(shorts)
-            symbols = sorted(list(symbols))
+            symbols = sorted((df[df['Account Name'] == account].Symbol.values))
             fpath = join(path, account + suffix)
             with open(fpath, 'w') as f:
                 f.write('Symbol\n' + '\n'.join(symbols))

@@ -28,7 +28,8 @@ def file_proforma_folders():
 
 
 def update_adjustments_from_fidlelity_and_proformas():
-    portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks', 'International', 'Treasuries']
+    portfolios = ['Shorts']
+    #portfolios = md.portfolios
     positions_df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id['Fidelity Positions'])
     workbook_name = md.portfolio_adjustments
     for portfolio_name in portfolios:
