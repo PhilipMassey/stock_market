@@ -56,6 +56,11 @@ def get_symbols(directory='', ports=[]):
         symbols = get_symbols_for_portfolios(ports)
     return symbols
 
+def get_symbols_directory_and_port(directory, port):
+    df = md.get_port_and_symbols(directory)
+    df = df[df.portfolio == port]
+    return list(df['symbol'].values)
+
 
 def get_symbols_dir_and_port(directory, port):
     symbols = []

@@ -190,7 +190,7 @@ def portfolios_calculate_and_format(portfolios):
     # the_workbook = gc.open_by_url(md.dct_workbook_url[md.portfolio_adjustments])
     # batch = batch_updater(the_workbook)
     for portfolio_name in portfolios:
-        print(portfolio_name)
+        print(portfolio_name,end='\t')
         pu = PortfolioUpdate(md.portfolio_adjustments, portfolio_name)
         batch = batch_updater(pu.workbook)
         pu.append_row_sum_formulas()
@@ -208,6 +208,6 @@ def portfolios_calculate_and_format(portfolios):
 
 if __name__ == '__main__':
     fidelity_positions_calculate_and_format()
-    #portfolios = ['Shorts']
     portfolios = md.portfolios
+    #portfolios = ['Stocks','International', 'Treasuries','Shorts']
     portfolios_calculate_and_format(portfolios)

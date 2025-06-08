@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="remove absolute paths">
+      <change afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/get_id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/symbol earnings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/spotify list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/scripts/fix_xlsx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/scripts/fix_xlsx.js.save" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/scripts/run fix xlsx.zsh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dash_prj/percent/percent_for_current.py" beforeDir="false" afterPath="$PROJECT_DIR$/dash_prj/percent/percent_for_current.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dash_prj/percent/sa_analysis_rating.py" beforeDir="false" afterPath="$PROJECT_DIR$/dash_prj/percent/sa_analysis_rating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Thematic ETF.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Health &amp; Security.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Long Term.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Shorts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Shorts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Treasuries.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Construction &amp; Engineering.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/ElectricaL Components &amp; Equipment.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Rated ETFs.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/data/Seeking_Alpha/Top Stocks by Quant.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange_api/cvs_df_defs.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange_api/cvs_df_defs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/load_missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/load_missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/percent_app/pages/percents_for_periods.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/percents_for_periods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +105,19 @@
     &quot;Python.fidelity positions.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity_positions.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity_positions_update.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_id.executor&quot;: &quot;Run&quot;,
     &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mdb_missing.executor&quot;: &quot;Run&quot;,
     &quot;Python.read_fidexport_file_holding.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spotify list.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbol earnings.executor&quot;: &quot;Run&quot;,
     &quot;Python.symbol_portfolio_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbols_from_excel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;Python.update_symbol_profile.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Shell Script.run fix xlsx.zsh.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -110,7 +160,6 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -133,30 +182,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="stock_market" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/percent_app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/percent_app/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,11 +200,10 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/exchange" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -212,6 +237,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="symbols_from_excel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="stock_market" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/xlsx_data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="update_symbol_profile" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
@@ -237,7 +284,7 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.update_symbol_profile" />
-      <item itemvalue="Python.app" />
+      <item itemvalue="Python.symbols_from_excel" />
       <item itemvalue="Python.PortfolioCalculate" />
       <item itemvalue="Python.adjustment_worlbook_update" />
       <item itemvalue="Python.fidelity_positions_update" />
@@ -247,8 +294,8 @@
         <item itemvalue="Python.update_symbol_profile" />
         <item itemvalue="Python.PortfolioCalculate" />
         <item itemvalue="Python.adjustment_worlbook_update" />
+        <item itemvalue="Python.symbols_from_excel" />
         <item itemvalue="Python.fidelity_positions_update" />
-        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>
@@ -277,17 +324,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="text">
-                    <value>
-                      <list>
-                        <option value="new one" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="TEXT_FILTER_SETTINGS">
                 <TextFilterSettings>
                   <option name="REGEX" value="true" />
@@ -310,5 +346,16 @@
     <MESSAGE value="migrate to new mac" />
     <MESSAGE value="remove absolute paths" />
     <option name="LAST_COMMIT_MESSAGE" value="remove absolute paths" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/market_data/exchange/csv_data_defs.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

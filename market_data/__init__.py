@@ -31,7 +31,8 @@ portfolio_proforma = 'Portfolio Proforma'
 portfolio_adjustments = 'Portfolio Adjustments'
 dct_workbook_url = {
     'Portfolio Proforma': 'https://docs.google.com/spreadsheets/d/15FDENGNSt6n-iKfWwX9nqqrXVFwN5Cp0GWQXxlaw_x4/edit#gid=0',
-    'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0'}
+    'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0',
+    'Dividends': 'https://docs.google.com/spreadsheets/d/1N1zyOStCH-gvYAgCnv6vtmsTkp6q7R8rpAnzwv9W1sI/edit?gid=0'}
 dct_proforma_id = {'Alpha Picks': 1375800256, 'Dividends': 0, 'ETFs': 1884178483, 'International': 874195600,
                         'Stocks': 462380812, 'Treasuries': 335039254,'Shorts': 1519814090, 'Fidelity Positions': 1747116313}
 dct_adjustment_id = {'Alpha Picks': 0, 'AP Values': 608820938, 'Dividends': 1022929694, 'ETFs': 84489004, 'International': 1766130281,

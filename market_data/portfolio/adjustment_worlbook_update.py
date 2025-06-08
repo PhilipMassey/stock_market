@@ -11,10 +11,10 @@ def df_resolve_alpha_picks_proforma():
         {'Holding %': 'sum', 'Sector': 'first', 'Rating': 'first', 'Company': 'first', 'Picked': 'first',
          'Return': 'sum'}).reset_index()
     result = md.worksheet_update_with_df(md.portfolio_proforma,md.dct_proforma_id['Alpha Picks'],df)
-    print('Updated Alpha Picks Proforma: ', result)
+    return df
 
 def file_proforma_folders():
-    portfolios = ['Alpha Picks', 'Dividends', 'ETFs', 'Stocks','International', 'Treasuries']
+    portfolios = md.portfolios
     path = join(md.data_dir, 'Proforma')
     for portfolio in portfolios:
         df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id[portfolio])
@@ -27,9 +27,7 @@ def file_proforma_folders():
     print('Completed Filing Proforma folders ', path)
 
 
-def update_adjustments_from_fidlelity_and_proformas():
-    portfolios = ['Shorts']
-    #portfolios = md.portfolios
+def update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios):
     positions_df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id['Fidelity Positions'])
     workbook_name = md.portfolio_adjustments
     for portfolio_name in portfolios:
@@ -49,7 +47,8 @@ def update_adjustments_from_fidlelity_and_proformas():
         result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
 
 if __name__ == '__main__':
-    df_resolve_alpha_picks_proforma()
-    file_proforma_folders()
-    update_adjustments_from_fidlelity_and_proformas()
+    portfolios = md.portfolios
+    #portfolios = ['Shorts']
+    print('Updating Adjustments worksheets from Fidelity Positions worksheet for Portfolios: ', portfolios)
+    update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios)
 

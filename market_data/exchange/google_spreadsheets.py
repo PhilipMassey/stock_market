@@ -26,7 +26,7 @@ def worksheet_update_with_df(workbook_name, worksheet_id, df):
     headers = df.columns.tolist()
     data.insert(0, headers)
     result = worksheet.update('A1', data)
-    print('updated worksheet', worksheet)
+    print('\tupdated', worksheet)
     return result
 
 def worksheet_get_all_values(workbook_name, sheet_id):

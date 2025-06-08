@@ -36,5 +36,5 @@ def write_df_to_file(df, file_path):
 def write_list_to_file(filep, my_list):
     file = open(filep, 'w')
     for item in my_list:
-        file.write(str(item) + '\n')
+        file.write(str(item))
     file.close()

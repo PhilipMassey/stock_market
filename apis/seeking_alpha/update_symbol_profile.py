@@ -1,8 +1,8 @@
+import market_data as md
+import pandas as pd
 import requests
 import json
 import http.client
-import market_data as md
-import pandas as pd
 import apis as ra_apis
 conn = http.client.HTTPSConnection("seeking-alpha.p.rapidapi.com")
 
@@ -72,8 +72,8 @@ def check_no_profile():
 
 def fill_in_profile():
     rows = [
-        ['Sector Equity', 'Financial', 'OXLC'],
-        ['Sector Equity', 'Financial', 'BIZD']
+        ['Sector Equity', 'Mid-Cap', 'IWP']
+
     ]
     md.update_rows_sectprim(rows)
 

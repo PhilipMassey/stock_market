@@ -14,37 +14,48 @@ def fidelity_positions_filep():
     adate = datetime.strptime(date_str, '%b-%d-%Y')
     return files[0], adate
 
+def df_fidelity_positions_portfolio():
+    filep, adate = md.fidelity_positions_filep()
+    positions_df = pd.read_csv(filep)
+    positions_df = positions_df.dropna(how='all', subset=['Symbol'])
+    positions_df['Symbol'] = positions_df['Symbol'].replace('Pending Activity', 'FDRXX**')
+    return positions_df
 
 def df_agg_on_symbol_from_fidelity_positions_csv():
     filep, adate = fidelity_positions_filep()
-    df = pd.read_csv(filep)
+    #df = pd.read_csv(filep)
+    df = df_fidelity_positions_portfolio()
     df = df_fidelity_positions_aggregate_columns(df)
     return adate, df
 
-def df_from_all_rows_fidelity_positions_csv():
-    filep, adate = fidelity_positions_filep()
-    df = pd.read_csv(filep)
-    return adate, df
+# def df_from_all_rows_fidelity_positions_csv():
+#     filep, adate = fidelity_positions_filep()
+#     df = pd.read_csv(filep)
+#     return adate, df
 
 def fidelity_positions_proforma_worksheet_update():
-    adate,df = df_agg_on_symbol_from_fidelity_positions_csv()
+    adate,df = md.df_agg_on_symbol_from_fidelity_positions_csv()
     df['Current Return %'] = 0
     df['Current Value %'] = 0
+    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
+    #df = df[df['Symbol'] != 'Pending Activity']
     workbook_name = 'Portfolio Proforma'
     worksheet_id = md.dct_proforma_id['Fidelity Positions']
     result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
-    print('Fidelity Positions worksheet update: ', result)
+    #print('Fidelity Positions worksheet update: ', result)
+    return result
 
-
-def holding_portfolios_update():
-    filep, adate =fidelity_positions_filep()
-    df = pd.read_csv(filep)
-    df = df.dropna()
+def market_data_holding_portfolios_update():
+    #filep, adate = fidelity_positions_filep()
+    #df = pd.read_csv(filep)
+    df = df_fidelity_positions_portfolio()
     df = df[['Account Name', 'Symbol']]
+    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
     path = join(md.data_dir, 'holding')
     account_names = list(set(df['Account Name'].values))
     file_df_account_symbols(df, account_names, path)
-    print('Completed Filing Holding Symbols ', path)
+    #print('Completed Filing Holding Symbols ', path)
+    return path
 
 
 def file_df_account_symbols(df, account_names, path):
@@ -57,12 +68,13 @@ def file_df_account_symbols(df, account_names, path):
                 f.write('Symbol\n' + '\n'.join(symbols))
                 f.close()
 def money_market():
-    filep, adate = fidelity_positions_filep()
-    df = pd.read_csv(filep)
-    df = df.dropna(how='all', subset=['Symbol'])
+    #filep, adate = fidelity_positions_filep()
+    #df = pd.read_csv(filep)
+    #df = df.dropna(how='all', subset=['Symbol'])
+    df = df_fidelity_positions_portfolio()
     df['Current Value'] = df['Current Value'].str.replace('$', '').astype(float)
     #df = df_agg_on_symbol_from_fidelity_positions_csv()
-    filter_values = ['FDRXX', 'SPAXX', 'Pending Activity']
+    filter_values = ['FDRXX',"CORE", 'SPAXX'] #'Pending Activity']
     df = df[df['Symbol'].str.contains('|'.join(filter_values))]
     df = df[['Account Name', 'Current Value']]
     df = df.groupby('Account Name').sum({'Current Value': 'sum'})
@@ -75,24 +87,39 @@ def money_market():
     md.write_df_to_file(df, filep)
     print('Completed Filing Money Market: ', filep)
 
+
 def df_fidelity_positions_aggregate_columns(df):
-    dollar_cols =  ['Current Value', 'Cost Basis Total']
+    dollar_cols = ['Current Value', 'Cost Basis Total', 'Average Cost Basis', 'Last Price']
     for col in dollar_cols:
         df[col] = df[col].str.replace('$', '').astype(float)
+    percent_cols = ['Percent Of Account']
+    for col in percent_cols:
+        df[col] = df[col].str.replace('%', '').astype(float)
+
     agg_df = df.groupby('Symbol').agg(
-        {'Current Value': 'sum', 'Cost Basis Total': 'sum'})
+        {'Quantity': 'sum', 'Current Value': 'sum', 'Cost Basis Total': 'sum', 'Last Price': 'first',
+         'Cost Basis Total': 'sum', 'Average Cost Basis': 'mean', 'Percent Of Account': 'mean'})
     agg_df.reset_index(inplace=True)
     agg_df = agg_df.rename(columns={'index': 'Symbol'})
     return agg_df
 
+def df_read_fidelity_csv():
+    filep, adate = md.fidelity_positions_filep()
+    fidelity_df = pd.read_csv(filep)
+    fidelity_df.fillna(0, inplace=True)
+    return adate, fidelity_df
 
 
-def add_to_mdb():
-    adate, df = df_agg_on_symbol_from_fidelity_positions_csv()
-    md.df_add_adate_column(adate, df)
+def add_fidelity_positions_to_mdb():
+    adate, fidelity_df = df_read_fidelity_csv()
+    df_agg = df_fidelity_positions_aggregate_columns(fidelity_df)
+    df_agg.fillna(0, inplace=True)
+    df_agg.drop(df_agg[df_agg['Quantity'] == 0].index, inplace=True)
+    df_agg['Date'] = adate
     db_coll_name = md.db_fidel_pos
-    md.add_df_to_db(df, db_coll_name)
-    print('Positions added to mdb: ', db_coll_name)
+    count = md.add_df_to_db(df_agg, db_coll_name)
+    print('Positions added to mdb: ', count, db_coll_name)
+
 
 def print_fidelity_differences():
     proforma_symbols = set(md.get_symbols(md.proforma))
@@ -100,17 +127,19 @@ def print_fidelity_differences():
     fidelity_df = pd.read_csv(filep)
     fidelity_df = df_fidelity_positions_aggregate_columns(fidelity_df)
     fidelity_symbols = set(fidelity_df.Symbol.values)
-    fset = fidelity_symbols.difference(proforma_symbols)
-    pset = proforma_symbols.difference(fidelity_symbols)
+    fset = sorted(fidelity_symbols.difference(proforma_symbols))
+    pset = sorted(proforma_symbols.difference(fidelity_symbols))
     print('Extra Fidelity Positions\n', fset)
-    print('Extra Proforma Symbols\n', pset )
+    print('Extra Proforma Symbols\n', pset)
     filep = join(md.download_dir, 'Proforma not in Fidelity.txt')
-    md.write_list_to_file(filep, sorted(fset|pset))
+    md.write_list_to_file(filep, 'Extra Fidelity Positions\n' + ', '.join(fset) + '\nExtra Proforma Symbols\n' + ', '.join(pset)) #sorted(fset|pset)
 
 def write_fidelity_positions_portfolio(portfolio_names):
-    filep, adate = md.fidelity_positions_filep()
-    positions_df = pd.read_csv(filep)
-    positions_df = positions_df.dropna(how='all', subset=['Symbol'])
+    #filep, adate = md.fidelity_positions_filep()
+    #positions_df = pd.read_csv(filep)
+    #positions_df = positions_df[positions_df['Symbol'] != 'Pending Activity']
+    #positions_df = positions_df.dropna(how='all', subset=['Symbol'])
+    positions_df = df_fidelity_positions_portfolio()
     dollar_cols =  ['Current Value','Cost Basis Total','Average Cost Basis']
     for col in dollar_cols:
         positions_df[col] = positions_df[col].str.replace('$', '').astype(float)
@@ -127,9 +156,19 @@ def write_fidelity_positions_portfolio(portfolio_names):
 
 
 if __name__ == '__main__':
-    add_to_mdb()
-    holding_portfolios_update()
-    fidelity_positions_proforma_worksheet_update()
+    print('Fidelity Portfolio Positions csv updating...')
+    result = fidelity_positions_proforma_worksheet_update()
+    print('\tProforma Fidelity Positions worksheet updated.',result)
+    result =market_data_holding_portfolios_update()
+    print('\tHolding csv files updated.',result)
+    print('Proforma worksheet updating...')
+    md.df_resolve_alpha_picks_proforma()
+    print('\tAlpha Picks worksheet removed duplicates')
+    md.file_proforma_folders()
+    print('\tProforma data folder csv files updated')
     money_market()
-    print_fidelity_differences()
     write_fidelity_positions_portfolio(['Dividends', 'Treasuries'])
+    add_fidelity_positions_to_mdb()
+    print_fidelity_differences()
+
+

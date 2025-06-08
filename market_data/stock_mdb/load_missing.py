@@ -36,7 +36,7 @@ def get_missing_market_row(ndays, symbols, load_missing_failed):
         if len(missing_symbols) > 0:
             dbaction = 'UPDATE'
     if len(missing_symbols) > 0:
-        print(dbaction, list(missing_symbols)[0:3], '....')
+        print(ndays,dbaction, list(missing_symbols)[0:3], '....')
         df_missing = md.get_yahoo_ndays_ago(ndays, missing_symbols)
         df_missing = df_missing.dropna(axis=1, how='all')
         yahoo_symbols = df_missing['Close'].columns.values
