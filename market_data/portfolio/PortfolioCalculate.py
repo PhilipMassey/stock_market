@@ -209,5 +209,5 @@ def portfolios_calculate_and_format(portfolios):
 if __name__ == '__main__':
     fidelity_positions_calculate_and_format()
     portfolios = md.portfolios
-    #portfolios = ['Stocks','International', 'Treasuries','Shorts']
+    #portfolios = ['International', 'Treasuries','Shorts']
     portfolios_calculate_and_format(portfolios)

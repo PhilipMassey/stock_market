@@ -1,6 +1,6 @@
 import dash
-dash.register_page(__name__)
-#dash.register_page(__name__, path="/"+__name__)
+#dash.register_page(__name__)
+dash.register_page(__name__, path="/"+__name__)
 from dash import callback
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
@@ -22,6 +22,8 @@ layout = html.Div(
         html.Div(id='details-table'),
     ]
     )
+
+dash.register_page(__name__)
 
 
 def df_symbol_data(symbol):

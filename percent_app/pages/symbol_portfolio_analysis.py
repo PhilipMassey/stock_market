@@ -1,5 +1,5 @@
 import dash
-dash.register_page(__name__, path="/"+__name__)
+#dash.register_page(__name__, path="/"+__name__)
 from dash import callback
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
@@ -91,6 +91,8 @@ layout = html.Div([results_date, symbols_or_perc_block, industry_sector_block,
                    results_table,
                    html.Div(id="event")
                    ])
+
+dash.register_page(__name__, path="/"+__name__)
 
 
 #callback on directory selection

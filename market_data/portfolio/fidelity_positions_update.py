@@ -38,7 +38,7 @@ def fidelity_positions_proforma_worksheet_update():
     df['Current Return %'] = 0
     df['Current Value %'] = 0
     df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
-    #df = df[df['Symbol'] != 'Pending Activity']
+    df = df[df['Symbol'] != 'Pending activity']
     workbook_name = 'Portfolio Proforma'
     worksheet_id = md.dct_proforma_id['Fidelity Positions']
     result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
