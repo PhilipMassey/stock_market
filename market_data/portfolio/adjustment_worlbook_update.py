@@ -41,8 +41,11 @@ def update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios
         df['Current Value %'] = 0
         df['Current Value %'] = 0
         df['Current Return %'] = 0
-        df = df[['Symbol', 'Buy/Sell $', 'Current Value', 'Current Value %','Current Return %', 'Rating',
+        # df = df[['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Rating', 'Current Value %',
+        #          'Holding %', 'Buy/Sell %', 'Cost Basis Total']]
+        df = df[['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Rating', 'Current Value %',
                  'Holding %', 'Buy/Sell %', 'Cost Basis Total']]
+
         worksheet_id = md.dct_adjustment_id[portfolio_name]
         result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
 

@@ -4,46 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="remove absolute paths">
-      <change afterPath="$PROJECT_DIR$/dash_prj/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dash_prj/pages/analytics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dash_prj/pages/home.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="remove dash_labs get gigi with it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dash_prj/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dash_prj/pages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/assets/bWLwgP.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/assets/table_of_percents_for_periods.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/filter_on_symbols.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/percent_for_current.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/sa_analysis_rating.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/symbol_portfolio_analysis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/symbol_portfolio_position.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dash_prj/percent/table_of_percents_for_periods.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Sector XL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/ETF/Short ETFs.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Alpha Picks.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Dividends.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Shorts.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Holding/Time Passes.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Alpha Picks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Dividends.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/ETFs.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/International.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Shorts.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/data/Proforma/Stocks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/scripts/run fix xlsx.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/run fix xlsx.zsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/percent_app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/pages/filter_on_symbols.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/filter_on_symbols.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/pages/not_found_404.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/not_found_404.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/pages/percents_for_periods.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/percents_for_periods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/pages/symbol_portfolio_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/symbol_portfolio_analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percent_app/run_percent_app.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/run_percent_app.zsh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,8 +119,8 @@
       <recent name="$PROJECT_DIR$/market_data/exchange" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app_old">
-    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.PortfolioCalculate">
+    <configuration name="PortfolioCalculate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,11 +129,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dash_prj" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dash_prj/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,7 +142,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="adjustment_worlbook_update" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="stock_market" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,7 +186,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="fidelity_positions_update" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -202,33 +195,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/percent_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/percent_app/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="stock_market" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dash_prj" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dash_prj/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,7 +232,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="update_symbol_profile" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="symbols_from_excel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -270,11 +241,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apis/seeking_alpha" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/xlsx_data" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,19 +256,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.app_org" />
-      <item itemvalue="Python.app (1)" />
-      <item itemvalue="Python.app (2)" />
       <item itemvalue="Python.app_old" />
-      <item itemvalue="Python.update_symbol_profile" />
+      <item itemvalue="Python.symbols_from_excel" />
+      <item itemvalue="Python.PortfolioCalculate" />
+      <item itemvalue="Python.adjustment_worlbook_update" />
+      <item itemvalue="Python.fidelity_positions_update" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PortfolioCalculate" />
+        <item itemvalue="Python.adjustment_worlbook_update" />
+        <item itemvalue="Python.fidelity_positions_update" />
+        <item itemvalue="Python.symbols_from_excel" />
         <item itemvalue="Python.app_old" />
-        <item itemvalue="Python.app (2)" />
-        <item itemvalue="Python.app_org" />
-        <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.update_symbol_profile" />
       </list>
     </recent_temporary>
   </component>
@@ -347,7 +318,8 @@
     <MESSAGE value="PortfolioCalculate2" />
     <MESSAGE value="migrate to new mac" />
     <MESSAGE value="remove absolute paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove absolute paths" />
+    <MESSAGE value="remove dash_labs get gigi with it" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove dash_labs get gigi with it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -364,6 +336,11 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dash_prj/app.py</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

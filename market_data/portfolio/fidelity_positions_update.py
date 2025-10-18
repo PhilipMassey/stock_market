@@ -28,10 +28,6 @@ def df_agg_on_symbol_from_fidelity_positions_csv():
     df = df_fidelity_positions_aggregate_columns(df)
     return adate, df
 
-# def df_from_all_rows_fidelity_positions_csv():
-#     filep, adate = fidelity_positions_filep()
-#     df = pd.read_csv(filep)
-#     return adate, df
 
 def fidelity_positions_proforma_worksheet_update():
     adate,df = md.df_agg_on_symbol_from_fidelity_positions_csv()
