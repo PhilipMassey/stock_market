@@ -3,15 +3,6 @@ import pandas as pd
 from os.path import join
 
 
-def df_resolve_alpha_picks_proforma():
-    df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id['Alpha Picks'])
-    df = df.drop(columns=df.columns[df.columns.str.contains('Unnamed')])
-    df = df.dropna()
-    df = df.groupby('Symbol').agg(
-        {'Holding %': 'sum', 'Sector': 'first', 'Rating': 'first', 'Company': 'first', 'Picked': 'first',
-         'Return': 'sum'}).reset_index()
-    result = md.worksheet_update_with_df(md.portfolio_proforma,md.dct_proforma_id['Alpha Picks'],df)
-    return df
 
 def file_proforma_folders():
     portfolios = md.portfolios
@@ -51,7 +42,9 @@ def update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios
 
 if __name__ == '__main__':
     portfolios = md.portfolios
-   # portfolios = ['PRO']
-    print('Updating Adjustments worksheets from Fidelity Positions worksheet for Portfolios: ', portfolios)
+    # print('Proforma worksheet updating...')
+    # md.file_proforma_folders()
+    #print('Updated proforma data folder csv files')
     update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios)
+    print('Updated Adjustments worksheets from Fidelity Positions worksheet for Portfolios: ', portfolios)
 

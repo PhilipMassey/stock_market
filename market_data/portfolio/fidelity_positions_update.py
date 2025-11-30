@@ -29,17 +29,6 @@ def df_agg_on_symbol_from_fidelity_positions_csv():
     return adate, df
 
 
-def fidelity_positions_proforma_worksheet_update():
-    adate,df = md.df_agg_on_symbol_from_fidelity_positions_csv()
-    df['Current Return %'] = 0
-    df['Current Value %'] = 0
-    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
-    df = df[df['Symbol'] != 'Pending activity']
-    workbook_name = 'Portfolio Proforma'
-    worksheet_id = md.dct_proforma_id['Fidelity Positions']
-    result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
-    #print('Fidelity Positions worksheet update: ', result)
-    return result
 
 def market_data_holding_portfolios_update():
     #filep, adate = fidelity_positions_filep()
@@ -131,10 +120,6 @@ def print_fidelity_differences():
     md.write_list_to_file(filep, 'Extra Fidelity Positions\n' + ', '.join(fset) + '\nExtra Proforma Symbols\n' + ', '.join(pset)) #sorted(fset|pset)
 
 def write_fidelity_positions_portfolio(portfolio_names):
-    #filep, adate = md.fidelity_positions_filep()
-    #positions_df = pd.read_csv(filep)
-    #positions_df = positions_df[positions_df['Symbol'] != 'Pending Activity']
-    #positions_df = positions_df.dropna(how='all', subset=['Symbol'])
     positions_df = df_fidelity_positions_portfolio()
     dollar_cols =  ['Current Value','Cost Basis Total','Average Cost Basis']
     for col in dollar_cols:
@@ -150,18 +135,23 @@ def write_fidelity_positions_portfolio(portfolio_names):
     md.write_df_to_file(df, filep)
     print('Completed Filing ','dividend numbers', ': ', filep)
 
+def df_resolve_alpha_picks_proforma():
+    df = md.df_from_google_spreadsheet(md.portfolio_proforma, md.dct_proforma_id['Alpha Picks'])
+    df = df.drop(columns=df.columns[df.columns.str.contains('Unnamed')])
+    df = df.dropna()
+    df = df.groupby('Symbol').agg(
+        {'Holding %': 'sum', 'Sector': 'first', 'Rating': 'first', 'Company': 'first', 'Picked': 'first',
+         'Return': 'sum'}).reset_index()
+    result = md.worksheet_update_with_df(md.portfolio_proforma,md.dct_proforma_id['Alpha Picks'],df)
+    return df
+
 
 if __name__ == '__main__':
-    print('Fidelity Portfolio Positions csv updating...')
-    result = fidelity_positions_proforma_worksheet_update()
     print('\tProforma Fidelity Positions worksheet updated.',result)
     result =market_data_holding_portfolios_update()
     print('\tHolding csv files updated.',result)
-    print('Proforma worksheet updating...')
     md.df_resolve_alpha_picks_proforma()
     print('\tAlpha Picks worksheet removed duplicates')
-    md.file_proforma_folders()
-    print('\tProforma data folder csv files updated')
     money_market()
     write_fidelity_positions_portfolio(['Dividends', 'Treasuries'])
     add_fidelity_positions_to_mdb()
