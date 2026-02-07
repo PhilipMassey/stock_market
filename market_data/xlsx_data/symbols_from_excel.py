@@ -2,7 +2,7 @@ import market_data as md
 import pandas as pd
 import glob
 from os.path import join
-
+import os
 
 def xlsx_filens(directory):
     files = glob.glob(directory + '/*.xlsx')
@@ -10,7 +10,8 @@ def xlsx_filens(directory):
 
 
 def write_sa_csv(filep, symobls):
-    sa_filen = filep[30:-15]
+    fbasename = os.path.basename(filep)
+    sa_filen = os.path.splitext(fbasename)[0][:-11]
     fpath = join(md.data_dir, md.sa, sa_filen + '.csv')
     with open(fpath, 'w') as f:
         f.write('Symbol\n' + '\n'.join(symbols))

@@ -25,8 +25,7 @@ def update_date(dt,newdt, db_coll_name):
     result = db_coll.update_many(myquery, newvalues)
     print(result.matched_count, result.modified_count)
 
-def df_symbols_no_profile():
-    symbols = md.get_symbols(md.all)
+def df_symbols_no_profile(symbols):
     df = apis.df_symbol_profile(symbols=symbols, fields=['sectorname', 'primaryname', 'symbol'])
     # df[df.sectorname.notna()]
     return df[df.sectorname.isna()]

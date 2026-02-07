@@ -1,6 +1,28 @@
 import market_data as md
 import pandas as pd
 from os.path import join
+import glob
+from datetime import datetime
+
+
+def fidelity_positions_filep():
+    download_dir = md.download_dir
+    files = glob.glob(download_dir + '/Portfolio_Positions*.csv')
+    if len(files) != 1:
+        raise Exception("File size is not 1")
+    fn = files[0]
+    date_str = fn[-15:].rsplit('.', 1)[0]
+    a_date = datetime.strptime(date_str, '%b-%d-%Y')
+    return a_date, files[0]
+
+
+def df_fidelity_positions_portfolio():
+    a_date, filep = fidelity_positions_filep()
+    fidelity_df = pd.read_csv(filep, header=0, index_col=False)
+    fidelity_df = fidelity_df.dropna(how='all', subset=['Symbol'])
+    fidelity_df['Symbol'] = fidelity_df['Symbol'].replace('Pending Activity', 'FDRXX**')
+    return a_date, fidelity_df
+
 
 def df_fidelity_positions_aggregate_columns(df):
     dollar_cols = ['Current Value', 'Cost Basis Total', 'Average Cost Basis', 'Last Price']
@@ -18,9 +40,24 @@ def df_fidelity_positions_aggregate_columns(df):
     return agg_df
 
 
+def fidelity_positions_worksheet_update():
+    a_date, df = df_fidelity_positions_portfolio()
+    df = df_fidelity_positions_aggregate_columns(df)
+#    df['Current Return %'] = 0
+#    df['Current Value %'] = 0
+    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
+    df = df[df['Symbol'] != 'Pending activity']
+    workbook_name = 'Portfolio Adjustments'
+    worksheet_id = md.dct_adjustment_id['Fidelity Positions']
+    result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
+    print('Fidelity Positions worksheet update: ', result)
+    return result
+
+
 def df_fidelity_portfolios():
-    file_p, a_date = md.fidelity_positions_filep()
-    fidelity_df = pd.read_csv(file_p)
+    #a_date, file_p = md.fidelity_positions_filep()
+    #fidelity_df = pd.read_csv(file_p)
+    a_date, fidelity_df = df_fidelity_positions_portfolio()
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'CORE**']
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'FDRXX**']
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'SPAXX**']
@@ -33,52 +70,44 @@ def df_fidelity_portfolios():
     fidelity_df = df_fidelity_positions_aggregate_columns(fidelity_df)
     return fidelity_df
 
-def fidelity_positions_proforma_worksheet_update():
-    adate,df = md.df_agg_on_symbol_from_fidelity_positions_csv()
-    df['Current Return %'] = 0
-    df['Current Value %'] = 0
-    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
-    df = df[df['Symbol'] != 'Pending activity']
-    workbook_name = 'Portfolio Adjustments'
-    worksheet_id = md.dct_adjustment_id['Fidelity Positions']
-    result = md.worksheet_update_with_df(workbook_name, worksheet_id, df)
-    print('Fidelity Positions worksheet update: ', result)
-    return result
+def file_df_account_symbols(df, account_names, path):
+    suffix = '.csv'
+    for account in account_names:
+        if isinstance(account, str):
+            symbols = sorted((df[df['Account Name'] == account].Symbol.values))
+            fpath = join(path, account + suffix)
+            with open(fpath, 'w') as f:
+                f.write('Symbol\n' + '\n'.join(symbols))
+                f.close()
+
 
 def market_data_holding_portfolios_update(fidelity_df):
     df = fidelity_df[['Account Name', 'Symbol']]
     path = join(md.data_dir, 'holding')
     account_names = list(set(df['Account Name'].values))
-    md.file_df_account_symbols(df, account_names, path)
+    file_df_account_symbols(df, account_names, path)
     print('Completed Filing Holding Symbols ', path)
     return path
 
-def df_fidelity_positions_portfolio():
-    filep, adate = md.fidelity_positions_filep()
-    positions_df = pd.read_csv(filep)
-    positions_df = positions_df.dropna(how='all', subset=['Symbol'])
-    positions_df['Symbol'] = positions_df['Symbol'].replace('Pending Activity', 'FDRXX**')
-    return positions_df
-
 def money_market():
-    df = df_fidelity_positions_portfolio()
-    df['Current Value'] = df['Current Value'].str.replace('$', '').astype(float)
+    a_date, fidelity_df = df_fidelity_positions_portfolio()
+    fidelity_df['Current Value'] = fidelity_df['Current Value'].str.replace('$', '').astype(float)
     #df = df_agg_on_symbol_from_fidelity_positions_csv()
-    filter_values = ['FDRXX',"CORE", 'SPAXX'] #'Pending Activity']
-    df = df[df['Symbol'].str.contains('|'.join(filter_values))]
-    df = df[['Account Name', 'Current Value']]
-    df = df.groupby('Account Name').sum({'Current Value': 'sum'})
-    total_current_value = df['Current Value'].sum()
+    filter_values = ['FDRXX',"CORE", 'SPAXX','Pending activity']
+    fidelity_df = fidelity_df[fidelity_df['Symbol'].str.contains('|'.join(filter_values))]
+    fidelity_df = fidelity_df[['Account Name', 'Current Value']]
+    fidelity_df = fidelity_df.groupby('Account Name').sum({'Current Value': 'sum'})
+    total_current_value = fidelity_df['Current Value'].sum()
     new_row = {'Account Name': 'Total', 'Current Value': total_current_value}
     new_row_df = pd.DataFrame([new_row])
-    df.reset_index(inplace=True)
-    df = pd.concat([df, new_row_df], ignore_index=True)
+    fidelity_df.reset_index(inplace=True)
+    fidelity_df = pd.concat([fidelity_df, new_row_df], ignore_index=True)
     filep = join(md.download_dir, 'Money Market.txt')
-    md.write_df_to_file(df, filep)
+    md.write_df_to_file(fidelity_df, filep)
     print('Completed Filing Money Market: ', filep)
 
 def add_fidelity_positions_to_mdb():
-    adate, fidelity_df = md.df_read_fidelity_csv()
+    adate, fidelity_df = df_fidelity_positions_portfolio()
     df_agg = df_fidelity_positions_aggregate_columns(fidelity_df)
     df_agg.fillna(0, inplace=True)
     df_agg.drop(df_agg[df_agg['Quantity'] == 0].index, inplace=True)
@@ -91,7 +120,7 @@ def add_fidelity_positions_to_mdb():
 if __name__ == '__main__':
     print('Updating from Fidelity csv ...')
     print('Fidelity Portfolio worksheet updating...')
-    result = fidelity_positions_proforma_worksheet_update()
+    result = fidelity_positions_worksheet_update()
     fidelity_df = df_fidelity_portfolios()
     print('Holding portfolios updating...')
     path = market_data_holding_portfolios_update(fidelity_df)

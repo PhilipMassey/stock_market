@@ -61,8 +61,8 @@ def update_symbol_profile():
         print('Directory: ',directory)
         mdb_add_symbols_profiles_for_directory(ndays, directory, db_coll_name)
 
-def check_no_profile():
-    df = md.df_symbols_no_profile()
+def check_no_profile(symbols):
+    df = md.df_symbols_no_profile(symbols)
     print('No profile: ',df.size / 3)
     input1 = 'Sector Equity'
     input2 = 'Blend'
@@ -72,12 +72,16 @@ def check_no_profile():
 
 def fill_in_profile():
     rows = [
-        ['Sector Equity', 'Mid-Cap', 'IWP']
+        ['International Equity', 'Large Value', 'VYMI'],
 
+        ['U.S. Equity', 'Large Blend', 'ADX']
     ]
     md.update_rows_sectprim(rows)
 
 if __name__ == '__main__':
     update_symbol_profile()
-    check_no_profile()
+    #symbols = md.get_symbols(md.all)
+    directory = 'Holding'
+    symbols = md.get_symbols_dir_or_port(directory, None)
+    check_no_profile(symbols)
     #fill_in_profile()

@@ -32,8 +32,6 @@ def update_adjustments_workbook_from_fidelity_and_proformas_workbooks(portfolios
         df['Current Value %'] = 0
         df['Current Value %'] = 0
         df['Current Return %'] = 0
-        # df = df[['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Rating', 'Current Value %',
-        #          'Holding %', 'Buy/Sell %', 'Cost Basis Total']]
         df = df[['Symbol', 'Buy/Sell $', 'Current Value', 'Current Return %', 'Rating', 'Current Value %',
                  'Holding %', 'Buy/Sell %', 'Cost Basis Total']]
 
