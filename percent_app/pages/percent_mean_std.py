@@ -14,6 +14,7 @@ from dash_extensions import EventListener
 import webbrowser
 import apis
 
+
 label_size = '18px'
 
 results_date = html.Div('Current date',id='results-date-1',
@@ -69,8 +70,21 @@ dropdowns_ports = html.Div([
 ], style= {'width': '100%','display': 'inline-block'})
 
 
-df_sector_ind = apis.get_sectors_industry()
-sectors = sorted(list(df_sector_ind['sector'].unique()))
+#df_sector_ind = apis.get_sectors_industry()
+# Check if md has df_sector_ind, otherwise use the getter or fallback
+if hasattr(md, 'df_sector_ind'):
+    df_sector_ind = md.df_sector_ind
+elif hasattr(md, 'get_sector_data'):
+    df_sector_ind = md.get_sector_data()
+else:
+    import pandas as pd
+    df_sector_ind = pd.DataFrame()
+
+# Check if data is valid and has expected columns
+if not df_sector_ind.empty and 'sector' in df_sector_ind.columns:
+    sectors = sorted(list(df_sector_ind['sector'].unique()))
+else:
+    sectors = []
 dropdowns_sectors = html.Div([
         html.Div([
             html.Label('Sector'),
@@ -139,9 +153,12 @@ def update_dropdown_ports(value):
     Output('dropdown-industry', 'options'),
     [Input('dropdown-sector', 'value')])
 def update_dropdown_industries(value):
-    if(value != None):
-        industries = sorted(list(df_sector_ind[df_sector_ind['sector']==value]['industry'].unique()))
-        return [{'label': i, 'value': i} for i in industries]
+    if(value != None and not df_sector_ind.empty and 'sector' in df_sector_ind.columns):
+        try:
+            industries = sorted(list(df_sector_ind[df_sector_ind['sector']==value]['industry'].unique()))
+            return [{'label': i, 'value': i} for i in industries]
+        except Exception:
+            return []
     else:
         return []
 

@@ -1,16 +1,17 @@
-import market_data as md
 import pandas as pd
-
 from bson import json_util
 from pandas import json_normalize
 import json
-from pymongo import MongoClient
-client = MongoClient()
-db = client[md.db_client]
+# Use shared connection manager
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
+
+# Default to stock_market DB to avoid importing market_data at top level
+db = get_mongo_database('stock_market')
 
 
 
 def df_symbol_profile(symbols=[],fields=None) -> list:
+    import market_data as md
     coll_name = md.db_symbol_profile
     db_coll = db[coll_name]
     if len(symbols) == 0:
@@ -42,6 +43,7 @@ def dct_mdb_symbol_industry_sector(symbols=[]) -> dict:
 
 
 def get_sectors_industry():
+    import market_data as md
     coll_name = md.db_symbol_profile
     db_coll = db[coll_name]
     mongo_data = db_coll.find()

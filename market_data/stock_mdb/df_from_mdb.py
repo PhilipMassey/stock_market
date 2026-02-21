@@ -7,8 +7,10 @@ from pandas import json_normalize
 import json
 
 from pymongo import MongoClient
-client = MongoClient()
-db = client[md.db_client]
+# Use shared connection manager
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
+
+db = get_mongo_database(md.db_client)
 
 def get_df_from_mdb_for_nday(ndays, coll_name, symbols='', incl='', dateidx=True):
     db_coll = db[coll_name]

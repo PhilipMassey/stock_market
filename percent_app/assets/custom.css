@@ -1,0 +1,44 @@
+/* Global Font Settings */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Table Styling */
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    font-weight: 600;
+    text-align: center;
+    background-color: #e9ecef;
+    padding: 12px;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Specific Utilities */
+.table-header-large {
+    font-size: 18px !important;
+}
+
+.table-cell-large {
+    font-size: 18px !important;
+}
+
+/* Input Styling */
+.search-input {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    width: 100%;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

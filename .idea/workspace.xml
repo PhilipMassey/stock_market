@@ -4,27 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/analysis/dividends.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/market_data/portfolio/compare_current_and_sa.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plots/plots_test/dash_fidelity_value_sector_industry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plots/plots_test/dash_sector_industry_value.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plots/plots_test/sector_industry_value.py" afterDir="false" />
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="remove dash_labs get gigi with it">
+      <change afterPath="$PROJECT_DIR$/apis/seeking_alpha/WEEKLY_UPDATE_README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/seeking_alpha/export_symbol_data_to_csv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apis/seeking_alpha/weekly_update.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/stock_mdb/check_pymongo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/stock_mdb/mongo_connection_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/percent_app/assets/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/percent_app/query_xlk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/percent_app/stop_percent_app.zsh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pyrightconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/mdb_in_out.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/mdb_in_out.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/csv_data_defs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange/google_spreadsheets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioCalculate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/PortfolioUpdate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/adjustment_worlbook_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/fidelity_positions_update.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/holding_portfolios_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/holding_portfolios_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/portfolio/update_adjustment_with_fidelity.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/update_adjustment_with_fidelity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/df_from_mdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/df_from_mdb.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/stock_mdb/mdb_edit.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/stock_mdb/mdb_edit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/percent_app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/percent_app/pages/filter_on_symbols.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/filter_on_symbols.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" beforeDir="false" afterPath="$PROJECT_DIR$/percent_app/pages/percent_mean_std.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/plots_test/dash_fidelity_value_sector_industry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plots/plots_test/sector_industry_value.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +86,10 @@
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.app_old.executor&quot;: &quot;Run&quot;,
     &quot;Python.app_org.executor&quot;: &quot;Run&quot;,
+    &quot;Python.check_pymongo.executor&quot;: &quot;Run&quot;,
     &quot;Python.compare_current_and_sa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_fidelity_value_change_sector_industry.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_fidelity_value_change_sector_industry_bar.executor&quot;: &quot;Run&quot;,
     &quot;Python.dash_fidelity_value_sector_industry.executor&quot;: &quot;Run&quot;,
     &quot;Python.dash_sector_industry_value.executor&quot;: &quot;Run&quot;,
     &quot;Python.fidelity positions.executor&quot;: &quot;Run&quot;,
@@ -93,6 +99,7 @@
     &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
     &quot;Python.holding_portfolios_update.executor&quot;: &quot;Run&quot;,
     &quot;Python.mdb_missing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_percent_change_bubble.executor&quot;: &quot;Run&quot;,
     &quot;Python.read_fidexport_file_holding.executor&quot;: &quot;Run&quot;,
     &quot;Python.sector_industry_value.executor&quot;: &quot;Run&quot;,
     &quot;Python.spotify list.executor&quot;: &quot;Run&quot;,
@@ -107,7 +114,7 @@
     &quot;Shell Script.run fix xlsx.zsh.executor&quot;: &quot;Run&quot;,
     &quot;Shell Script.run_percent_app.zsh.executor&quot;: &quot;Debug&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market/dash_prj&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market/percent_app&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -123,20 +130,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/percent_app" />
       <recent name="$PROJECT_DIR$/dash_prj" />
       <recent name="$PROJECT_DIR$/market_data/Proforma" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/plots" />
       <recent name="$PROJECT_DIR$/market_data/data/Seeking_Alpha" />
       <recent name="$PROJECT_DIR$/dash_prj" />
       <recent name="$PROJECT_DIR$/market_data/portfolio" />
       <recent name="$PROJECT_DIR$/market_data/data/Proforma" />
-      <recent name="$PROJECT_DIR$/logs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dash_fidelity_value_sector_industry">
-    <configuration name="compare_current_and_sa" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.update_symbol_profile">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,11 +153,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/percent_app" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/compare_current_and_sa.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/percent_app/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="check_pymongo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="stock_market" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/stock_mdb" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/stock_mdb/check_pymongo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,33 +197,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plots/plots_test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plots" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plots/plots_test/dash_fidelity_value_sector_industry.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="holding_portfolios_update" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="stock_market" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/portfolio" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/portfolio/holding_portfolios_update.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plots/dash_fidelity_value_sector_industry.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -271,20 +279,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.compare_current_and_sa" />
-      <item itemvalue="Python.holding_portfolios_update" />
-      <item itemvalue="Python.symbols_from_excel" />
+      <item itemvalue="Python.app" />
+      <item itemvalue="Python.check_pymongo" />
       <item itemvalue="Python.dash_fidelity_value_sector_industry" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.symbols_from_excel" />
       <item itemvalue="Python.update_symbol_profile" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.dash_fidelity_value_sector_industry" />
         <item itemvalue="Python.update_symbol_profile" />
-        <item itemvalue="Python.holding_portfolios_update" />
-        <item itemvalue="Python.compare_current_and_sa" />
+        <item itemvalue="Python.dash_fidelity_value_sector_industry" />
+        <item itemvalue="Python.check_pymongo" />
         <item itemvalue="Python.symbols_from_excel" />
+        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>

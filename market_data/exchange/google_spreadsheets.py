@@ -1,6 +1,6 @@
 import market_data as md
 import gspread
-from gspread_dataframe import get_as_dataframe# Authenticate with your Google account
+from gspread_dataframe import get_as_dataframe, set_with_dataframe # Authenticate with your Google account
 gc = gspread.service_account(filename='/Users/philipmassey/.config/gspread/service_account.json')
 
 

@@ -31,16 +31,25 @@ def df_symbols_no_profile(symbols):
     return df[df.sectorname.isna()]
 
 def update_rows_sectprim(rows):
-    db_coll_name = md.db_symbol_profile
-    db_coll = db[db_coll_name]
+    collection = db[md.db_symbol_profile]
     for row in rows:
         symbol = row[2]
         sectorname = row[0]
         primaryname = row[1]
-        one = db_coll.find_one({'symbol': symbol})
+        one = collection.find_one({'symbol': symbol})
         print(one['symbol'], one['sectorname'], one['primaryname'])
         query = {'symbol': {'$eq': symbol}}
         newvalues = {"$set": {'sectorname': sectorname, 'primaryname': primaryname}}
-        result = db_coll.update_one(query, newvalues)
-        one = db_coll.find_one({'symbol': symbol})
+        result = collection.update_one(query, newvalues)
+        one = collection.find_one({'symbol': symbol})
         print(one['symbol'], one['sectorname'], one['primaryname'])
+
+def update_row_sector_industry(sectorname, primaryname, symbol):
+    collection = db[md.db_symbol_profile]
+    one = collection.find_one({'symbol': symbol})
+    print(one['symbol'], one['sectorname'], one['primaryname'])
+    query = {'symbol': {'$eq': symbol}}
+    newvalues = {"$set": {'sectorname': sectorname, 'primaryname': primaryname}}
+    result = collection.update_one(query, newvalues)
+    one = collection.find_one({'symbol': symbol})
+    print(one['symbol'], one['sectorname'], one['primaryname'])

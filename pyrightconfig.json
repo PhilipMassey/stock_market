@@ -1,0 +1,16 @@
+{
+  "include": ["apis", "market_data", "percent_app", "analysis", "performance", "plots", "test", "dash_prj"],
+  "exclude": [
+    "**/__pycache__",
+    "**/venv",
+    "**/.venv",
+    "**/node_modules",
+    "market_data/data",
+    ".git",
+    ".idea"
+  ],
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": "warning",
+  "reportMissingTypeStubs": false
+}

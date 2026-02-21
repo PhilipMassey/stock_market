@@ -8,8 +8,8 @@ app = dash.Dash(
     __name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 
-for x in dash.page_registry.values():
-    print(x)
+# for x in dash.page_registry.values():
+#     print(x)
 
 navbar = dbc.NavbarSimple(
     dbc.DropdownMenu(

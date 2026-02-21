@@ -25,6 +25,7 @@ db_volume = 'market_data_volume'
 db_test_close = 'test_close'
 db_test_vol = 'test_volume'
 db_symbol_profile = 'symbol_profile'
+db_symbol_profile_cache = 'symbol_profile_cache'  # RapidAPI get-profile cache for weekly refresh
 db_symbol_info = 'symbol_info'
 db_fidel_pos = 'FidelityPositions'
 portfolio_adjustments = 'Portfolio Adjustments'
