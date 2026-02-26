@@ -268,12 +268,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.compare_current_and_sa" />
       <item itemvalue="Python.holding_portfolios_update" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.symbols_from_excel" />
       <item itemvalue="Python.update_adjustment_with_fidelity" />
       <item itemvalue="Python.update_symbol_profile" />
-      <item itemvalue="Python.symbols_from_excel" />
     </list>
     <recent_temporary>
       <list>
