@@ -19,13 +19,13 @@ dash.register_page(__name__, path="/percent_performance")
 
 label_size = '18px'
 
-results_date = html.Div('Current date', id='results-date-1',
+results_date = html.Div('Current date', id='results-date-perf',
                         style={'width': '100%', 'text-align': 'center', 'font-size': label_size})
 
 label_perc_or_mean = html.Label('Perc or Mean', style={'font-size': label_size})
 radio_perc_or_mean = html.Div([
     dcc.RadioItems(
-        id='radio-perc-or-mean',
+        id='radio-perc-or-mean-perf',
         options=[
             {'label': 'Portfolio Mean', 'value': pf.mean_option},
             {'label': 'Symbol percent change', 'value': pf.perc_option}
@@ -38,7 +38,7 @@ radio_perc_or_mean = html.Div([
 label_ndays_range = html.Label('Select Period', style={'font-size': label_size})
 radio_ndays_range = html.Div([
     dcc.RadioItems(
-        id='radio-ndays-range',
+        id='radio-ndays-range-perf',
         options=[
             {'label': '2 Months', 'value': pf.calc_percent_2monthly},
             {'label': '1 Month', 'value': pf.calc_percent_monthly},
@@ -59,12 +59,12 @@ dirs = md.get_portfolio_dirs()
 dropdowns_ports = html.Div([
     html.Div([
         html.Label('Portfolio Directories'),
-        dcc.Dropdown(id='dropdown-dirs-a', options=[{'label': i, 'value': i} for i in dirs], value=None)],
+        dcc.Dropdown(id='dropdown-dirs-perf', options=[{'label': i, 'value': i} for i in dirs], value=None)],
         style={'width': '49%', 'float': 'left'}
     ),
     html.Div([
         html.Label('Portfolios'),
-        dcc.Dropdown(id='dropdown-ports-si', options=[], value=None)],
+        dcc.Dropdown(id='dropdown-ports-perf', options=[], value=None)],
         style={'width': '49%', 'float': 'right'}
     ),
 ], style={'width': '100%', 'display': 'inline-block'})
@@ -80,21 +80,21 @@ except Exception:
 dropdowns_sectors = html.Div([
     html.Div([
         html.Label('Sector'),
-        dcc.Dropdown(id='dropdown-sector', options=[], value=None)],
+        dcc.Dropdown(id='dropdown-sector-perf', options=[], value=None)],
         style={'width': '49%', 'float': 'left'}
     ),
     html.Div([
         html.Label('Industry'),
-        dcc.Dropdown(id='dropdown-industry', options=[], value=None)],
+        dcc.Dropdown(id='dropdown-industry-perf', options=[], value=None)],
         style={'width': '49%', 'float': 'right'}
     ),
 ], style={'width': '100%', 'display': 'inline-block'})
 
-results_table = html.Div(id="results-table-1")
+results_table = html.Div(id="results-table-perf")
 listen_table = html.Div(
     [
         EventListener(
-            id="el",
+            id="el-perf",
             events=[{"event": "dblclick", "props": ["srcElement.className", "srcElement.innerText"]}],
             logging=True,
             children=results_table,
@@ -104,18 +104,21 @@ listen_table = html.Div(
 
 dct_profile = apis.dct_mdb_symbol_names()
 
-def get_tooltip(symbol):
+def get_tooltip_perf(symbol):
     line = 'Profile not found'
     if symbol in dct_profile:
         line = dct_profile[symbol]
-        if line is None:
-            line = 'Profile not found'
-    return line
+        
+    # Handle NaN values returned from pandas dictionary representations
+    if line is None or pd.isna(line):
+        line = 'Profile not found'
+        
+    return str(line)
 
 layout = html.Div([results_date, perc_or_mean_block, ndays_range_block,
                    dropdowns_ports, dropdowns_sectors,
                    listen_table,
-                   html.Div(id="event-1")
+                   html.Div(id="event-perf")
                    ])
 
 
@@ -125,9 +128,9 @@ layout = html.Div([results_date, perc_or_mean_block, ndays_range_block,
 
 # Callback on directory selection
 @callback(
-    Output('dropdown-ports-si', 'options'),
-    [Input('dropdown-dirs-a', 'value')])
-def update_dropdown_ports(directory):
+    Output('dropdown-ports-perf', 'options'),
+    [Input('dropdown-dirs-perf', 'value')])
+def update_dropdown_ports_perf(directory):
     if directory is not None:
         df_port_symbols = md.get_dir_port_symbols(directory)
         return [{'label': i, 'value': i} for i in sorted(df_port_symbols["portfolio"].unique())]
@@ -136,11 +139,11 @@ def update_dropdown_ports(directory):
 
 # Dynamic Callback for Sector Selection (Filters based on selected portfolio!)
 @callback(
-    Output('dropdown-sector', 'options'),
-    [Input('dropdown-dirs-a', 'value'),
-     Input('dropdown-ports-si', 'value')]
+    Output('dropdown-sector-perf', 'options'),
+    [Input('dropdown-dirs-perf', 'value'),
+     Input('dropdown-ports-perf', 'value')]
 )
-def update_dropdown_sectors(directory, port):
+def update_dropdown_sectors_perf(directory, port):
     if not df_sector_ind.empty and 'sector' in df_sector_ind.columns:
         if directory is not None:
              symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
@@ -153,11 +156,11 @@ def update_dropdown_sectors(directory, port):
 
 # Callback on sector selection
 @callback(
-    Output('dropdown-industry', 'options'),
-    [Input('dropdown-sector', 'value'),
-     Input('dropdown-dirs-a', 'value'),
-     Input('dropdown-ports-si', 'value')])
-def update_dropdown_industries(sector, directory, port):
+    Output('dropdown-industry-perf', 'options'),
+    [Input('dropdown-sector-perf', 'value'),
+     Input('dropdown-dirs-perf', 'value'),
+     Input('dropdown-ports-perf', 'value')])
+def update_dropdown_industries_perf(sector, directory, port):
     if sector is not None and not df_sector_ind.empty and 'sector' in df_sector_ind.columns:
         df_filtered = df_sector_ind[df_sector_ind['sector'] == sector]
         
@@ -173,23 +176,23 @@ def update_dropdown_industries(sector, directory, port):
 
 # Update table callback
 @callback(
-    Output('results-date-1', 'children'),
-    Output('results-table-1', 'children'),
-    Input('radio-ndays-range', 'value'),
-    Input('radio-perc-or-mean', 'value'),
-    Input('dropdown-dirs-a', 'value'),
-    Input('dropdown-ports-si', 'value'),
-    Input('dropdown-sector', 'value'),
-    Input('dropdown-industry', 'value')
+    Output('results-date-perf', 'children'),
+    Output('results-table-perf', 'children'),
+    Input('radio-ndays-range-perf', 'value'),
+    Input('radio-perc-or-mean-perf', 'value'),
+    Input('dropdown-dirs-perf', 'value'),
+    Input('dropdown-ports-perf', 'value'),
+    Input('dropdown-sector-perf', 'value'),
+    Input('dropdown-industry-perf', 'value')
 )
-def update_table(opt_ndays_range, perc_or_mean, directory, port, sector, industry):
+def update_table_perf(opt_ndays_range, perc_or_mean, directory, port, sector, industry):
     ndays_range = pf.get_ndays_range(opt_ndays_range)
     if directory is not None:
         symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
     else:
         symbols = md.get_symbols(md.all)
     
-    df_all = pf.df_secind_sym_perf(ndays_range, symbols)
+    df_all = pf.df_secind_sym_perf_v2(ndays_range, symbols)
 
     if sector is None:
         df = df_all
@@ -206,11 +209,11 @@ def update_table(opt_ndays_range, perc_or_mean, directory, port, sector, industr
 
     return (md.get_date_for_ndays(ndays_range[-1]),
             dt.DataTable(
-                id='table',
+                id='table-perf',
                 columns=[{"name": i, "id": i} for i in df.columns],
                 tooltip_data=[
                     {
-                        'symbol': {'value': get_tooltip(value), 'type': 'markdown'}
+                        'symbol': {'value': get_tooltip_perf(value), 'type': 'markdown'}
                         for column, value in row.items()
                     } for row in df[['symbol']].to_dict('records')
                 ],
@@ -233,8 +236,8 @@ def update_table(opt_ndays_range, perc_or_mean, directory, port, sector, industr
     )
 
 # Robust Double-Click Event Listener (immune to column shifting)
-@callback(Output("event-1", "children"), Input("el", "event"))
-def click_event(event):
+@callback(Output("event-perf", "children"), Input("el-perf", "event"))
+def click_event_perf(event):
     if not event:
         raise PreventUpdate
 

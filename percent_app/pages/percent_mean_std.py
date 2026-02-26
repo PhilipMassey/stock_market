@@ -118,11 +118,12 @@ def get_tooltip(symbol):
     line = 'No profile'
     if symbol in dct_profile:
         line = dct_profile[symbol]
-        if line is None:
-            line =  'No Profile'
-    else:
-        line =  'No worries,mate!'
-    return line
+    
+    # Check if line is None or pandas NaN (float)
+    if line is None or pd.isna(line):
+        line = 'No profile'
+        
+    return str(line)
 
 
 #app = dash.Dash(__name__)

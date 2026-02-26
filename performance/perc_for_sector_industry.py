@@ -23,6 +23,28 @@ def df_overall_performance(ndays_range,symbols):
     return df_vars
 
 
+def df_overall_performance_v2(ndays_range, symbols):
+    df_all = md.df_mdb_clossins_for_ndays_range(ndays_range, symbols)
+    
+    # Calculate overall percentage based on first valid and last valid price instead of blindly shifting periods
+    first_valid = df_all.bfill().iloc[0]
+    last_valid = df_all.ffill().iloc[-1]
+    df_over_pct = ((last_valid - first_valid) / first_valid) * 100
+    
+    df_vars = pd.DataFrame(df_over_pct, columns=['over_pc'])
+    
+    # Calculate period pct change but immediately drop NaNs so mean/std aren't poisoned
+    df_period_pct = df_all.pct_change(periods=1) * 100
+    
+    # Calculate metric ignoring NaNs
+    df_vars['pc_mean'] = df_period_pct.mean()
+    df_vars['pc_std'] = df_period_pct.std()
+    
+    df_vars.reset_index(inplace=True)
+    df_vars.rename(columns={'index':'symbol'}, inplace=True)
+    df_vars = df_vars.round(1)
+    return df_vars
+
 # def df_overall_performance(ndays_range,symbols):
 #     df_all = md.df_mdb_clossins_for_ndays_range(ndays_range, symbols)
 #     over_perc= ((df_all.iloc[-1] -df_all.iloc[0]) /df_all.iloc[0])
@@ -46,3 +68,19 @@ def df_secind_sym_perf(ndays_range, symbols):
     df_secind_sym_perf = df_sector_ind.merge(df_over_perf,on='symbol',how='outer')
     cols = ['sector', 'industry', 'symbol','over_pc','pc_mean','pc_std']
     return df_secind_sym_perf[cols].sort_values(by =['sector', 'industry', 'symbol'])
+
+def df_secind_sym_perf_v2(ndays_range, symbols):
+    df_over_perf = df_overall_performance_v2(ndays_range, symbols)
+    # Get sector info without relying on ndays_range time parameter passing
+    df_sector_ind = df_perc_by_sector_industry(ndays_range, symbols)
+    df_sector_ind.rename(columns={'sectorname':'sector','primaryname':'industry'}, inplace=True)
+    
+    # Merge using a left join anchored on performance so we don't return phantom sector rows
+    df_secind_sym_perf = df_over_perf.merge(df_sector_ind, on='symbol', how='left')
+    
+    # Handle NaNs from API mapping missing profiles
+    df_secind_sym_perf['sector'] = df_secind_sym_perf['sector'].fillna('Unknown')
+    df_secind_sym_perf['industry'] = df_secind_sym_perf['industry'].fillna('Unknown')
+    
+    cols = ['sector', 'industry', 'symbol','over_pc','pc_mean','pc_std']
+    return df_secind_sym_perf[cols].sort_values(by=['sector', 'industry', 'symbol'])

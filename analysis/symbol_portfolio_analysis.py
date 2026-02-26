@@ -12,7 +12,8 @@ def int_to_en(num):
           50:'50',51:'51',52:'52',53:'53',54:'54',55:'55',56:'56',57:'57',58:'58',59:'59',
           60:'60',61:'61',62:'62',63:'63',64:'64',65:'65'
           }
-    return d[num]
+    # Return mapped string, or fallback to the string representation of the number if not in dict
+    return d.get(num, str(num))
 
 
 
