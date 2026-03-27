@@ -13,15 +13,15 @@ def get_yahoo_ndays_ago(ndays, symbols):
         df = pd.DataFrame({})
     elif ndays == 0:
         df = yf.download(tickers=symbols, period="1d", interval="1d", group_by='column', auto_adjust=True,
-                         prepost=True, threads=True)
+                         prepost=True, threads=False)
     elif ndays == 1:
         df = yf.download(tickers=symbols, period="5d", interval="1d", group_by='column', auto_adjust=False,
-                         prepost=True, threads=True)
+                         prepost=True, threads=False)
     else:
         #start, end = md.get_dates_ndays_and_today(ndays)
         start, end = md.get_ndate_and_prevdate(ndays - 1)
         df = yf.download(tickers=symbols, interval="1d", start=start, end=end, group_by='column',
-                         auto_adjust=True, prepost=True, threads=True)
+                         auto_adjust=True, prepost=True, threads=False)
         #df.drop('SPY', axis=1, level=1, inplace=True, errors='ignore')
         df = df.dropna(axis=1, how='all')
     pddate = md.get_pd_time_series_for_ndays(ndays)
@@ -50,7 +50,7 @@ def get_yahoo_ndays_plus(ndays, interval, symbols):
         df = pd.DataFrame({})
     start, end = md.get_ndate_and_todate(ndays-1, interval)
     df = yf.download(tickers=symbols, interval="1d", start=start, end=end, group_by='column',
-                         auto_adjust=True, prepost=True, threads=True)
+                         auto_adjust=True, prepost=True, threads=False)
         #df.drop('FB', axis=1, level=1, inplace=True, errors='ignore')
     df = df.dropna(axis=1, how='all')
     strdate = md.get_mdb_strdate_for_ndays(ndays)

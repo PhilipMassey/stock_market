@@ -44,7 +44,7 @@ def load_portfolio_data(period=1):
     prev_vals = get_val_df(prev_date)
 
     if curr_vals.empty or prev_vals.empty:
-        return pd.DataFrame(columns=['Sector', 'Symbol', 'Industry', 'Value Change'])
+        return pd.DataFrame(columns=['Sector', 'Symbol', 'Industry', 'Value Change']), current_date, prev_date
 
     # Calculate Value Change logic
     # Filter for common symbols (intersection) to match previous behavior of dropping NaNs (new/sold positions)
@@ -74,13 +74,13 @@ def load_portfolio_data(period=1):
     df_sector_ind.rename(columns={'symbol': 'Symbol', 'sectorname': 'Sector', 'primaryname': 'Industry'}, inplace=True)
 
     df_master = df_sector_ind.merge(df_val_change, on='Symbol', how='outer')
-    return df_master.sort_values(by=['Sector', 'Symbol'])
+    return df_master.sort_values(by=['Sector', 'Symbol']), current_date, prev_date
 
 # --- LAYOUT ---
 
 layout = html.Div([
-    html.H1("Portfolio Performance Drill-Down (Bar)",
-            style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px'}),
+    html.H3("Portfolio Performance Drill-Down (Bar)",
+            style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
 
     # Controls Section: Toggle Switch and Period Input
     html.Div([
@@ -102,8 +102,9 @@ layout = html.Div([
                 value=1,
                 min=1,
                 step=1,
-                style={'width': '80px'}
-            )
+                style={'width': '80px', 'marginRight': '15px'}
+            ),
+            html.Div(id='date-display-bar', style={'display': 'inline-block', 'fontSize': '16px', 'fontWeight': 'bold'})
         ], style={'display': 'inline-block', 'verticalAlign': 'middle'})
     ], style={'padding': '20px', 'textAlign': 'center'}),
 
@@ -172,14 +173,20 @@ layout = html.Div([
 # --- CALLBACKS ---
 
 @callback(
-    Output('data-store', 'data'),
-    Input('period-input', 'value')
+    [Output('data-store', 'data'),
+     Output('date-display-bar', 'children')],
+    [Input('period-input', 'value')]
 )
 def update_data(period):
     if period is None:
         period = 1
-    df = load_portfolio_data(period)
-    return df.to_dict('records')
+    df, current_date, prev_date = load_portfolio_data(period)
+    
+    date_text = "No valid dates found."
+    if current_date and prev_date:
+        date_text = f"From {prev_date.strftime('%b %d %Y')} to {current_date.strftime('%b %d %Y')}"
+        
+    return df.to_dict('records'), date_text
 
 @callback(
     Output('sector-bar-chart', 'figure'),

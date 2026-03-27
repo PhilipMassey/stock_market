@@ -111,8 +111,10 @@ def get_tooltip(symbol):
 
 
 #app = dash.Dash(__name__)
-layout = html.Div([results_date, perc_or_mean_block, ndays_range_block,
-                   calc_interval_block, dropdowns,
+layout = html.Div([
+    html.H3("Percents for Periods", style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
+    results_date, perc_or_mean_block, ndays_range_block,
+    calc_interval_block, dropdowns,
                    listen_table,
                    html.Div(id="event")
                    ])

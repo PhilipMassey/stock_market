@@ -8,8 +8,8 @@ from bson import json_util
 from pandas import json_normalize
 import json
 
-client = MongoClient()
-db = client['stock_market']
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
+db = get_mongo_database('stock_market')
 
 def mdb_add_df(df,db_coll_name):
     data_dict = df.to_dict("records")

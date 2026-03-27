@@ -1,9 +1,8 @@
 import market_data as md
 import pandas as pd
-from pymongo import MongoClient
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
 
-client = MongoClient()
-db = client['stock_market']
+db = get_mongo_database('stock_market')
 
 
 def update_mdb_with_missing_row(ndays, symbols, load_missing_failed):
@@ -39,17 +38,32 @@ def get_missing_market_row(ndays, symbols, load_missing_failed):
         print(ndays,dbaction, list(missing_symbols)[0:3], '....')
         df_missing = md.get_yahoo_ndays_ago(ndays, missing_symbols)
         df_missing = df_missing.dropna(axis=1, how='all')
-        yahoo_symbols = df_missing['Close'].columns.values
-        for el in missing_symbols:
-            if el not in yahoo_symbols:
+        
+        if 'Close' in df_missing:
+            close_df = df_missing['Close']
+            if isinstance(close_df, pd.DataFrame):
+                yahoo_symbols = close_df.columns.values
+            else:
+                # If it's a Series (single ticker), the data exists for the requested symbol
+                yahoo_symbols = list(missing_symbols)
+                
+            for el in missing_symbols:
+                if el not in yahoo_symbols:
+                    load_missing_failed.append(el)
+        else:
+            for el in missing_symbols:
                 load_missing_failed.append(el)
+            df_missing = pd.DataFrame()  # Empty dataframe prevents downstream KeyError
+            
     return (df_missing,dbaction, symbols)
 
 
 def add_dfclosevol_row_to_dbs(df):
-    md.add_df_to_db(df['Close'], md.db_close)
+    if 'Close' in df:
+        md.add_df_to_db(df['Close'], md.db_close)
 #    md.add_df_to_db(df['Volume'], md.db_volume)
 
 def update_mdbs_row(df):
-    md.update_mdb_with_dfrow(df['Close'], md.db_close)
+    if 'Close' in df:
+        md.update_mdb_with_dfrow(df['Close'], md.db_close)
     #md.update_mdb_with_dfrow(df['Volume'], md.db_volume)

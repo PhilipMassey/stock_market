@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 from flask import Flask, jsonify
 
 app = dash.Dash(
-    __name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP]
+    __name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True
 )
 
 # for x in dash.page_registry.values():

@@ -115,8 +115,10 @@ def get_tooltip_perf(symbol):
         
     return str(line)
 
-layout = html.Div([results_date, perc_or_mean_block, ndays_range_block,
-                   dropdowns_ports, dropdowns_sectors,
+layout = html.Div([
+    html.H3("Percent Performance", style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
+    results_date, perc_or_mean_block, ndays_range_block,
+    dropdowns_ports, dropdowns_sectors,
                    listen_table,
                    html.Div(id="event-perf")
                    ])
@@ -192,7 +194,7 @@ def update_table_perf(opt_ndays_range, perc_or_mean, directory, port, sector, in
     else:
         symbols = md.get_symbols(md.all)
     
-    df_all = pf.df_secind_sym_perf_v2(ndays_range, symbols)
+    df_all = pf.df_secind_sym_perf(ndays_range, symbols)
 
     if sector is None:
         df = df_all

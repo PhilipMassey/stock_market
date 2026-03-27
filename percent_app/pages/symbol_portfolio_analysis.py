@@ -86,8 +86,10 @@ dropdowns = html.Div([
 results_table = html.Div(id="results-table-2")
 
 #layout = html.Div([results_date, radio_symbols_or_perc, radio_selection, dropdowns, results_table])
-layout = html.Div([results_date, symbols_or_perc_block, industry_sector_block,
-                   ndays_range_block, dropdowns,
+layout = html.Div([
+    html.H3("Symbol Portfolio Analysis", style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
+    results_date, symbols_or_perc_block, industry_sector_block,
+    ndays_range_block, dropdowns,
                    results_table,
                    html.Div(id="event")
                    ])

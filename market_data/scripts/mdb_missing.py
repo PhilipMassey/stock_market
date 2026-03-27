@@ -8,12 +8,17 @@ end = 260
 def run_mdb_missing(symbols):
     load_missing_failed = []
     for ndays in range(start, end):
+        failed_count_before = len(load_missing_failed)
         symbols = md.update_mdb_with_missing_row(ndays, symbols, load_missing_failed)
-        print(load_missing_failed)
-        for el in load_missing_failed:
-            if el in symbols:
-                symbols.remove(el)
-    # print('Content md.load_missing_failed',md.load_missing_failed)
+        
+        newly_failed = load_missing_failed[failed_count_before:]
+        if newly_failed:
+            print(f"Failed this run: {newly_failed}")
+            for el in newly_failed:
+                if el in symbols:
+                    symbols.remove(el)
+        else:
+            print("OK")
     values, counts = np.unique(load_missing_failed, return_counts=True)
     print(values, counts)
 

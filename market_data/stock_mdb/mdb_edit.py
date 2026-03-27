@@ -2,9 +2,8 @@ import market_data as md
 import apis
 from pprint import pprint
 from datetime import datetime
-from pymongo import MongoClient
-client = MongoClient()
-db = client[md.db_client]
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
+db = get_mongo_database(md.db_client)
 
 #db_coll = db[md.db_volume]
 

@@ -76,8 +76,8 @@ def create_sector_fig():
 # --- LAYOUT ---
 
 layout = html.Div([
-    html.H1("Portfolio Sector Value",
-            style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px'}),
+    html.H3("Portfolio Sector Value",
+            style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
 
     html.Div([
         html.Div([dcc.Graph(id='sector-pie-chart', figure=create_sector_fig())], style={'width': '48%', 'display': 'inline-block'}),

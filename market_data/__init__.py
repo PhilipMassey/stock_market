@@ -30,8 +30,8 @@ db_symbol_info = 'symbol_info'
 db_fidel_pos = 'FidelityPositions'
 portfolio_adjustments = 'Portfolio Adjustments'
 dct_workbook_url = {'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0',
-    'Dividends': 'https://docs.google.com/spreadsheets/d/1N1zyOStCH-gvYAgCnv6vtmsTkp6q7R8rpAnzwv9W1sI/edit?gid=0'}
-
+    'Dividends': 'https://docs.google.com/spreadsheets/d/1N1zyOStCH-gvYAgCnv6vtmsTkp6q7R8rpAnzwv9W1sI/edit?gid=0',
+    'Performance Analysis': 'https://docs.google.com/spreadsheets/d/16f_asTlYBbUpq9dkoV3Wqvc1wc71YVI4MbO7LUf7dpI/edit?gid=0#gid=0'}
 #portfolio_proforma = 'Portfolio Proforma'
 #'Portfolio Proforma': 'https://docs.google.com/spreadsheets/d/15FDENGNSt6n-iKfWwX9nqqrXVFwN5Cp0GWQXxlaw_x4/edit#gid=0',
 #dct_proforma_id = {'Alpha Picks': 1375800256, 'PRO': 17984799, 'Dividends': 0, 'ETFs': 1884178483, 'International': 874195600,

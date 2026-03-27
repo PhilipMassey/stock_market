@@ -1,9 +1,8 @@
 import market_data as md
 from datetime import datetime
 import pymongo
-from pymongo import MongoClient
-client = MongoClient()
-db = client['stock_market']
+from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
+db = get_mongo_database('stock_market')
 
 # delete all
 # results = db[db_coll_name].delete_many({})

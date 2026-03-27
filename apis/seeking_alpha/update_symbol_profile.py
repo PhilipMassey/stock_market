@@ -163,8 +163,8 @@ if __name__ == '__main__':
         sync_profile_cache_to_symbol_profile()
     else:
         update_symbol_profile()
-    # symbols = md.get_symbols(md.all)
-    # directory = 'Holding'
-    # symbols = md.get_symbols_dir_or_port(directory, None)
-    # check_no_profile(symbols)
+    #symbols = md.get_symbols(md.all)
+    directory = 'Holding'
+    symbols = md.get_symbols_dir_or_port(directory, None)
+    check_no_profile(symbols)
     # fill_in_profile()
