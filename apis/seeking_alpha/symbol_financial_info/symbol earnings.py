@@ -8,7 +8,7 @@ conn = http.client.HTTPSConnection("seeking-alpha.p.rapidapi.com")
 
 headers = {
     'x-rapidapi-host': "seeking-alpha.p.rapidapi.com",
-    'x-rapidapi-key': md.seeking_alpha_key
+    'x-rapidapi-key': md.rapid_api_key
     }
 
 #./symbols/get-earnings?ticker_ids=1567&period_type=annual&relative_periods=-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11&estimates_data_items=revenue_actual,revenue_consensus_low,revenue_consensus_mean,revenue_consensus_high,revenue_num_of_estimates

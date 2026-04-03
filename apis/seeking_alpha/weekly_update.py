@@ -5,7 +5,7 @@ store in MongoDB, then export company data to CSV files.
 Schedule with cron or launchd (e.g. every Sunday evening).
 
 Required env:
-  SEEKING_ALPHA_KEY   - RapidAPI key for seeking-alpha.p.rapidapi.com
+  RAPID_API_KEY   - RapidAPI key for seeking-alpha.p.rapidapi.com
   SM_DATA_DIR         - Data root (portfolio CSVs and company_data output)
   DOWNLOAD_DIR        - Optional; used by some portfolio paths
 
@@ -58,8 +58,8 @@ def main():
     )
     args = parser.parse_args()
 
-    if not md.seeking_alpha_key:
-        print("SEEKING_ALPHA_KEY not set. Set it in the environment.", file=sys.stderr)
+    if not md.rapid_api_key:
+        print("RAPID_API_KEY not set. Set it in the environment.", file=sys.stderr)
         sys.exit(1)
     if not md.data_dir:
         print("SM_DATA_DIR not set. Set it in the environment.", file=sys.stderr)

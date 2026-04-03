@@ -17,7 +17,7 @@ key_data_fields = ['eps','peRatioFwd','estimateEps','divYield','marketCap','volu
 key_data_url = "https://seeking-alpha.p.rapidapi.com/symbols/get-key-data"
 key_data_headers = {
     'x-rapidapi-host': "seeking-alpha.p.rapidapi.com",
-    'x-rapidapi-key': md.seeking_alpha_key
+    'x-rapidapi-key': md.rapid_api_key
     }
 
 
@@ -42,7 +42,7 @@ summary_url = "https://seeking-alpha.p.rapidapi.com/symbols/get-summary"
 
 summary_headers = {
     'x-rapidapi-host': "seeking-alpha.p.rapidapi.com",
-    'x-rapidapi-key':  md.seeking_alpha_key
+    'x-rapidapi-key':  md.rapid_api_key
     }
 
 def df_symbol_summary_fields(symbol,summary_fields):

@@ -9,7 +9,7 @@ conn = http.client.HTTPSConnection("seeking-alpha.p.rapidapi.com")
 
 headers = {
     'x-rapidapi-host': "seeking-alpha.p.rapidapi.com",
-    'x-rapidapi-key': md.seeking_alpha_key
+    'x-rapidapi-key': md.rapid_api_key
     }
 
 
@@ -17,7 +17,7 @@ headers = {
 # curl --request GET \
 # 	--url 'https://seeking-alpha.p.rapidapi.com/symbols/get-meta-data?symbol=aapl' \
 # 	--header 'x-rapidapi-host: seeking-alpha.p.rapidapi.com' \
-# 	--header 'x-rapidapi-key: b8e3f8e3c8msh1c3174e834acd9bp10bb99jsnba74a76fb55e'
+# 	--header 'x-rapidapi-key: $RAPID_API_KEY'
 
 def df_api_symbol_id(symbol):
     req = "/symbols/get-meta-data?symbol="+symbol

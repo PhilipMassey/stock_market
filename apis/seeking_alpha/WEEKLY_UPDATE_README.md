@@ -21,7 +21,7 @@ All company CSVs are keyed by **symbol** (one row per ticker).
 
 | Variable | Required | Purpose |
 |----------|----------|--------|
-| `SEEKING_ALPHA_KEY` | Yes | RapidAPI key for `seeking-alpha.p.rapidapi.com` |
+| `RAPID_API_KEY` | Yes | RapidAPI key for `seeking-alpha.p.rapidapi.com` |
 | `SM_DATA_DIR` | Yes | Root data directory (portfolio CSVs live here; `company_data/` is created under it) |
 | `DOWNLOAD_DIR` | No | Used by some portfolio/paths (e.g. Fidelity exports) |
 
@@ -53,7 +53,7 @@ python -m apis.seeking_alpha.weekly_update --profile-refresh
 Example: run every Sunday at 8 PM. Edit crontab with `crontab -e`:
 
 ```cron
-0 20 * * 0 SEEKING_ALPHA_KEY=your_key SM_DATA_DIR=/path/to/data DOWNLOAD_DIR=/path/to/downloads python -m apis.seeking_alpha.weekly_update >> /path/to/logs/weekly_update.log 2>&1
+0 20 * * 0 RAPID_API_KEY=your_key SM_DATA_DIR=/path/to/data DOWNLOAD_DIR=/path/to/downloads python -m apis.seeking_alpha.weekly_update >> /path/to/logs/weekly_update.log 2>&1
 ```
 
 Use the same Python/environment you use for the rest of the project (e.g. activate your venv in the cron line or wrap in a small shell script that sets env and runs the command).
@@ -79,7 +79,7 @@ Use the same Python/environment you use for the rest of the project (e.g. activa
   <string>/Users/you/stock_market</string>
   <key>EnvironmentVariables</key>
   <dict>
-    <key>SEEKING_ALPHA_KEY</key>
+    <key>RAPID_API_KEY</key>
     <string>your_key</string>
     <key>SM_DATA_DIR</key>
     <string>/path/to/data</string>

@@ -2,7 +2,7 @@ import os
 
 import market_data
 
-seeking_alpha_key = os.environ.get('SEEKING_ALPHA_KEY')
+rapid_api_key = os.environ.get('RAPID_API_KEY')
 data_dir = os.environ.get('SM_DATA_DIR')
 download_dir = os.environ.get('DOWNLOAD_DIR')
 

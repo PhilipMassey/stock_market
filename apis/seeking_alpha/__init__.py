@@ -6,5 +6,5 @@ from .mdb_sa_history import *
 
 headers = {
     'x-rapidapi-host': "seeking-alpha.p.rapidapi.com",
-    'x-rapidapi-key': md.seeking_alpha_key
+    'x-rapidapi-key': md.rapid_api_key
     }
