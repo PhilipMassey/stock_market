@@ -11,9 +11,9 @@ import pandas as pd
 from dash.exceptions import PreventUpdate
 import datetime
 
-dash.register_page(__name__, path="/"+__name__)
+dash.register_page(__name__, path="/symbol_period_ranks_2")
 
-global_cache = {
+global_cache_2 = {
     'date': None,
     'df_all_periods': None
 }
@@ -21,8 +21,8 @@ global_cache = {
 def get_all_periods_ranked():
     import scipy.stats as stats
     today = datetime.datetime.now().strftime('%Y-%m-%d %H') # Cache per hour
-    if global_cache['date'] == today and global_cache['df_all_periods'] is not None:
-        return global_cache['df_all_periods']
+    if global_cache_2['date'] == today and global_cache_2['df_all_periods'] is not None:
+        return global_cache_2['df_all_periods']
     
     symbols = md.get_symbols(md.all)
     all_dfs = []
@@ -65,8 +65,8 @@ def get_all_periods_ranked():
         all_dfs.append(df_all)
 
     df_concat = pd.concat(all_dfs, ignore_index=True)
-    global_cache['date'] = today
-    global_cache['df_all_periods'] = df_concat
+    global_cache_2['date'] = today
+    global_cache_2['df_all_periods'] = df_concat
     return df_concat
 
 # Sectors logic
@@ -85,23 +85,23 @@ else:
 dropdowns_sectors = html.Div([
     html.Div([
         html.Label('Sector', style={'font-size': '18px'}),
-        dcc.Dropdown(id='dropdown-sector-symview', options=[{'label': i, 'value': i} for i in sectors], value=None)],
+        dcc.Dropdown(id='dropdown-sector-symview-2', options=[{'label': i, 'value': i} for i in sectors], value=None)],
         style={'width': '32%', 'display': 'inline-block'}
     ),
     html.Div([
         html.Label('Industry', style={'font-size': '18px'}),
-        dcc.Dropdown(id='dropdown-industry-symview', options=[], value=None)],
+        dcc.Dropdown(id='dropdown-industry-symview-2', options=[], value=None)],
         style={'width': '32%', 'display': 'inline-block', 'marginLeft': '2%'}
     ),
     html.Div([
         html.Label('Sort Period', style={'font-size': '18px'}),
-        dcc.Dropdown(id='dropdown-period-symview', options=[{'label': p, 'value': p} for p in ['Daily', '1 Week', '2 Weeks', '1 Month', '2 Months']], value='1 Month')],
+        dcc.Dropdown(id='dropdown-period-symview-2', options=[{'label': p, 'value': p} for p in ['Daily', '1 Week', '2 Weeks', '1 Month', '2 Months']], value='1 Month')],
         style={'width': '32%', 'display': 'inline-block', 'marginLeft': '2%'}
     ),
 ], style={'width': '100%', 'margin-bottom': '20px'})
 
 table_1 = dt.DataTable(
-    id='table-1-symbols',
+    id='table-1-symbols-2',
     columns=[
         {'name': 'Sector', 'id': 'Sector'},
         {'name': 'Industry', 'id': 'Industry'},
@@ -124,9 +124,9 @@ table_1 = dt.DataTable(
 )
 
 table_2 = html.Div([
-    html.H3(id='table-2-title', style={'margin-top': '40px', 'text-align': 'center'}),
+    html.H3(id='table-2-title-2', style={'margin-top': '40px', 'text-align': 'center'}),
     dt.DataTable(
-        id='table-2-periods',
+        id='table-2-periods-2',
         columns=[],
         data=[],
         style_cell={
@@ -143,9 +143,9 @@ table_2 = html.Div([
 
 def serve_layout():
     return html.Div([
-        html.H3("Symbol Multi-Period Rank Viewer", style={'text-align': 'center', 'paddingTop': '20px', 'fontSize': '18px'}),
+        html.H3("Symbol Multi-Period Rank Viewer 2", style={'text-align': 'center', 'paddingTop': '20px', 'fontSize': '18px'}),
         dcc.Loading(
-            id="loading-1",
+            id="loading-1-2",
             type="circle",
             children=[
                 dropdowns_sectors,
@@ -153,14 +153,14 @@ def serve_layout():
                 table_2
             ]
         ),
-        html.Div(id="loading-div-dummy", style={'display': 'none'}) # Just to force loading state if needed
+        html.Div(id="loading-div-dummy-2", style={'display': 'none'}) # Just to force loading state if needed
     ])
 
 layout = serve_layout
 
 @callback(
-    Output('dropdown-industry-symview', 'options'),
-    [Input('dropdown-sector-symview', 'value')]
+    Output('dropdown-industry-symview-2', 'options'),
+    [Input('dropdown-sector-symview-2', 'value')]
 )
 def update_dropdown_industries(value):
     if value is not None and not df_sector_ind.empty and 'sector' in df_sector_ind.columns:
@@ -169,12 +169,12 @@ def update_dropdown_industries(value):
     return []
 
 @callback(
-    Output('table-1-symbols', 'data'),
-    Output('table-1-symbols', 'selected_rows'),
-    Input('dropdown-sector-symview', 'value'),
-    Input('dropdown-industry-symview', 'value'),
-    Input('dropdown-period-symview', 'value'),
-    Input('loading-div-dummy', 'children') # Trigger on load to get full list initially
+    Output('table-1-symbols-2', 'data'),
+    Output('table-1-symbols-2', 'selected_rows'),
+    Input('dropdown-sector-symview-2', 'value'),
+    Input('dropdown-industry-symview-2', 'value'),
+    Input('dropdown-period-symview-2', 'value'),
+    Input('loading-div-dummy-2', 'children') # Trigger on load to get full list initially
 )
 def update_symbol_table(sector, industry, period, dummy):
     df_all = get_all_periods_ranked()
@@ -197,11 +197,11 @@ def update_symbol_table(sector, industry, period, dummy):
     return df_unique.to_dict('records'), []
 
 @callback(
-    Output('table-2-periods', 'data'),
-    Output('table-2-periods', 'columns'),
-    Output('table-2-title', 'children'),
-    Input('table-1-symbols', 'selected_rows'),
-    State('table-1-symbols', 'data')
+    Output('table-2-periods-2', 'data'),
+    Output('table-2-periods-2', 'columns'),
+    Output('table-2-title-2', 'children'),
+    Input('table-1-symbols-2', 'selected_rows'),
+    State('table-1-symbols-2', 'data')
 )
 def update_period_table(selected_rows, table_1_data):
     if not selected_rows or not table_1_data:

@@ -57,11 +57,17 @@ def load_portfolio_data():
 # Load data at startup
 df_portfolio_value = load_portfolio_data()
 
-def create_sector_fig():
-    if df_portfolio_value.empty:
+def create_sector_fig(directory=None, port=None):
+    if directory is not None:
+        symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
+        df_filtered = df_portfolio_value[df_portfolio_value['Symbol'].isin(symbols)]
+    else:
+        df_filtered = df_portfolio_value
+
+    if df_filtered.empty:
         return go.Figure()
     
-    summary = df_portfolio_value.groupby('Sector')['Total Value'].sum().reset_index()
+    summary = df_filtered.groupby('Sector')['Total Value'].sum().reset_index()
     title = "Total Value by Sector"
 
     fig = px.pie(
@@ -74,10 +80,24 @@ def create_sector_fig():
     return fig
 
 # --- LAYOUT ---
+dirs = md.get_portfolio_dirs()
+dropdowns_ports = html.Div([
+    html.Div([
+        html.Label('Portfolio Directories'),
+        dcc.Dropdown(id='dropdown-dirs-siv', options=[{'label': i, 'value': i} for i in dirs], value=None)],
+        style={'width': '49%', 'float': 'left'}
+    ),
+    html.Div([
+        html.Label('Portfolios'),
+        dcc.Dropdown(id='dropdown-ports-siv', options=[], value=None)],
+        style={'width': '49%', 'float': 'right'}
+    ),
+], style={'width': '100%', 'display': 'inline-block'})
 
 layout = html.Div([
     html.H3("Portfolio Sector Value",
             style={'textAlign': 'center', 'fontFamily': 'sans-serif', 'paddingTop': '20px', 'fontSize': '18px'}),
+    dropdowns_ports,
 
     html.Div([
         html.Div([dcc.Graph(id='sector-pie-chart', figure=create_sector_fig())], style={'width': '48%', 'display': 'inline-block'}),
@@ -141,18 +161,44 @@ layout = html.Div([
 # --- CALLBACKS ---
 
 @callback(
+    Output('dropdown-ports-siv', 'options'),
+    [Input('dropdown-dirs-siv', 'value')]
+)
+def update_dropdown_ports(value):
+    if value is not None:
+        df_port_symbols = md.get_dir_port_symbols(value)
+        return [{'label': i, 'value': i} for i in sorted(df_port_symbols["portfolio"].unique())]
+    return []
+
+@callback(
+    Output('sector-pie-chart', 'figure'),
+    [Input('dropdown-dirs-siv', 'value'),
+     Input('dropdown-ports-siv', 'value')]
+)
+def update_sector_chart_callback(directory, port):
+    return create_sector_fig(directory, port)
+
+@callback(
     [Output('industry-pie-chart', 'figure'),
      Output('symbol-table', 'data'),
      Output('table-title', 'children'),
      Output('symbol-table', 'selected_rows')],
-    [Input('sector-pie-chart', 'clickData')]
+    [Input('sector-pie-chart', 'clickData'),
+     Input('dropdown-dirs-siv', 'value'),
+     Input('dropdown-ports-siv', 'value')]
 )
-def update_industry_and_table(clickData):
+def update_industry_and_table(clickData, directory, port):
+    if directory is not None:
+        symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
+        df_filtered_port = df_portfolio_value[df_portfolio_value['Symbol'].isin(symbols)]
+    else:
+        df_filtered_port = df_portfolio_value
+
     if not clickData:
         return go.Figure(), [], "Select a Sector slice to see details", []
 
     selected_sector = clickData['points'][0]['label']
-    df_filtered = df_portfolio_value[df_portfolio_value['Sector'] == selected_sector]
+    df_filtered = df_filtered_port[df_filtered_port['Sector'] == selected_sector]
 
     if df_filtered.empty:
         return go.Figure(), [], f"No details for Sector: {selected_sector}", []
@@ -181,9 +227,11 @@ def update_industry_and_table(clickData):
 @callback(
     Output('symbol-detail-value-table', 'data'),
     [Input('symbol-table', 'selected_rows'),
-     State('symbol-table', 'data')] 
+     State('symbol-table', 'data'),
+     State('dropdown-dirs-siv', 'value'),
+     State('dropdown-ports-siv', 'value')] 
 )
-def update_symbol_detail_table(selected_rows, industry_table_data):
+def update_symbol_detail_table(selected_rows, industry_table_data, directory, port):
     if not selected_rows or not industry_table_data:
         return []
     
@@ -195,7 +243,14 @@ def update_symbol_detail_table(selected_rows, industry_table_data):
     selected_industry = industry_table_data[row_idx]['Industry']
     
     # Filter the full dataset for this industry
-    df_symbols = df_portfolio_value[df_portfolio_value['Industry'] == selected_industry].copy()
+    if directory is not None:
+        symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
+        df_symbols = df_portfolio_value[
+            (df_portfolio_value['Industry'] == selected_industry) & 
+            (df_portfolio_value['Symbol'].isin(symbols))
+        ].copy()
+    else:
+        df_symbols = df_portfolio_value[df_portfolio_value['Industry'] == selected_industry].copy()
     
     # Sort and format
     df_symbols = df_symbols[['Symbol', 'Total Value']]

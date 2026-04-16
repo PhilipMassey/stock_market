@@ -100,6 +100,19 @@ dropdowns_sectors = html.Div([
     ),
 ], style={'width': '100%', 'margin-bottom': '20px'})
 
+dropdowns_ports = html.Div([
+    html.Div([
+        html.Label('Portfolio Directories', style={'font-size': '18px'}),
+        dcc.Dropdown(id='dropdown-dirs-symview', options=[{'label': i, 'value': i} for i in md.get_portfolio_dirs()], value=None)],
+        style={'width': '48%', 'display': 'inline-block'}
+    ),
+    html.Div([
+        html.Label('Portfolios', style={'font-size': '18px'}),
+        dcc.Dropdown(id='dropdown-ports-symview', options=[], value=None)],
+        style={'width': '48%', 'display': 'inline-block', 'marginLeft': '2%'}
+    ),
+], style={'width': '100%', 'margin-bottom': '20px'})
+
 table_1 = dt.DataTable(
     id='table-1-symbols',
     columns=[
@@ -144,6 +157,7 @@ table_2 = html.Div([
 def serve_layout():
     return html.Div([
         html.H3("Symbol Multi-Period Rank Viewer", style={'text-align': 'center', 'paddingTop': '20px', 'fontSize': '18px'}),
+        dropdowns_ports,
         dcc.Loading(
             id="loading-1",
             type="circle",
@@ -169,16 +183,32 @@ def update_dropdown_industries(value):
     return []
 
 @callback(
+    Output('dropdown-ports-symview', 'options'),
+    [Input('dropdown-dirs-symview', 'value')]
+)
+def update_dropdown_ports(value):
+    if value is not None:
+        df_port_symbols = md.get_dir_port_symbols(value)
+        return [{'label': i, 'value': i} for i in sorted(df_port_symbols["portfolio"].unique())]
+    return []
+
+@callback(
     Output('table-1-symbols', 'data'),
     Output('table-1-symbols', 'selected_rows'),
     Input('dropdown-sector-symview', 'value'),
     Input('dropdown-industry-symview', 'value'),
     Input('dropdown-period-symview', 'value'),
+    Input('dropdown-dirs-symview', 'value'),
+    Input('dropdown-ports-symview', 'value'),
     Input('loading-div-dummy', 'children') # Trigger on load to get full list initially
 )
-def update_symbol_table(sector, industry, period, dummy):
+def update_symbol_table(sector, industry, period, directory, port, dummy):
     df_all = get_all_periods_ranked()
     
+    if directory is not None:
+        symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
+        df_all = df_all[df_all['symbol'].isin(symbols)]
+        
     # Isolate specifically by the sorted period requested
     if period:
         df_period = df_all[df_all['Period'] == period]

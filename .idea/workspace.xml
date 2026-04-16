@@ -5,32 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="Antigravity init">
+      <change afterPath="$PROJECT_DIR$/market_data/exchange_api/test_yf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/exchange_api/yfance_in_jupyter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/scripts/fix_xlsx.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/percent_app/pages/symbol_period_ranks_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temp.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_parse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/WEEKLY_UPDATE_README.md" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/WEEKLY_UPDATE_README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/analysis_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/analysis_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/etf top 10 holdings.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/etf top 10 holdings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/filters_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/filters_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/get_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/get_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/holdings_ex.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/holdings_ex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/httml_client_ex.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/httml_client_ex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/request_ex.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/request_ex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/filters list.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/filters list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/get_details.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/get_details.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/screeners_ex.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/screeners_ex.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/screens list.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/screener/screens list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/top rated stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/top rated stocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/examples/valuation.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/examples/valuation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/api_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/screener_details_apis/api_methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/apis_df_symbol_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/apis_df_symbol_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/symbol earnings.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/symbol_financial_info/symbol earnings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/update_symbol_profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apis/seeking_alpha/weekly_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/apis/seeking_alpha/weekly_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Bonds.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Corporate Bonds.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_data/data/Bonds/Municipal Bonds.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange_api/dates.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange_api/dates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/exchange_api/yfinance_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/exchange_api/yfinance_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/mdb_missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/scripts/run fix xlsx.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/run fix xlsx.zsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.zsh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +100,7 @@
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
     &quot;Python.update_adjustment_with_fidelity.executor&quot;: &quot;Run&quot;,
     &quot;Python.update_symbol_profile.executor&quot;: &quot;Run&quot;,
+    &quot;Python.yfinance_api.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Shell Script.run fix xlsx.zsh.executor&quot;: &quot;Run&quot;,
@@ -282,9 +271,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.compare_current_and_sa" />
       <item itemvalue="Python.holding_portfolios_update" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.symbols_from_excel" />
       <item itemvalue="Python.update_adjustment_with_fidelity" />
       <item itemvalue="Python.update_symbol_profile" />

@@ -1,3 +1,1 @@
-
-
-node ~/stock_market/market_data/scripts/fix_xlsx.js
+python3 ~/stock_market/market_data/scripts/fix_xlsx.py
