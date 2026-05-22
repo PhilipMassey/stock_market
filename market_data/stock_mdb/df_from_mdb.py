@@ -19,25 +19,25 @@ def get_df_from_mdb_for_nday(ndays, coll_name, symbols='', incl='', dateidx=True
     if len(incl) != 0:
         symbols = md.get_symbols(incl)
     if db_coll.count_documents({'Date': adate}) > 0:
-        if len(symbols) > 0:
-            symbols.append('Date')  # Date field to be included in mdb results
-            mdb_data = db_coll.find({'Date': adate},symbols)
-            symbols.remove('Date')
-        else:
-            mdb_data = db_coll.find({'Date': adate})
+        mdb_data = db_coll.find({'Date': adate})
         df = md.mdb_to_df(mdb_data, dateidx)
+        if len(symbols) > 0:
+            cols_to_keep = [s for s in symbols if s in df.columns]
+            df = df[cols_to_keep]
     #print('mdb records {} for {} symbols on {}'.format(df.size,len(symbols),adate),end=', ')
     return df
 
 
 def df_from_mdb_all_data(db_coll_name, columns=[], dateidx=False):
     db_coll = db[db_coll_name]
-    if len(columns) != 0:
-        columns.append('Date')
-        mdb_data= db_coll.find({}, columns)
-    else:
-        mdb_data= db_coll.find({})
-    return md.mdb_to_df(mdb_data, dateidx=dateidx)
+    mdb_data= db_coll.find({})
+    df = md.mdb_to_df(mdb_data, dateidx=dateidx)
+    if len(columns) > 0:
+        cols_to_keep = [c for c in columns if c in df.columns]
+        if dateidx == False and 'Date' in df.columns and 'Date' not in cols_to_keep:
+            cols_to_keep.append('Date')
+        df = df[cols_to_keep]
+    return df
 
 def df_from_mdb(db_coll_name,columns=[]):
     db_coll = db[db_coll_name]
@@ -60,25 +60,28 @@ def df_mdb_clossins_for_ndays_range(ndays_range, symbols):
 def get_df_from_mdb_between_days(ndays_ago, dbcol_name, symbols='', incl=md.all, last_day=1):
     db_coll = db[dbcol_name]
     start_date = md.get_date_for_mdb(ndays_ago)
-    if not 'Date' in symbols:
-        symbols.append('Date')
     df = pd.DataFrame({})
     if last_day==1:     #last instert
-        mdb_data = db_coll.find({'Date': {'$gte':start_date}},symbols)
+        mdb_data = db_coll.find({'Date': {'$gte':start_date}})
     else:
         end_date = md.get_date_for_mdb(start)
-        mdb_data = db_coll.find({'Date': {'$lte':end_date, '$gte':start_date}},symbols)
+        mdb_data = db_coll.find({'Date': {'$lte':end_date, '$gte':start_date}})
     df = md.mdb_to_df(mdb_data, dateidx=True)
+    if len(symbols) > 0:
+        cols_to_keep = [s for s in symbols if s in df.columns]
+        df = df[cols_to_keep]
     return df
 
 
 ### SYMBOL queries
 
 def get_df_from_mdb_columns(columns, dbcol_name):
-    columns.append('Date')
     db_coll = db[dbcol_name]
-    mdb_data= db_coll.find({}, columns)
+    mdb_data= db_coll.find({})
     df = md.mdb_to_df(mdb_data, dateidx=True)
+    if len(columns) > 0:
+        cols_to_keep = [c for c in columns if c in df.columns]
+        df = df[cols_to_keep]
     return df
 
 

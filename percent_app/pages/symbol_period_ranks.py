@@ -142,6 +142,7 @@ table_2 = html.Div([
         id='table-2-periods',
         columns=[],
         data=[],
+        export_format='csv',
         style_cell={
             'font_family': 'arial',
             'font_size': '20px',

@@ -28,6 +28,7 @@ db_symbol_profile = 'symbol_profile'
 db_symbol_profile_cache = 'symbol_profile_cache'  # RapidAPI get-profile cache for weekly refresh
 db_symbol_info = 'symbol_info'
 db_fidel_pos = 'FidelityPositions'
+db_fidel_pos_daily = 'FidelityPositionsDaily'
 portfolio_adjustments = 'Portfolio Adjustments'
 dct_workbook_url = {'Portfolio Adjustments': 'https://docs.google.com/spreadsheets/d/1bTsH3cjQDGR-Mlnq-bypRqhGIHJApKKJgsgXWSemur4/edit#gid=0',
     'Dividends': 'https://docs.google.com/spreadsheets/d/1N1zyOStCH-gvYAgCnv6vtmsTkp6q7R8rpAnzwv9W1sI/edit?gid=0',

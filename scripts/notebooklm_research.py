@@ -15,9 +15,9 @@ async def automate_research(ticker, company_name):
         }},
         "sort": [{ "filedAt": { "order": "desc" } }]
     }
-    #filings = sec_query.get_filings(query)
-    #annual_report_url = filings['filings'][0]['linkToFilingDetails']
-    annual_report_url = 'https://www.sec.gov/Archives/edgar/data/1298946/000129894625000015/drh-20241231.htm'
+    filings = sec_query.get_filings(query)
+    annual_report_url = filings['filings'][0]['linkToFilingDetails']
+    #annual_report_url = 'https://www.sec.gov/Archives/edgar/data/1298946/000129894625000015/drh-20241231.htm'
     quarterly_report_url = 'https://www.investing.com/news/transcripts/earnings-call-transcript-diamondrock-beats-q4-2025-expectations-93CH-4532045'
     # STEP B: Connect to NotebookLM
     async with await NotebookLMClient.from_storage() as client:

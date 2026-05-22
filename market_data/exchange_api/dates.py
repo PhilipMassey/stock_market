@@ -1,16 +1,16 @@
+import market_data
 import numpy as np
 import pandas as pd
 import pandas_market_calendars as mcal
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import pytz
+from datetime import datetime, timedelta
+nyse = mcal.get_calendar("NYSE")
+import pytz
 
 def get_ny_now():
     return datetime.now(pytz.timezone('America/New_York')).replace(tzinfo=None)
-
-import market_data
-
-nyse = mcal.get_calendar("NYSE")
 
 def get_busdate_ndays_ago(ndays):
     strdate = '{:%Y-%m-%d}'.format(get_ny_now())
@@ -76,6 +76,26 @@ def get_ndate_and_todate(ndays, period):
     enddate = get_busdate_ndays_ago(ndays)
     return strdate,enddate
 
+
+def get_schedule():
+    today = datetime.now(pytz.timezone("America/New_York")).date()
+    schedule = nyse.valid_days(
+        start_date=today - timedelta(days=370),
+        end_date=today  # - timedelta(days=1),
+    )
+    return schedule
+
+
+def get_business_days(schedule):
+    # to_date: last completed NYSE trading day
+    to_date = schedule[-1].date()
+
+    # from_date: most recent trading day on or before one year before to_date
+    one_year_ago = to_date.replace(year=to_date.year - 1)
+    from_date = max(d.date() for d in schedule if d.date() <= one_year_ago)
+
+    business_days = [d.date() for d in reversed(schedule) if from_date <= d.date() <= to_date]
+    return business_days
 
 
 

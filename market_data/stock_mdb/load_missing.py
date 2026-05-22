@@ -10,11 +10,11 @@ def update_mdb_with_missing_row(ndays, symbols, load_missing_failed):
     print('ndays {} is the {}'.format(ndays,strdate), end=', ')
     df_m, dbaction, symbols = get_missing_market_row(ndays, symbols, load_missing_failed)
     if df_m.size > 0:
-        print(int(df_m.size/2),dbaction)
+        print(int(df_m.size),dbaction, end=', ')
         if dbaction == 'ADD':
-            add_dfclosevol_row_to_dbs(df_m)
+            md.add_row_to_mdb(df_m, md.db_close)
         elif dbaction == 'UPDATE':
-            update_mdbs_row(df_m)
+            md.update_mdb_with_dfrow(df['Close'], md.db_close)
     return symbols
 
 def get_missing_market_row(ndays, symbols, load_missing_failed):
@@ -57,13 +57,3 @@ def get_missing_market_row(ndays, symbols, load_missing_failed):
             
     return (df_missing,dbaction, symbols)
 
-
-def add_dfclosevol_row_to_dbs(df):
-    if 'Close' in df:
-        md.add_df_to_db(df['Close'], md.db_close)
-#    md.add_df_to_db(df['Volume'], md.db_volume)
-
-def update_mdbs_row(df):
-    if 'Close' in df:
-        md.update_mdb_with_dfrow(df['Close'], md.db_close)
-    #md.update_mdb_with_dfrow(df['Volume'], md.db_volume)

@@ -127,7 +127,7 @@ def mdb_add_symbols_profiles_for_directory(ndays, directory, db_coll_name):
         cols = [c for c in PROFILE_REPORT_FIELDS if c in df.columns]
         df = df[cols].copy()
         md.df_add_ndays_date_column(ndays, df)
-        md.mdb_add_df(df, db_coll_name)
+        md.add_df_to_db(df, db_coll_name)
         mdb_symbols.extend(not_added_symbols)
 
 def update_symbol_profile():
