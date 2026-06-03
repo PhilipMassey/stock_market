@@ -76,6 +76,7 @@ def get_nbusdays_from_date(date):
 
 def mdb_document_count(bday, db_coll_name):
     adate = to_dt(bday)
+    db = md.get_mongo_database(md.db_client)
     db_coll = db[db_coll_name]
     return db_coll.count_documents({'Date': adate})
 

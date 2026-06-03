@@ -238,21 +238,6 @@ def update_symbol_table(sector, industry, period, directory, port, rank_filter_v
     if directory is not None:
         symbols = md.get_symbols_dir_or_port(directory=directory, port=port)
         df_all = df_all[df_all['symbol'].isin(symbols)]
-    
-    # Filter by rank slider value across all periods to count records per symbol
-    if rank_filter_value is not None:
-        df_all_filtered = df_all[df_all['risk_reward_rank'] <= rank_filter_value]
-    else:
-        df_all_filtered = df_all.copy()
-    
-    # Count how many periods each symbol has with the rank filter applied
-    symbol_period_counts = df_all_filtered.groupby('symbol').size()
-    valid_symbols = symbol_period_counts[symbol_period_counts >= 4].index.tolist()
-    
-    # Now filter to only include valid symbols
-    df_all = df_all[df_all['symbol'].isin(valid_symbols)]
-    if rank_filter_value is not None:
-        df_all = df_all[df_all['risk_reward_rank'] <= rank_filter_value]
         
     # Isolate specifically by the sorted period requested
     if period:
@@ -266,6 +251,10 @@ def update_symbol_table(sector, industry, period, directory, port, rank_filter_v
         df_unique = df_unique[df_unique['sector'] == sector]
     elif sector is not None and industry is not None:
         df_unique = df_unique[df_unique['industry'] == industry]
+    
+    # Filter by rank slider value (rank must be <= selected value)
+    if rank_filter_value is not None:
+        df_unique = df_unique[df_unique['risk_reward_rank'] <= rank_filter_value]
         
     df_unique = df_unique.sort_values(by=['risk_reward_rank', 'sector', 'industry', 'symbol'])
     df_unique.rename(columns={'sector': 'Sector', 'industry': 'Industry', 'symbol': 'Symbol'}, inplace=True)
@@ -276,30 +265,17 @@ def update_symbol_table(sector, industry, period, directory, port, rank_filter_v
     Output('table-2-periods', 'columns'),
     Output('table-2-title', 'children'),
     Input('table-1-symbols', 'selected_rows'),
-    Input('slider-rank-filter', 'value'),
     State('table-1-symbols', 'data')
 )
-def update_period_table(selected_rows, rank_filter_value, table_1_data):
+def update_period_table(selected_rows, table_1_data):
     if not selected_rows or not table_1_data:
         return [], [], "Select a symbol to view its multi-period ranks"
         
     selected_idx = selected_rows[0]
-    
-    # Check if selected index is still valid in filtered data
-    if selected_idx >= len(table_1_data):
-        return [], [], "Select a symbol to view its multi-period ranks"
-    
     selected_symbol = table_1_data[selected_idx]['Symbol']
     
     df_all = get_all_periods_ranked()
     df_sym = df_all[df_all['symbol'] == selected_symbol].copy()
-    
-    # Filter by rank slider value
-    if rank_filter_value is not None:
-        df_sym = df_sym[df_sym['risk_reward_rank'] <= rank_filter_value]
-    
-    if df_sym.empty:
-        return [], [], f"{selected_symbol} - No data matches the current rank filter"
     
     rename_dict = {
         'Period': 'Period', 'Date Range': 'Date Range',
