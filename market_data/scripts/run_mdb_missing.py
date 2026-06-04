@@ -10,7 +10,6 @@ from datetime import datetime, timedelta
 import pandas_market_calendars as mcal
 import sys
 import yfinance as yf
-
 nyse = mcal.get_calendar("NYSE")
 import pytz
 
@@ -38,7 +37,7 @@ def to_dt(d):
 
 def get_df_from_mdb_for_bbay(bday, coll_name, symbols='', incl='', dateidx=True):
     from market_data.stock_mdb.mongo_connection_manager import get_mongo_database
-    db = get_mongo_database(md.db_client)
+    db = md.get_mongo_database(md.db_client)
     db_coll = db[coll_name]
     adate = to_dt(bday)
     df = pd.DataFrame({})
@@ -124,6 +123,7 @@ def get_missing_market_row(bday, symbols, load_missing_failed):
 
 def mdb_add_df(df, db_coll_name):
     data_dict = df.to_dict("records")
+    db = md.get_mongo_database(md.db_client)
     db_coll = db[db_coll_name]
     result = db_coll.insert_many(data_dict)
     return len(result.inserted_ids)
