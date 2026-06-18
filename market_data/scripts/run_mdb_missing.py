@@ -161,6 +161,7 @@ def get_mdbdate_from_strdate(strDate):
 
 
 def update_mdb_with_dfrow(df_m, coll_name):
+    db = md.get_mongo_database(md.db_client)
     db_coll = db[coll_name]
     dt = df_idxdate_to_mdbdate(df_m)
 
