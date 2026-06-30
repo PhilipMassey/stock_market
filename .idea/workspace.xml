@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="Antigravity init">
+    <list default="true" id="3b1ac632-32a8-4c4a-b74c-14e29b726368" name="Changes" comment="run missing again">
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/market_data/portfolio/compare_current_and_sa.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/portfolio/compare_current_and_sa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.zsh" beforeDir="false" afterPath="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.zsh" afterDir="false" />
     </list>
@@ -55,71 +58,71 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.FidelityAdjustmentRunner.executor": "Run",
-    "Python.FidelityPositions.executor": "Run",
-    "Python.FidelityPositionsRunner.executor": "Run",
-    "Python.PortfolioAssignments.executor": "Run",
-    "Python.PortfolioCalculate.executor": "Run",
-    "Python.PortfolioUpdate.executor": "Run",
-    "Python.__init__.executor": "Run",
-    "Python.adjustment_worlbook_update.executor": "Run",
-    "Python.app (1).executor": "Run",
-    "Python.app (2).executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.app_old.executor": "Run",
-    "Python.app_org.executor": "Run",
-    "Python.check_pymongo.executor": "Run",
-    "Python.company_urls.executor": "Run",
-    "Python.compare_current_and_sa.executor": "Run",
-    "Python.dash_fidelity_value_change_sector_industry.executor": "Run",
-    "Python.dash_fidelity_value_change_sector_industry_bar.executor": "Run",
-    "Python.dash_fidelity_value_sector_industry.executor": "Run",
-    "Python.dash_sector_industry_value.executor": "Run",
-    "Python.fidelity positions.executor": "Run",
-    "Python.fidelity_positions.executor": "Run",
-    "Python.fidelity_positions_update.executor": "Run",
-    "Python.fix_xlsx.executor": "Run",
-    "Python.get_id.executor": "Run",
-    "Python.google_auth.executor": "Run",
-    "Python.holding_portfolios_update.executor": "Run",
-    "Python.mdb_missing.executor": "Run",
-    "Python.plot_percent_change_bubble.executor": "Run",
-    "Python.read_fidexport_file_holding.executor": "Run",
-    "Python.run_mdb_missing.executor": "Run",
-    "Python.sector_industry_value.executor": "Run",
-    "Python.spotify list.executor": "Run",
-    "Python.symbol earnings.executor": "Run",
-    "Python.symbol_portfolio_analysis.executor": "Run",
-    "Python.symbols_from_excel.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test_bday.executor": "Run",
-    "Python.text.executor": "Run",
-    "Python.update_adjustment_with_fidelity.executor": "Run",
-    "Python.update_fidelity_postions_daily.executor": "Run",
-    "Python.update_symbol_profile.executor": "Run",
-    "Python.yfinance_api.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHELLCHECK.PATH": "/Users/philipmassey/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/Shell Script/shellcheck",
-    "Shell Script.run fix xlsx.zsh.executor": "Run",
-    "Shell Script.run_percent_app.zsh.executor": "Debug",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/philipmassey/stock_market/percent_app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.FidelityAdjustmentRunner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.FidelityPositions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.FidelityPositionsRunner.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PortfolioAssignments.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PortfolioCalculate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PortfolioUpdate.executor&quot;: &quot;Run&quot;,
+    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
+    &quot;Python.adjustment_worlbook_update.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app_old.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app_org.executor&quot;: &quot;Run&quot;,
+    &quot;Python.check_pymongo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.company_urls.executor&quot;: &quot;Run&quot;,
+    &quot;Python.compare_current_and_sa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_fidelity_value_change_sector_industry.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_fidelity_value_change_sector_industry_bar.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_fidelity_value_sector_industry.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dash_sector_industry_value.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fidelity positions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fidelity_positions.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fidelity_positions_update.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fix_xlsx.executor&quot;: &quot;Run&quot;,
+    &quot;Python.get_id.executor&quot;: &quot;Run&quot;,
+    &quot;Python.google_auth.executor&quot;: &quot;Run&quot;,
+    &quot;Python.holding_portfolios_update.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mdb_missing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plot_percent_change_bubble.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_fidexport_file_holding.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_mdb_missing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sector_industry_value.executor&quot;: &quot;Run&quot;,
+    &quot;Python.spotify list.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbol earnings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbol_portfolio_analysis.executor&quot;: &quot;Run&quot;,
+    &quot;Python.symbols_from_excel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_bday.executor&quot;: &quot;Run&quot;,
+    &quot;Python.text.executor&quot;: &quot;Run&quot;,
+    &quot;Python.update_adjustment_with_fidelity.executor&quot;: &quot;Run&quot;,
+    &quot;Python.update_fidelity_postions_daily.executor&quot;: &quot;Run&quot;,
+    &quot;Python.update_symbol_profile.executor&quot;: &quot;Run&quot;,
+    &quot;Python.yfinance_api.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/philipmassey/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.run fix xlsx.zsh.executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.run_percent_app.zsh.executor&quot;: &quot;Debug&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/philipmassey/stock_market/percent_app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="stock_market" is-module-sdk="true">
@@ -143,7 +146,7 @@
       <recent name="$PROJECT_DIR$/market_data/portfolio" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.run_mdb_missing">
+  <component name="RunManager" selected="Python.update_symbol_profile">
     <configuration name="compare_current_and_sa" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
@@ -218,7 +221,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_mdb_missing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="symbols_from_excel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="stock_market" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -227,13 +230,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/scripts" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/market_data/xlsx_data" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/scripts/run_mdb_missing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/market_data/xlsx_data/symbols_from_excel.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -292,19 +295,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.symbols_from_excel" />
       <item itemvalue="Python.holding_portfolios_update" />
       <item itemvalue="Python.update_adjustment_with_fidelity" />
-      <item itemvalue="Python.run_mdb_missing" />
       <item itemvalue="Python.update_symbol_profile" />
       <item itemvalue="Python.compare_current_and_sa" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.run_mdb_missing" />
         <item itemvalue="Python.update_symbol_profile" />
         <item itemvalue="Python.compare_current_and_sa" />
         <item itemvalue="Python.update_adjustment_with_fidelity" />
         <item itemvalue="Python.holding_portfolios_update" />
+        <item itemvalue="Python.symbols_from_excel" />
       </list>
     </recent_temporary>
   </component>
@@ -370,7 +373,8 @@
     <MESSAGE value="remove dash_labs get gigi with it" />
     <MESSAGE value="Sector Industry Value" />
     <MESSAGE value="Antigravity init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Antigravity init" />
+    <MESSAGE value="run missing again" />
+    <option name="LAST_COMMIT_MESSAGE" value="run missing again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

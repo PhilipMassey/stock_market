@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+import sys
+# Add the project root to the Python path
+sys.path.append("/Users/philipmassey/stock_market")
 
+import market_data as md
 import market_data as md
 from datetime import datetime
 import pandas as pd
