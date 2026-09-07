@@ -26,13 +26,13 @@ def load_portfolio_data():
 
     def get_val_df(a_date):
         if not a_date:
-            return pd.DataFrame(columns=['Date', 'Symbol', 'Current Value']).set_index('Symbol')
+            return pd.DataFrame(columns=['Date', 'Symbol', 'Current value']).set_index('Symbol')
         query = {"Date": a_date}
         mdb_data = collection.find(query)
         df = md.mdb_to_df(mdb_data)
         if df.empty:
-             return pd.DataFrame(columns=['Date', 'Symbol', 'Current Value']).set_index('Symbol')
-        return df[['Date', 'Symbol', 'Current Value']].set_index('Symbol')
+             return pd.DataFrame(columns=['Date', 'Symbol', 'Current value']).set_index('Symbol')
+        return df[['Date', 'Symbol', 'Current value']].set_index('Symbol')
 
     curr_vals = get_val_df(current_date)
 
@@ -40,7 +40,7 @@ def load_portfolio_data():
         return pd.DataFrame(columns=['Sector', 'Symbol', 'Industry', 'Total Value'])
 
     # Use Current Value directly
-    df_curr_val = curr_vals[['Current Value']].reset_index()
+    df_curr_val = curr_vals[['Current value']].reset_index()
     df_curr_val.columns = ['Symbol', 'Total Value']
     df_curr_val = df_curr_val.dropna()
 

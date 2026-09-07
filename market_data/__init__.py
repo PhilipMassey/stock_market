@@ -4,10 +4,11 @@ import market_data
 
 rapid_api_key = os.environ.get('RAPID_API_KEY')
 data_dir = os.environ.get('SM_DATA_DIR')
+data_dir = '/Users/philipmassey/stock_market/market_data/data'
 download_dir = os.environ.get('DOWNLOAD_DIR')
 
 #FOLDERS
-portfolios = ['Dividends', 'ETFs', 'Stocks','International', 'Shorts','Others']
+portfolios = ['Dividends', 'ETFs', 'Stocks','International', 'Shorts']
 all = 'ALL'
 ark = 'ARK'
 etf = 'ETF'

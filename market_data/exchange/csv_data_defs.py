@@ -25,7 +25,7 @@ def portfolio_from_file(subdir,file):
 
 def get_dir_port_symbols(subdir):
     path = os.path.join(md.data_dir, subdir)
-    csv_files = [f for f in listdir(path) if isfile(join(path, f))]
+    csv_files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswith('.csv')]
     dfall = pd.DataFrame(columns=('portfolio', 'symbol'))
     for file in csv_files:
         dfall = pd.concat([dfall, portfolio_from_file(subdir, file)], axis=0)

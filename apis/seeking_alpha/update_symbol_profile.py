@@ -29,7 +29,7 @@ headers = {
     "x-rapidapi-host": "seeking-alpha.p.rapidapi.com",
     "x-rapidapi-key": md.rapid_api_key,
 }
-
+print(md.rapid_api_key)
 
 def dct_api_symbol_profile(symbols):
     dct_symbol_profile = {}

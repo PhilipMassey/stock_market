@@ -9,7 +9,7 @@ from os.path import join
 import pandas as pd
 import market_data as md
 
-from .symbol_financial_info.mdb_in_out import df_symbol_profile
+from .symbol_financial_info.mdb_in_out_profile import df_symbol_profile
 
 # Subdir under SM_DATA_DIR for company CSVs (None = data_dir root)
 COMPANY_CSV_SUBDIR = "company_data"

@@ -29,7 +29,7 @@ print("\n2. Testing import of apis module...")
 try:
     # Add the path if needed
     sys.path.insert(0, '/Users/philipmassey/stock_market')
-    import apis.seeking_alpha.symbol_financial_info.mdb_in_out as mdb_in_out
+    import apis.seeking_alpha.symbol_financial_info.mdb_in_out_profile as mdb_in_out
     print("✓ Module import successful")
 except Exception as e:
     print(f"✗ Module import failed: {e}")

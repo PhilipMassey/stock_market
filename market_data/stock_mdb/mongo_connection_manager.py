@@ -84,7 +84,7 @@ def get_sectors_industry_cached():
     try:
         import sys
         sys.path.insert(0, '/Users/philipmassey/stock_market')
-        import apis.seeking_alpha.symbol_financial_info.mdb_in_out as mdb_in_out
+        import apis.seeking_alpha.symbol_financial_info.mdb_in_out_profile as mdb_in_out
 
         # print("Loading sector/industry data from MongoDB...")
         result = mdb_in_out.get_sectors_industry()

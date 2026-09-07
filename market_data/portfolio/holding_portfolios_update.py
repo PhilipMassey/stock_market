@@ -25,16 +25,16 @@ def df_fidelity_positions_portfolio():
 
 
 def df_fidelity_positions_aggregate_columns(df):
-    dollar_cols = ['Current Value', 'Cost Basis Total', 'Average Cost Basis', 'Last Price']
+    dollar_cols = ['Current value', 'Cost basis total', 'Average cost basis', 'Last price']
     for col in dollar_cols:
         df[col] = df[col].str.replace('$', '').astype(float)
-    percent_cols = ['Percent Of Account']
+    percent_cols = ['Percent of account']
     for col in percent_cols:
         df[col] = df[col].str.replace('%', '').astype(float)
 
     agg_df = df.groupby('Symbol').agg(
-        {'Account Name': 'first', 'Quantity': 'sum', 'Current Value': 'sum', 'Cost Basis Total': 'sum',
-         'Last Price': 'first', 'Average Cost Basis': 'mean', 'Percent Of Account': 'mean'})
+        {'Account name': 'first', 'Quantity': 'sum', 'Current value': 'sum', 'Cost basis total': 'sum',
+         'Last price': 'first', 'Average cost basis': 'mean', 'Percent of account': 'mean'})
     agg_df.reset_index(inplace=True)
     agg_df = agg_df.rename(columns={'index': 'Symbol'})
     return agg_df
@@ -44,8 +44,8 @@ def fidelity_positions_worksheet_update():
     a_date, df = df_fidelity_positions_portfolio()
     df = df_fidelity_positions_aggregate_columns(df)
 #    df['Current Return %'] = 0
-#    df['Current Value %'] = 0
-    df = df.drop(df[df[['Symbol']].applymap(lambda x: '*' in str(x)).any(axis=1)].index)
+#    df['Current value %'] = 0
+    df = df.drop(df[df[['Symbol']].map(lambda x: '*' in str(x)).any(axis=1)].index)
     df = df[df['Symbol'] != 'Pending activity']
     workbook_name = 'Portfolio Adjustments'
     worksheet_id = md.dct_adjustment_id['Fidelity Positions']
@@ -62,11 +62,11 @@ def df_fidelity_portfolios():
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'FDRXX**']
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'SPAXX**']
     fidelity_df = fidelity_df[fidelity_df['Symbol'] != 'Pending activity']
-    fidelity_df['Account Name'] = fidelity_df['Account Name'].replace(['X Stocks', 'Stocks'], 'Stocks')
-    fidelity_df['Account Name'] = fidelity_df['Account Name'].replace(['Z Dividends', 'Dividends'], 'Dividends')
-    fidelity_df['Account Name'] = fidelity_df['Account Name'].replace(['Z ETFs', 'ETFs Roth'], 'ETFs')
-    fidelity_df['Account Name'] = fidelity_df['Account Name'].replace(['Z Shorts', 'Shorts'], 'Shorts')
-    fidelity_df['Account Name'] = fidelity_df['Account Name'].replace(['International'], 'International')
+    fidelity_df['Account name'] = fidelity_df['Account name'].replace(['X Stocks', 'Stocks'], 'Stocks')
+    fidelity_df['Account name'] = fidelity_df['Account name'].replace(['Z Dividends', 'Dividends'], 'Dividends')
+    fidelity_df['Account name'] = fidelity_df['Account name'].replace(['Z ETFs', 'ETFs Roth'], 'ETFs')
+    fidelity_df['Account name'] = fidelity_df['Account name'].replace(['Z Shorts', 'Shorts'], 'Shorts')
+    fidelity_df['Account name'] = fidelity_df['Account name'].replace(['International'], 'International')
     fidelity_df = df_fidelity_positions_aggregate_columns(fidelity_df)
     return fidelity_df
 
@@ -74,7 +74,7 @@ def file_df_account_symbols(df, account_names, path):
     suffix = '.csv'
     for account in account_names:
         if isinstance(account, str):
-            symbols = sorted((df[df['Account Name'] == account].Symbol.values))
+            symbols = sorted((df[df['Account name'] == account].Symbol.values))
             fpath = join(path, account + suffix)
             with open(fpath, 'w') as f:
                 f.write('Symbol\n' + '\n'.join(symbols))
@@ -82,23 +82,22 @@ def file_df_account_symbols(df, account_names, path):
 
 
 def market_data_holding_portfolios_update(fidelity_df):
-    df = fidelity_df[['Account Name', 'Symbol']]
+    df = fidelity_df[['Account name', 'Symbol']]
     path = join(md.data_dir, 'holding')
-    account_names = list(set(df['Account Name'].values))
+    account_names = list(set(df['Account name'].values))
     file_df_account_symbols(df, account_names, path)
     print('Completed Filing Holding Symbols ', path)
     return path
 
 def money_market():
     a_date, fidelity_df = df_fidelity_positions_portfolio()
-    fidelity_df['Current Value'] = fidelity_df['Current Value'].str.replace('$', '').astype(float)
-    #df = df_agg_on_symbol_from_fidelity_positions_csv()
+    fidelity_df['Current value'] = fidelity_df['Current value'].str.replace('$', '').astype(float)
     filter_values = ['FDRXX',"CORE", 'SPAXX','Pending activity']
     fidelity_df = fidelity_df[fidelity_df['Symbol'].str.contains('|'.join(filter_values))]
-    fidelity_df = fidelity_df[['Account Name', 'Current Value']]
-    fidelity_df = fidelity_df.groupby('Account Name').sum({'Current Value': 'sum'})
-    total_current_value = fidelity_df['Current Value'].sum()
-    new_row = {'Account Name': 'Total', 'Current Value': total_current_value}
+    fidelity_df = fidelity_df[['Account name', 'Current value']]
+    fidelity_df = fidelity_df.groupby('Account name').agg({'Current value': 'sum'})
+    total_current_value = fidelity_df['Current value'].sum()
+    new_row = {'Account name': 'Total', 'Current value': total_current_value}
     new_row_df = pd.DataFrame([new_row])
     fidelity_df.reset_index(inplace=True)
     fidelity_df = pd.concat([fidelity_df, new_row_df], ignore_index=True)

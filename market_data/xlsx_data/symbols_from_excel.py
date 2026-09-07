@@ -13,6 +13,7 @@ def write_sa_csv(filep, symobls):
     fbasename = os.path.basename(filep)
     sa_filen = os.path.splitext(fbasename)[0][:-11]
     fpath = join(md.data_dir, md.sa, sa_filen + '.csv')
+    print(fpath)
     with open(fpath, 'w') as f:
         f.write('Symbol\n' + '\n'.join(symbols))
         f.close()

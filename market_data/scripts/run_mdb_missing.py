@@ -224,9 +224,9 @@ if __name__ == '__main__':
     ny_now = md.get_ny_now()
     nbus_days = get_nbusdays_from_date(ny_now)
     print('New York time now: {:%Y-%m-%d %H %A}'.format(ny_now), ' business days ago', nbus_days)
-    # symbols = ['AAPL', 'MSFT','BW']
     incl = md.all
     symbols = md.get_symbols(incl)
+    #symbols = ['AAPL', 'MSFT', 'GOOGL']
     schedule = md.get_schedule()
     business_days = md.get_business_days(schedule)[1:]  # yesterday
     print('Starting business day ', business_days[0])
